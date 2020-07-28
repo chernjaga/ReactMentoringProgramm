@@ -1,8 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CaseSensitivePathPlugins = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
 
