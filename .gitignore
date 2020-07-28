@@ -104,10 +104,5 @@ dist
 .tern-port
 
 **/public/
-home-work-app/public/dev/styles.css
-home-work-app/public/dev/scripts.js
-home-work-app/public/dev/index.html
-home-work-app/public/prod/styles.css
-home-work-app/public/dev/styles.css
-home-work-app/public/dev/scripts.js
-home-work-app/public/dev/index.html
+home-work-app/public
+
