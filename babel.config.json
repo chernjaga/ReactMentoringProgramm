@@ -19,4 +19,4 @@
     
     ],
     "plugins": ["@babel/plugin-transform-typescript"]
-}webpa
+}
