@@ -1,11 +1,18 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
+const CaseSensitivePathPlugins = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
 
     context: path.join(__dirname, 'src'),
     entry: {
         scripts: './index.ts'
+    },
+
+    output: {
+        filename: '[name].js',
+        path: path.join(__dirname, 'build')
     },
 
     resolve: {
@@ -54,4 +61,15 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new CaseSensitivePathPlugins(),
+        new webpack.DefinePlugin({
+            BROWSER_SUPPORTS_HTML5: true
+        }),
+        new webpack.ProvidePlugin({ // common imports for all the source
+            react: 'React',
+            _: 'lodash'
+        }),
+        new ExtractTextPlugin('styles.css'),
+    ]
 };
