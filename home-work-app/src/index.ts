@@ -1,2 +1,2 @@
 import './index.scss';
-document.getElementById('root').innerHTML = 'Hello World';
+document.getElementById('root').innerHTML = 'Hello World !';

@@ -26,8 +26,8 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        plugins: ['transform-react-jsx'],
-                        presets: ['env']
+                        plugins: ['transform-react-jsx', 'plugin-transform-typescript', 'transform-arrow-functions'],
+                        presets: ['env', 'react', 'typescript']
                     }
                 }
             },

@@ -11,9 +11,14 @@ module.exports = {
 
     output: {
         filename: '[name].js',
-        path: path.join(__dirname, 'public', 'dev')
+        path: path.join(__dirname, 'build')
     },
 
+    devServer: {
+        open: true,
+        contentBase: path.join(__dirname, 'build'),
+        hot: true,
+    },
     
     plugins: [
         new CaseSensitivePathPlugins(),
@@ -30,6 +35,4 @@ module.exports = {
         }),
         new ExtractTextPlugin('styles.css'),
     ],
-
-    watch: true
 };

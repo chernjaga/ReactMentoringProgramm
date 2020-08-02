@@ -4,6 +4,11 @@ const prodModeMode = require('./webpack.config.prod.js');
 const commonConfig = require('./webpack.config.common.js');
 
 module.exports = (env) => {
-    let currentMode = env && env.production ? prodModeMode : devMode;
-    return merge(currentMode, commonConfig);
+    if (!env || env.development) {
+        return merge(devMode, commonConfig);
+    }
+
+    if (env.production) {
+        return merge(prodModeMode, commonConfig);
+    }
 };
