@@ -1,0 +1,43 @@
+{
+    "extends": "tslint:recommended",
+    "rules": {
+        "max-line-length": {
+            "options": [120]
+        },
+        "new-parens": true,
+        "no-arg": true,
+        "no-bitwise": true,
+        "no-conditional-assignment": true,
+        "no-consecutive-blank-lines": true,
+        "no-empty-interface": true,
+        "no-duplicate-variable": [true, "check-parameters"],
+        "no-return-await": true,
+        "array-type": [true, "array-simple"],
+        "newline-before-return": true,
+        "no-trailing-whitespace": true,
+        "semicolon": [true, "always", "ignore-bound-class-methods"],
+        "whitespace": [true, "check-branch", "check-operator", "check-typecast"],
+        "no-console": {
+            "severity": "warning",
+            "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
+        },
+        "no-any": true,
+        "promise-function-async": [
+            true,
+            "check-function-declaration",
+            "check-method-declaration"
+        ],
+        "typedef": [
+            true,
+            "call-signature",
+            "arrow-parameter",
+            "variable-declaration",
+            "member-variable-declaration"
+        ]
+    },
+    "jsRules": {
+        "max-line-length": {
+            "options": [120]
+        }
+    }
+}

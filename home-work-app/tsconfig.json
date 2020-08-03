@@ -6,6 +6,12 @@
         "module": "es6",
         "target": "es5",
         "jsx": "react",
-        "allowJs": false
-    }
+        "allowJs": true
+    },
+    "exclude": [
+        "tmp",
+        "dist",
+        "node_modules",
+        "build"
+    ],
 }

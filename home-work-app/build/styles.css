@@ -1,7 +1,8 @@
 * {
-  font-family: sans-serif; }
+  color: #ffffff;
+  font-family: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif; }
 
-a {
-  text-decoration: none; }
+body {
+  background-color: #232323; }
 
 /*# sourceMappingURL=styles.css.map*/

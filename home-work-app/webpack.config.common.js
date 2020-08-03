@@ -58,7 +58,7 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 loader: "file-loader?name=/image/[name].[ext]"
-            }
+            },
         ]
     },
     plugins: [

@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 export class HomePage extends React.PureComponent {
-    render() {
+    render(): JSX.Element {
         return (
-            <div> Hello HOME</div>
-        )
+            <div> Hello HOME !!!()</div>
+        );
     }
 }

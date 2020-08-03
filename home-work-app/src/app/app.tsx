@@ -1,12 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Routing } from './pages/routing'
+import { Routing } from './pages/routing';
 
-const rootElement = document.getElementById('root');
+type App = () => void;
+const ROOT_ELEMENT: HTMLElement = document.getElementById('root');
 
-export const App = () => {
+export const App: App = () => {
     ReactDOM.render(
         <Routing/>,
-        rootElement
+        ROOT_ELEMENT
     );
-} 
+};
