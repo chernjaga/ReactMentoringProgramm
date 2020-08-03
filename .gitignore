@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+**/public/
+home-work-app/public
+
+**/build/
+home-work-app/build
