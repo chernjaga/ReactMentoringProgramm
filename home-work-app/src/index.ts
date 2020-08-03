@@ -1,2 +1,4 @@
 import './index.scss';
-document.getElementById('root').innerHTML = 'Hello World !';
+import { App } from './app/app';
+
+App();

@@ -1,0 +1,15 @@
+// colors
+$color-black: #232323;
+$color-gray-tint1: #424242;
+$color-gray-tint2: #555555;
+$color-pink: #f65261;
+$color-white: #ffffff;
+
+// default styles
+* {
+    color: $color-white;
+    font-family: 'Google Sans', Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+}
+body {
+    background-color: $color-black;
+}
