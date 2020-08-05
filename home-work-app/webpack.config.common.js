@@ -72,8 +72,8 @@ module.exports = {
             BROWSER_SUPPORTS_HTML5: true
         }),
         new webpack.ProvidePlugin({ // common imports for all the source
-            react: 'React',
-            _: 'lodash'
+            'React': 'react',
+            '_': 'lodash'
         }),
         new ExtractTextPlugin('styles.css'),
     ]
