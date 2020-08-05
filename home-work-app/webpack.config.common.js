@@ -2,6 +2,8 @@ const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
 const CaseSensitivePathPlugins = require('case-sensitive-paths-webpack-plugin');
+const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
+const styledComponentsTransformer = createStyledComponentsTransformer();
 
 module.exports = {
 
@@ -25,7 +27,10 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
-                exclude: /node_modules/
+                exclude: /node_modules/,
+                options: {
+                    getCustomTransformers: () => ({ before: [styledComponentsTransformer] })
+                }
             },
            {
                 test: /\.jsx?$/,

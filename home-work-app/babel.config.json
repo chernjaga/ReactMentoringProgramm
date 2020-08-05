@@ -16,7 +16,17 @@
                 "targets": "> 0.25%, not dead"
             }
         ]
-    
+
     ],
-    "plugins": ["@babel/plugin-transform-typescript"]
+    "plugins": [
+        "@babel/plugin-transform-typescript",
+        [
+            "babel-plugin-styled-components", {
+                "minify": false,
+                "fileName": false,
+                "transpileTemplateLiterals": false,
+                "pure": true
+            }
+        ]
+    ]
 }
