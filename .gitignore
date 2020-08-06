@@ -106,5 +106,7 @@ dist
 **/public/
 home-work-app/public
 
+./build/
+build/
 **/build/
 home-work-app/build
