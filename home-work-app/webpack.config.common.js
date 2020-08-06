@@ -14,7 +14,8 @@ module.exports = {
 
     output: {
         filename: '[name].js',
-        path: path.join(__dirname, 'build')
+        path: path.join(__dirname, 'build'),
+        publicPath: '/'
     },
 
     resolve: {
@@ -24,23 +25,11 @@ module.exports = {
 
     module: {
         rules: [
-            {
-                test: /\.tsx?$/,
-                loader: 'ts-loader',
-                exclude: /node_modules/,
-                options: {
-                    getCustomTransformers: () => ({ before: [styledComponentsTransformer] })
-                }
-            },
            {
-                test: /\.jsx?$/,
+                test: /\.(ts|tsx)?$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        plugins: ['transform-react-jsx', 'plugin-transform-typescript', 'transform-arrow-functions'],
-                        presets: ['env', 'react', 'typescript']
-                    }
+                    loader: 'babel-loader'
                 }
             },
             {
