@@ -1,12 +1,13 @@
 import * as React from 'react';
-import {TestWrapper} from './styled-components/testWrapper.styled';
+import { Banner } from './components/banner.cmpnt';
 
 export class HomePage extends React.PureComponent {
     render(): JSX.Element {
-        return (    
-            <TestWrapper>
+        return (
+            <div>
+                <Banner/>
                 <div> Hello HOME !!!()</div>
-            </TestWrapper>
+            </div>
         );
     }
 }
