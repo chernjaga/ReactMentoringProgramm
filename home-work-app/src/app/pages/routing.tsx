@@ -6,8 +6,8 @@ import { IJSX } from '../types/index';
 export const Routing: IJSX = () => (
     <Router>
         <Switch>
-            <Route path="/" component={HomePage}/>
-            <Redirect to="/"/>
+            <Route exact path="/home" component={HomePage}/>
+            <Redirect to="/home"/>
         </Switch>
     </Router>
 );
