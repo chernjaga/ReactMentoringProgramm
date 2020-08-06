@@ -1,2 +1,2 @@
 
-export * from './IRouting.type';
+export * from './IJSX.type';
