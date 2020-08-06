@@ -35678,7 +35678,7 @@ var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || func
     return cooked;
 };
 
-var TestWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({ displayName: "TestWrapper", componentId: "sc-1koekeo" })(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    border: 1px red solid;\n"], ["\n    border: 1px red solid;\n"])));
+var TestWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({ displayName: "TestWrapper", componentId: "sc-s25acm" })(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    border: 1px red solid;\n"], ["\n    border: 1px red solid;\n"])));
 var templateObject_1;
 
 
@@ -35703,8 +35703,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var Routing = function () { return (react__WEBPACK_IMPORTED_MODULE_2__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_0__["BrowserRouter"], null,
     react__WEBPACK_IMPORTED_MODULE_2__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Switch"], null,
-        react__WEBPACK_IMPORTED_MODULE_2__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], { path: "/home", component: _home_home_page__WEBPACK_IMPORTED_MODULE_1__["HomePage"] }),
-        react__WEBPACK_IMPORTED_MODULE_2__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Redirect"], { to: "/home" })))); };
+        react__WEBPACK_IMPORTED_MODULE_2__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], { path: "/", component: _home_home_page__WEBPACK_IMPORTED_MODULE_1__["HomePage"] }),
+        react__WEBPACK_IMPORTED_MODULE_2__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Redirect"], { to: "/" })))); };
 
 
 /***/ }),
