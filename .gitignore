@@ -109,4 +109,5 @@ home-work-app/public
 ./build/
 build/
 **/build/
+**/build/*.*
 home-work-app/build
