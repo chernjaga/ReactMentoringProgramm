@@ -17,10 +17,12 @@ const BannerDarkCover: StyledComponent<'div', {}> = styled.div`
     background-color: rgba(0, 0, 0, 0.7);
     padding: 16px 32px;
     backdrop-filter: blur(2px);
+    position: relative;
 `;
 
 const BannerTopLine: StyledComponent<'div', {}> = styled.div`
     display: flex;
+    weight: 100%;
     justify-content: space-between;
     align-items: center;
 `;

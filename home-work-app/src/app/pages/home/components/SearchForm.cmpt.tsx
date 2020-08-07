@@ -11,9 +11,14 @@ const Label: StyledComponent<'label', {}> = styled.label.attrs({
     display: block;
 `;
 
+const Form: StyledComponent<'form', {}> = styled.form.attrs({
+    htmlFor: 'searchForm'
+})`
+    display: block;
+`;
 export const SearchForm: IJSX = () => (
-    <form>
+    <Form>
         <Label>FIND YOUR MOVIE</Label>
         <input type="text" id="searchForm"/>
-    </form>
+    </Form>
 );
