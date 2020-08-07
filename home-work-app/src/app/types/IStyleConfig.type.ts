@@ -4,5 +4,8 @@ export type IStyleConfig = {
     },
     url: {
         [key: string]: string
+    },
+    offsets: {
+        [key: string]: string
     }
 }

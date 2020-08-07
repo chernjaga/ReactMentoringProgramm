@@ -11,7 +11,10 @@ const StyledLink: StyledComponent<'a', {}> = styled.a.attrs({
     padding: 8px;
     border-radius: 4px;
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.35);
+    }
 `;
 
 export const AddMovieLink: IJSX = () => (

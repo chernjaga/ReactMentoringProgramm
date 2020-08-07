@@ -8,5 +8,8 @@ export const stylesConfig: IStyleConfig = {
     },
     url: {
         banner: ''
+    },
+    offsets: {
+        sideOffset: '10%'
     }
 }

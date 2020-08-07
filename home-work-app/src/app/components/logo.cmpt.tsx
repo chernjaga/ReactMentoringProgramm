@@ -1,4 +1,4 @@
-import styled, { StyledComponent, ThemedStyledFunction, StyledFunction }  from 'styled-components';
+import styled, { StyledComponent }  from 'styled-components';
 import * as React from 'react';
 import { IJSX } from '../types';
 
@@ -9,6 +9,8 @@ type StyledProps = {
 const StyledLogo: StyledComponent<'div', {}, StyledProps> = styled.div`
     color: ${(props: StyledProps) => props.logoColor};
     font-size: 1.5rem;
+    line-height: 1.5rem;
+    height: 1.5rem;
     cursor: default;
 `;
 

@@ -7,6 +7,7 @@ import { AddMovieLink } from './addMovieLink.cmpt';
 import { SearchForm } from './SearchForm.cmpt';
 
 const logoColor: string = stylesConfig.colors.pink;
+const sideOffset: string = stylesConfig.offsets.sideOffset;
 
 const BannerWrapper: StyledComponent<'div', {}> = styled.div`
     background-image: url('images/banner.jpg'), none;
@@ -15,7 +16,7 @@ const BannerWrapper: StyledComponent<'div', {}> = styled.div`
 
 const BannerDarkCover: StyledComponent<'div', {}> = styled.div`
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 16px 32px;
+    padding: 16px ${sideOffset};
     backdrop-filter: blur(2px);
     position: relative;
 `;
