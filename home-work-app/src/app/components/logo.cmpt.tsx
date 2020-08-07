@@ -1,23 +1,24 @@
-import styled, { StyledComponent }  from 'styled-components';
+import styled, { StyledComponent, ThemedStyledFunction, StyledFunction }  from 'styled-components';
 import * as React from 'react';
 import { IJSX } from '../types';
-import { stylesConfig } from '../configs/style.configs';
 
-const logoColor: string = stylesConfig.colors.pink;
+type StyledProps = {
+    logoColor: string
+};
 
-const StyledLogo: StyledComponent<"div", {}> = styled.div`
-    color: ${logoColor};
+const StyledLogo: StyledComponent<'div', {}, StyledProps> = styled.div`
+    color: ${(props: StyledProps) => props.logoColor};
     font-size: 1.5rem;
+    cursor: default;
 `;
 
-const BoldText: StyledComponent<"span", {}> = styled.span`
+const BoldText: StyledComponent<'span', {}, StyledProps> = styled.span`
+    color: ${(props: StyledProps) => props.logoColor};
     font-weight: 900;
-    color: ${logoColor};
-    font-size: 1.5rem;
 `;
 
-export const Logo: IJSX = () => (
-    <StyledLogo>
-        <BoldText>netflix</BoldText>roulette
+export const Logo: IJSX = (props: StyledProps) => (
+    <StyledLogo logoColor={props.logoColor}>
+        <BoldText logoColor={props.logoColor}>netflix</BoldText>roulette
     </StyledLogo>
 );

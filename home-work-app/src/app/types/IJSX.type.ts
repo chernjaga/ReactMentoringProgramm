@@ -1,1 +1,1 @@
-export type IJSX = () => JSX.Element;
+export type IJSX = (props: {[key: string]: string | number}) => JSX.Element;
