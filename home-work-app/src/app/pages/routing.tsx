@@ -1,7 +1,7 @@
 import { Route,  BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import { HomePage } from './home/home.page';
 import * as React from 'react';
-import { IJSX } from '../types/index';
+import { IJSX } from '../types';
 
 export const Routing: IJSX = () => (
     <Router>
