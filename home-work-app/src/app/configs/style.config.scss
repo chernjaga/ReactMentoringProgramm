@@ -1,8 +1,9 @@
 // colors
 $color-black: #232323;
-$color-gray-tint1: #424242;
+$color-gray-tint1: rgb(66, 66, 66);
 $color-gray-tint2: #555555;
-$color-pink: #f65261;
+$color-gray-tint2: #969696;
+$color-pink: rgb(246, 82, 97);
 $color-white: #ffffff;
 
 // default styles
@@ -19,4 +20,17 @@ body {
 
 a {
     text-decoration: none;
+}
+
+button, input {
+    border-radius: 4px;
+    border: none;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
 }

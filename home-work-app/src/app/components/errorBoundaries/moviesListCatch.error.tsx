@@ -1,0 +1,39 @@
+import * as React from 'react';
+import styled, { StyledComponent } from 'styled-components';
+import { IError } from '../../interfaces/IError.interface';
+
+const StyledError: StyledComponent<'div', {}> = styled.div`
+    padding: 32px;
+`;
+
+export class MoviesListCatch extends React.Component<IError.Props, IError.State> {
+    state: IError.State;
+
+    constructor (props: IError.Props)
+    {
+        super(props);
+        this.state = {
+            hasError: false
+        };
+    }
+
+    static  getDerivedStateFromError(error: Error) {
+        return { hasError: true };
+    }
+
+    componentDidCatch(error: Error, info: React.ErrorInfo) {
+        this.setState({ hasError: true, info: info });
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return (<StyledError>
+                        <h3>
+                            Component is not available
+                        </h3> 
+                    </StyledError>);
+        }
+
+        return this.props.children;
+    }
+}

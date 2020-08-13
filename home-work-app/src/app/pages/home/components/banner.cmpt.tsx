@@ -23,7 +23,7 @@ const BannerDarkCover: StyledComponent<'div', {}> = styled.div`
 
 const BannerTopLine: StyledComponent<'div', {}> = styled.div`
     display: flex;
-    weight: 100%;
+    wight: 100%;
     justify-content: space-between;
     align-items: center;
 `;

@@ -1,0 +1,24 @@
+@import '../../configs/style.config.scss';
+
+.hoverMenuContainer .hoverMenu {
+    display: none;
+}
+
+.hoverMenuContainer {
+    img {
+        width: 140%;
+    }
+}
+.hoverMenuContainer:hover {
+    img {
+        opacity: 0.5;
+    }
+}
+.hoverMenuContainer:hover .hoverMenu {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}

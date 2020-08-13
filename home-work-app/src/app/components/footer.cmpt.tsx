@@ -6,10 +6,11 @@ import { stylesConfig } from '../configs/style.configs';
 
 const logoColor: string = stylesConfig.colors.pink;
 
-const StyledFooter: StyledComponent<"div", {}> = styled.div`
+const StyledFooter: StyledComponent<'div', {}> = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 16px 0;
 `;
 
 export const Footer: IJSX = () => (
