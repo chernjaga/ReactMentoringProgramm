@@ -5,7 +5,7 @@ export namespace IApiResponse {
         offset: number;
         totalAmount: number;
 
-    };
+    }
     export type IMovie = {
         budget: number,
         genres: string[],

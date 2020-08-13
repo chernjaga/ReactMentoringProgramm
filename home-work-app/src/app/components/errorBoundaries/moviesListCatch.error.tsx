@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { IError } from '../../interfaces/IError.interface';
+import { IError } from '../../interfaces/IError.interface.d';
 import { IJSX } from '../../types';
 
 const StyledError: StyledComponent<'div', {}> = styled.div`

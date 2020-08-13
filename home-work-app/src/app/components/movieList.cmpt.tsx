@@ -4,7 +4,7 @@ import { IJSX } from '../types';
 import { stylesConfig } from '../configs/style.configs';
 import { movieResponse } from '../../../tempData/getMoviesResponse';
 import { MovieCard } from './movieCard.cmpt';
-import { IApiResponse } from '../interfaces/IApiResponse.interface';
+import { IApiResponse } from '../interfaces/IApiResponse.interface.d';
 import { FilterPanel } from './filterPanel.cmpt';
 import { MoviesListCatch } from './errorBoundaries/moviesListCatch.error';
 

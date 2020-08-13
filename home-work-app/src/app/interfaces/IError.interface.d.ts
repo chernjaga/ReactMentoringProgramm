@@ -11,4 +11,4 @@ export namespace IError {
         info?: React.ErrorInfo,
         error?: Error,
     };
-};
+}
