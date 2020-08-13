@@ -4,7 +4,7 @@ export namespace IError {
     export type Handler = (error: Error, info: React.ErrorInfo) => void;
     export type Props = {
         error?: Error,
-        children: any
+        children: JSX.Element
     };
     export type State = {
         hasError: boolean,

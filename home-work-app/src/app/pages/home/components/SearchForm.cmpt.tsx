@@ -45,7 +45,7 @@ const Button: StyledComponent<'button', {}> = styled.button.attrs({
     font-weight: 100;
     padding: 8px;
     background-color: ${stylesConfig.colors.pink};
-    flex-grow: 1;    
+    flex-grow: 1;
     &:hover {
         background-color: rgba(246, 82, 97, 0.75);
     };

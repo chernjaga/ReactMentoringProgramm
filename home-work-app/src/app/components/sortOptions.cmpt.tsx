@@ -5,7 +5,6 @@ import { stylesConfig } from '../configs/style.configs';
 
 type StyledProps = string[];
 
-
 const Select: StyledComponent<'select', {}> = styled.select.attrs({
     name: 'sortOptions',
     id: 'sortOptions'
@@ -21,7 +20,7 @@ const Option: StyledComponent<'option', {}> = styled.option`
     background-color: ${stylesConfig.colors.black};
     border-radius: none;
     font-size: 1rem;
-    
+
     &:hover {
         background-color: ${stylesConfig.colors.pink};
     }
@@ -33,7 +32,7 @@ const StyledSortOptions: StyledComponent<'div', {}> = styled.div`
 
 export const SortOptions: IJSX = (props: {values: StyledProps}) => (
     <StyledSortOptions>
-        Sort By 
+        Sort By
         <Select>
             {props.values.map((value: string) => (
                 <Option value={value} key={value}>

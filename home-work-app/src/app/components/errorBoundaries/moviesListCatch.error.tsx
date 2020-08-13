@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { IError } from '../../interfaces/IError.interface';
+import { IJSX } from '../../types';
 
 const StyledError: StyledComponent<'div', {}> = styled.div`
     padding: 32px;
@@ -17,20 +18,20 @@ export class MoviesListCatch extends React.Component<IError.Props, IError.State>
         };
     }
 
-    static  getDerivedStateFromError(error: Error) {
+    static getDerivedStateFromError(error: Error): IError.State {
         return { hasError: true };
     }
 
-    componentDidCatch(error: Error, info: React.ErrorInfo) {
-        this.setState({ hasError: true, info: info });
+    componentDidCatch(error: Error, info: React.ErrorInfo): void {
+        this.setState({ hasError: true });
     }
 
-    render() {
+    render(): JSX.Element {
         if (this.state.hasError) {
             return (<StyledError>
                         <h3>
                             Component is not available
-                        </h3> 
+                        </h3>
                     </StyledError>);
         }
 
