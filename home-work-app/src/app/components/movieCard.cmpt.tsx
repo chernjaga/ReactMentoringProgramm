@@ -3,20 +3,20 @@ import * as React from 'react';
 import styled, { StyledComponent }  from 'styled-components';
 import { stylesConfig } from '../configs/style.configs';
 import { EditMenu } from './editMenu.cmpt';
+import { Link } from 'react-router-dom';
 
 type CardProps = {
     title: string,
     releaseDate: string,
     genres: string[],
     coverUrl: string,
+    id: string,
     key?: string
 };
 
 const cardBackground: string = stylesConfig.colors.black;
 
-const StyledCard: StyledComponent<'a', {}> = styled.a.attrs({
-    href: '/'
-})`
+const StyledCard: StyledComponent<'span', {}> = styled.span`
     overflow: hidden;
     display: grid;
     grid-template-columns: 70% 30%;
@@ -67,24 +67,26 @@ const ListItem: StyledComponent<'li', {}> = styled.li.attrs({
 
 export const MovieCard: IJSX = (props: CardProps) => (
     <ListItem>
-        <StyledCard>
-            <Poster>
-                <img src={props.coverUrl} alt={props.title}/>
-                <EditMenu/>
-            </Poster>
+        <Link to={`/movie?id=${props.id}`}>
+            <StyledCard>
+                <Poster>
+                    <img src={props.coverUrl} alt={props.title}/>
+                    <EditMenu/>
+                </Poster>
 
-            <Title>
-                {props.title}
-            </Title>
-            <Genres>
-                {props.genres.join(' / ')}
-            </Genres>
+                <Title>
+                    {props.title}
+                </Title>
+                <Genres>
+                    {props.genres.join(' / ')}
+                </Genres>
 
-            <Year>
-                <YearBorder>
-                    {new Date(props.releaseDate).getFullYear()}
-                </YearBorder>
-            </Year>
-        </StyledCard>
+                <Year>
+                    <YearBorder>
+                        {new Date(props.releaseDate).getFullYear()}
+                    </YearBorder>
+                </Year>
+            </StyledCard>
+        </Link>
     </ListItem>
 );

@@ -39,6 +39,7 @@ const Movies: IJSX = (props: MoviesProps) => (
                     title={movie.title}
                     releaseDate={movie.release_date}
                     genres={movie.genres}
+                    id={movie.id}
                     key={movie.id}
                 />
             )
