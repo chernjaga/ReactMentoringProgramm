@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Banner } from './components/banner.cmpt';
 
 export class HomePage extends React.PureComponent {

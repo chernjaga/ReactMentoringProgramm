@@ -1,5 +1,5 @@
 import { IJSX } from '../types';
-import * as React from 'react';
+import React from 'react';
 import styled, { StyledComponent }  from 'styled-components';
 import { stylesConfig } from '../configs/style.configs';
 import { EditMenu } from './editMenu.cmpt';
