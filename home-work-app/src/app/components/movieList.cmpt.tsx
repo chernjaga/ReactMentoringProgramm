@@ -12,7 +12,7 @@ type MoviesProps = {
     response: IApiResponse.GetMovies
 };
 
-const MovieListStyled: StyledComponent<'div', {}> = styled.div`
+const MovieListStyled: StyledComponent<'section', {}> = styled.section`
     background-color: ${stylesConfig.colors.black};
     padding: 32px ${stylesConfig.offsets.sideOffset};
 `;

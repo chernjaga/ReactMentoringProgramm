@@ -9,7 +9,9 @@ import { SearchForm } from './SearchForm.cmpt';
 const logoColor: string = stylesConfig.colors.pink;
 const sideOffset: string = stylesConfig.offsets.sideOffset;
 
-const BannerWrapper: StyledComponent<'div', {}> = styled.div`
+const BannerWrapper: StyledComponent<'header', {}> = styled.header.attrs({
+    role: 'header'
+})`
     background-image: url('images/banner.jpg'), none;
     background-size: cover;
 `;

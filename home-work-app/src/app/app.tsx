@@ -1,5 +1,5 @@
 import React from 'react';
-import * as ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Routing } from './pages/routing';
 import { IJSX } from './types';
 import { Footer } from './components/footer.cmpt';

@@ -6,7 +6,7 @@ type StyledProps = {
     logoColor: string
 };
 
-const StyledLogo: StyledComponent<'div', {}, StyledProps> = styled.div`
+const StyledLogo: StyledComponent<'h1', {}, StyledProps> = styled.h1`
     color: ${(props: StyledProps) => props.logoColor};
     font-size: 1.5rem;
     line-height: 1.5rem;
