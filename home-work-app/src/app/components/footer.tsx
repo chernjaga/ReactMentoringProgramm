@@ -1,6 +1,5 @@
 import styled, { StyledComponent }  from 'styled-components';
-import { IJSX } from '../types';
-import { Logo } from './logo.cmpt';
+import { Logo } from './logo';
 import { stylesConfig } from '../configs/style.configs';
 
 const logoColor: string = stylesConfig.colors.pink;
@@ -12,7 +11,7 @@ const StyledFooter: StyledComponent<'footer', {}> = styled.footer`
     padding: 16px 0;
 `;
 
-export const Footer: IJSX = () => (
+export const Footer: React.FC = () => (
     <StyledFooter>
         <Logo logoColor={logoColor}/>
     </StyledFooter>

@@ -1,12 +1,11 @@
 import styled, { StyledComponent }  from 'styled-components';
-import { IJSX } from '../types';
 
 type StyledProps = {
     logoColor: string
 };
 
-const StyledLogo: StyledComponent<'h1', {}, StyledProps> = styled.h1`
-    color: ${(props: StyledProps) => props.logoColor};
+const StyledLogo: StyledComponent<'h1', {}> = styled.h1`
+    color: #fff;
     font-size: 1.5rem;
     line-height: 1.5rem;
     height: 1.5rem;
@@ -18,8 +17,8 @@ const BoldText: StyledComponent<'span', {}, StyledProps> = styled.span`
     font-weight: 900;
 `;
 
-export const Logo: IJSX = (props: StyledProps) => (
-    <StyledLogo logoColor={props.logoColor}>
+export const Logo: React.FC<StyledProps> = (props: StyledProps) => (
+    <StyledLogo>
         <BoldText logoColor={props.logoColor}>netflix</BoldText>roulette
     </StyledLogo>
 );

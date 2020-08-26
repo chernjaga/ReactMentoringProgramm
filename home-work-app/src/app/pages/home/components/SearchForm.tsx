@@ -1,5 +1,3 @@
-
-import { IJSX } from '../../../types/IJSX.type';
 import styled, { StyledComponent }  from 'styled-components';
 import { stylesConfig } from '../../../configs/style.configs';
 
@@ -52,7 +50,7 @@ const Button: StyledComponent<'button', {}> = styled.button.attrs({
     cursor: pointer
 `;
 
-export const SearchForm: IJSX = () => (
+export const SearchForm: React.FC = () => (
     <Form>
         <Label>FIND YOUR MOVIE</Label>
         <InputWrapper>

@@ -1,10 +1,10 @@
 import styled, { StyledComponent }  from 'styled-components';
-import { IJSX } from '../types';
+
 import { stylesConfig } from '../configs/style.configs';
 import { movieResponse } from '../../../tempData/getMoviesResponse';
-import { MovieCard } from './movieCard.cmpt';
-import { IApiResponse } from '../interfaces/IApiResponse.interface';
-import { FilterPanel } from './filterPanel.cmpt';
+import { MovieCard } from './movieCard';
+import { IApiResponse } from '../interfaces/IApiResponse';
+import { FilterPanel } from './filterPanel';
 import { MoviesListCatch } from './errorBoundaries/moviesListCatch.error';
 
 type MoviesProps = {
@@ -23,13 +23,13 @@ const MovieListContainer: StyledComponent<'ul', {}> = styled.ul`
     grid-gap: 32px;
 `;
 
-const ItemsFound: IJSX = (props: {amount: number}) => (
+const ItemsFound: React.FC = (props: {amount: number}) => (
     <>
         <b>{props.amount}</b> movies found
     </>
 );
 
-const Movies: IJSX = (props: MoviesProps) => (
+const Movies: React.FC = (props: MoviesProps) => (
     <>
         {props.response.data.map(
             (movie: IApiResponse.IMovie) => (
@@ -46,7 +46,7 @@ const Movies: IJSX = (props: MoviesProps) => (
     </>
 );
 
-export const MovieList: IJSX = () => (
+export const MovieList: React.FC = () => (
     <MovieListStyled>
         <FilterPanel/>
         <ItemsFound amount={movieResponse.data.length}/>

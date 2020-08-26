@@ -1,11 +1,11 @@
 import { Route,  BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import { HomePage } from './home/home.page';
 
-import { IJSX } from '../types';
-import { Movie } from './movie/movie.page';
-import { MovieList } from '../components/movieList.cmpt';
 
-export const Routing: IJSX = () => (
+import { Movie } from './movie/movie.page';
+import { MovieList } from '../components/movieList';
+
+export const Routing: React.FC = () => (
     <Router>
         <Switch>
             <Route exact path="/home" component={HomePage}/>

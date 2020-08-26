@@ -1,6 +1,6 @@
 
 import styled, { StyledComponent } from 'styled-components';
-import { IError } from '../../interfaces/IError.interface';
+import { IError } from '../../interfaces/IError';
 
 const StyledError: StyledComponent<'div', {}> = styled.div`
     padding: 32px;

@@ -1,7 +1,6 @@
 import styled, { StyledComponent }  from 'styled-components';
-import { IJSX } from '../types';
 import { stylesConfig } from '../configs/style.configs';
-import { SortOptions } from './sortOptions.cmpt';
+import { SortOptions } from './sortOptions';
 
 type FilterConfigItem = {
     title: string,
@@ -63,7 +62,7 @@ const FilterOptionItem: StyledComponent<'li', {}> = styled.li.attrs({
     };
 `;
 
-export const FilterPanel: IJSX = () => (
+export const FilterPanel: React.FC = () => (
     <StyledFilterPanel>
         <FilterOptions>
             {FilterOptionsConfig.map((item: FilterConfigItem) => (

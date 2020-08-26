@@ -1,9 +1,11 @@
 import styled, { StyledComponent }  from 'styled-components';
 
-import { IJSX } from '../types';
+
 import { stylesConfig } from '../configs/style.configs';
 
-type StyledProps = string[];
+type SortProps = {
+    values: string[]
+};
 
 const Select: StyledComponent<'select', {}> = styled.select.attrs({
     name: 'sortOptions',
@@ -30,7 +32,7 @@ const StyledSortOptions: StyledComponent<'div', {}> = styled.div`
     color: ${stylesConfig.colors.grayTint3};
 `;
 
-export const SortOptions: IJSX = (props: {values: StyledProps}) => (
+export const SortOptions: React.FC<SortProps> = (props: SortProps) => (
     <StyledSortOptions>
         Sort By
         <Select>

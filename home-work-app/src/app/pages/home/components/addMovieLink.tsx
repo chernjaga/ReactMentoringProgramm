@@ -1,5 +1,3 @@
-
-import { IJSX } from '../../../types/IJSX.type';
 import styled, { StyledComponent }  from 'styled-components';
 import { stylesConfig } from '../../../configs/style.configs';
 
@@ -17,6 +15,6 @@ const StyledLink: StyledComponent<'a', {}> = styled.a.attrs({
     }
 `;
 
-export const AddMovieLink: IJSX = () => (
+export const AddMovieLink: React.FC = () => (
     <StyledLink>+ ADD MOVIE</StyledLink>
 );

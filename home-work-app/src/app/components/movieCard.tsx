@@ -1,7 +1,6 @@
-import { IJSX } from '../types';
 import styled, { StyledComponent }  from 'styled-components';
 import { stylesConfig } from '../configs/style.configs';
-import { EditMenu } from './editMenu.cmpt';
+import { EditMenu } from './editMenu';
 import { Link } from 'react-router-dom';
 
 type CardProps = {
@@ -64,7 +63,7 @@ const ListItem: StyledComponent<'li', {}> = styled.li.attrs({
     position: relative;
 `;
 
-export const MovieCard: IJSX = (props: CardProps) => (
+export const MovieCard: React.FC<CardProps> = (props: CardProps) => (
     <ListItem>
         <Link to={`/movie?id=${props.id}`}>
             <StyledCard>

@@ -1,13 +1,12 @@
 
 import ReactDOM from 'react-dom';
 import { Routing } from './pages/routing';
-import { IJSX } from './types';
-import { Footer } from './components/footer.cmpt';
+import { Footer } from './components/footer';
 
 type App = () => void;
 const ROOT_ELEMENT: HTMLElement = document.getElementById('root');
 
-const AppBody: IJSX = () => (
+const AppBody: React.FC = () => (
     <>
         <Routing/>
         <Footer/>

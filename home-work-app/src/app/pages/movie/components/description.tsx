@@ -1,5 +1,3 @@
-
-import { IJSX } from '../../../types/IJSX.type';
 import styled, { StyledComponent }  from 'styled-components';
 import { stylesConfig } from '../../../configs/style.configs';
 
@@ -11,7 +9,7 @@ const StyledDescription: StyledComponent<'div', {}> = styled.div`
     padding: 16px ${sideOffset};
 `;
 
-export const Description: IJSX = () => (
+export const Description: React.FC = () => (
     <StyledDescription>
         Movie page
     </StyledDescription>

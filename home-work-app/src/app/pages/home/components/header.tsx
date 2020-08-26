@@ -1,43 +1,41 @@
-
-import { IJSX } from '../../../types/IJSX.type';
-import { Logo } from '../../../components/logo.cmpt';
+import { Logo } from '../../../components/logo';
 import styled, { StyledComponent }  from 'styled-components';
 import { stylesConfig } from '../../../configs/style.configs';
-import { AddMovieLink } from './addMovieLink.cmpt';
-import { SearchForm } from './SearchForm.cmpt';
+import { AddMovieLink } from './addMovieLink';
+import { SearchForm } from './SearchForm';
 
 const logoColor: string = stylesConfig.colors.pink;
 const sideOffset: string = stylesConfig.offsets.sideOffset;
 
-const BannerWrapper: StyledComponent<'header', {}> = styled.header.attrs({
+const HeaderWrapper: StyledComponent<'header', {}> = styled.header.attrs({
     role: 'header'
 })`
-    background-image: url('images/banner.jpg'), none;
+    background-image: url('images/Header.jpg'), none;
     background-size: cover;
 `;
 
-const BannerDarkCover: StyledComponent<'div', {}> = styled.div`
+const HeaderDarkCover: StyledComponent<'div', {}> = styled.div`
     background-color: rgba(0, 0, 0, 0.7);
     padding: 16px ${sideOffset};
     backdrop-filter: blur(2px);
     position: relative;
 `;
 
-const BannerTopLine: StyledComponent<'div', {}> = styled.div`
+const HeaderTopLine: StyledComponent<'div', {}> = styled.div`
     display: flex;
     wight: 100%;
     justify-content: space-between;
     align-items: center;
 `;
 
-export const Banner: IJSX = () => (
-    <BannerWrapper>
-        <BannerDarkCover>
-            <BannerTopLine>
+export const Header: React.FC = () => (
+    <HeaderWrapper>
+        <HeaderDarkCover>
+            <HeaderTopLine>
                 <Logo logoColor={logoColor}/>
                 <AddMovieLink></AddMovieLink>
-            </BannerTopLine>
+            </HeaderTopLine>
             <SearchForm/>
-        </BannerDarkCover>
-    </BannerWrapper>
+        </HeaderDarkCover>
+    </HeaderWrapper>
 );
