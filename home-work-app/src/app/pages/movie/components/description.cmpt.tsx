@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { IJSX } from '../../../types/IJSX.type';
 import styled, { StyledComponent }  from 'styled-components';
 import { stylesConfig } from '../../../configs/style.configs';

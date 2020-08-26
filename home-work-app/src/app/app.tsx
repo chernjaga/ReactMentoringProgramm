@@ -1,4 +1,4 @@
-import React from 'react';
+
 import ReactDOM from 'react-dom';
 import { Routing } from './pages/routing';
 import { IJSX } from './types';

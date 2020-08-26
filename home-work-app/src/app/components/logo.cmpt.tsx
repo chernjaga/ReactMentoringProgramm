@@ -1,5 +1,4 @@
 import styled, { StyledComponent }  from 'styled-components';
-import React from 'react';
 import { IJSX } from '../types';
 
 type StyledProps = {

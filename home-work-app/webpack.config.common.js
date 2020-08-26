@@ -64,7 +64,7 @@ module.exports = {
         new webpack.DefinePlugin({
             BROWSER_SUPPORTS_HTML5: true
         }),
-        new webpack.ProvidePlugin({ // common imports for all the source
+        new webpack.ProvidePlugin({
             'React': 'react',
             '_': 'lodash'
         }),

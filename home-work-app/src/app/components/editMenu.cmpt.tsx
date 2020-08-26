@@ -1,5 +1,4 @@
 import styled, { StyledComponent }  from 'styled-components';
-
 import { IJSX } from '../types';
 import { stylesConfig } from '../configs/style.configs';
 
