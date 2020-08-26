@@ -10,9 +10,7 @@ type ModalState = {
 
 const menuItems: string[] = ['EDIT', 'DELETE'];
 
-const StyledEditMenu: StyledComponent<'div', {}> = styled.div.attrs({
-    className: 'hoverMenu'
-})`
+const StyledEditMenu: StyledComponent<'div', {}> = styled.div`
     position: absolute;
     top: 0;
     left: 0;
@@ -68,7 +66,7 @@ export class EditMenu extends React.PureComponent {
 
     render(): JSX.Element {
         return (
-            <StyledEditMenu>
+            <StyledEditMenu className="hoverMenu">
                 <MenuIcon onClick={this.toggleModal.bind(this)} onMouseLeave={this.toggleModal.bind(this)}>
                     {this.state.isVisibleMenu ? this.renderModal(this.state.modalRoot) : (<>&#8942;</>)}
                 </MenuIcon>
