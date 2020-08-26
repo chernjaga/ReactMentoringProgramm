@@ -10,7 +10,7 @@ const sideOffset: string = stylesConfig.offsets.sideOffset;
 const HeaderWrapper: StyledComponent<'header', {}> = styled.header.attrs({
     role: 'header'
 })`
-    background-image: url('images/Header.jpg'), none;
+    background-image: url('images/header.jpg'), none;
     background-size: cover;
 `;
 

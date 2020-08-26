@@ -1,6 +1,4 @@
 import styled, { StyledComponent }  from 'styled-components';
-
-
 import { stylesConfig } from '../configs/style.configs';
 
 type SortProps = {

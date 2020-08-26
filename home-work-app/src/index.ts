@@ -1,6 +1,6 @@
 import './index.scss';
 import { App } from './app/app';
 
-import './app/images/banner.jpg';
+import './app/images/header.jpg';
 
 App();

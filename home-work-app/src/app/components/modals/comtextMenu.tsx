@@ -34,9 +34,7 @@ export class ContextMenu extends React.PureComponent<MenuProps> {
     }
 
     clickHandler(event: React.MouseEvent): void {
-        console.log(event);
-
-        event.stopPropagation();
+        event.preventDefault();
     }
 
     render(): JSX.Element {

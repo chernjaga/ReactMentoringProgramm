@@ -8,7 +8,7 @@ type ModalState = {
     modalRoot: HTMLElement | null;
 };
 
-const menuItems = ['EDIT', 'DELETE'];
+const menuItems: string[] = ['EDIT', 'DELETE'];
 
 const StyledEditMenu: StyledComponent<'div', {}> = styled.div.attrs({
     className: 'hoverMenu'
@@ -75,4 +75,4 @@ export class EditMenu extends React.PureComponent {
             </StyledEditMenu>
         );
     }
-};
+}
