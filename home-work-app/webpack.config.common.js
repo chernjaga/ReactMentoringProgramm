@@ -66,7 +66,8 @@ module.exports = {
         }),
         new webpack.ProvidePlugin({
             'React': 'react',
-            '_': 'lodash'
+            '_': 'lodash',
+            'styled': 'styled-components'
         }),
         new ExtractTextPlugin('styles.css'),
     ]

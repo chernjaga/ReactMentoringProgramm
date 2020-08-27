@@ -2,10 +2,10 @@ import styled, { StyledComponent }  from 'styled-components';
 
 import { stylesConfig } from '../configs/style.configs';
 import { movieResponse } from '../../../tempData/getMoviesResponse';
-import { MovieCard } from './MovieCard';
+import { MovieCard } from './MovieCard/MovieCard';
 import { IApiResponse } from '../interfaces/IApiResponse';
 import { FilterPanel } from './FilterPanel';
-import { MoviesListCatch } from './errorBoundaries/MoviesListCatch.error';
+import { MoviesListCatch } from './ErrorBoundaries/MoviesListCatch.error';
 
 type MoviesProps = {
     response: IApiResponse.GetMovies

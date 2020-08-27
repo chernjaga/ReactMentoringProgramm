@@ -8,6 +8,7 @@ const StyledError: StyledComponent<'div', {}> = styled.div`
 
 export class MoviesListCatch extends React.Component<IError.Props, IError.State> {
     state: IError.State;
+    props: IError.Props;
 
     constructor (props: IError.Props)
     {
