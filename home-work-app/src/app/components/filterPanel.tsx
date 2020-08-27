@@ -1,6 +1,6 @@
 import styled, { StyledComponent }  from 'styled-components';
 import { stylesConfig } from '../configs/style.configs';
-import { SortOptions } from './sortOptions';
+import { SortOptions } from './SortOptions';
 
 type FilterConfigItem = {
     title: string,

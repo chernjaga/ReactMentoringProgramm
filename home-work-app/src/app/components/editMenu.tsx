@@ -1,7 +1,7 @@
 import styled, { StyledComponent }  from 'styled-components';
 import { stylesConfig } from '../configs/style.configs';
-import { ContextMenu } from './modals/comtextMenu';
-import { ModalPortal } from './modals/modalPortal';
+import { ContextMenu } from './modals/ComtextMenu';
+import { ModalPortal } from './modals/ModalPortal';
 
 type ModalState = {
     isVisibleMenu: boolean;

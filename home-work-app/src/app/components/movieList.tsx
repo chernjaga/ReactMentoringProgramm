@@ -2,10 +2,10 @@ import styled, { StyledComponent }  from 'styled-components';
 
 import { stylesConfig } from '../configs/style.configs';
 import { movieResponse } from '../../../tempData/getMoviesResponse';
-import { MovieCard } from './movieCard';
+import { MovieCard } from './MovieCard';
 import { IApiResponse } from '../interfaces/IApiResponse';
-import { FilterPanel } from './filterPanel';
-import { MoviesListCatch } from './errorBoundaries/moviesListCatch.error';
+import { FilterPanel } from './FilterPanel';
+import { MoviesListCatch } from './errorBoundaries/MoviesListCatch.error';
 
 type MoviesProps = {
     response: IApiResponse.GetMovies
@@ -23,13 +23,13 @@ const MovieListContainer: StyledComponent<'ul', {}> = styled.ul`
     grid-gap: 32px;
 `;
 
-const ItemsFound: React.FC = (props: {amount: number}) => (
+const ItemsFound: React.FC<{amount: number}> = (props: {amount: number}) => (
     <>
         <b>{props.amount}</b> movies found
     </>
 );
 
-const Movies: React.FC = (props: MoviesProps) => (
+const Movies: React.FC<MoviesProps> = (props: MoviesProps) => (
     <>
         {props.response.data.map(
             (movie: IApiResponse.IMovie) => (

@@ -1,6 +1,6 @@
 import styled, { StyledComponent }  from 'styled-components';
 import { stylesConfig } from '../configs/style.configs';
-import { EditMenu } from './editMenu';
+import { EditMenu } from './EditMenu';
 import { Link } from 'react-router-dom';
 
 type CardProps = {
@@ -8,8 +8,8 @@ type CardProps = {
     releaseDate: string,
     genres: string[],
     coverUrl: string,
-    id: string,
-    key?: string
+    id: number,
+    key?: number
 };
 
 const cardBackground: string = stylesConfig.colors.black;

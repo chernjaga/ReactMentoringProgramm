@@ -1,5 +1,5 @@
 import styled, { StyledComponent }  from 'styled-components';
-import { Logo } from './logo';
+import { Logo } from './Logo';
 import { stylesConfig } from '../configs/style.configs';
 
 const logoColor: string = stylesConfig.colors.pink;

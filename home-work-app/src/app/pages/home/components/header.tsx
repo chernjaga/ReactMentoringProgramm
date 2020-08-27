@@ -1,7 +1,7 @@
-import { Logo } from '../../../components/logo';
+import { Logo } from '../../../components/Logo';
 import styled, { StyledComponent }  from 'styled-components';
 import { stylesConfig } from '../../../configs/style.configs';
-import { AddMovieLink } from './addMovieLink';
+import { AddMovieLink } from './AddMovieLink';
 import { SearchForm } from './SearchForm';
 
 const logoColor: string = stylesConfig.colors.pink;

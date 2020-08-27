@@ -1,7 +1,7 @@
 import { Route,  BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
-import { HomePage } from './home/home.page';
+import { HomePage } from './home/Home.page';
 import { Movie } from './movie/movie.page';
-import { MovieList } from '../components/movieList';
+import { MovieList } from '../components/MovieList';
 
 export const Routing: React.FC = () => (
     <Router>

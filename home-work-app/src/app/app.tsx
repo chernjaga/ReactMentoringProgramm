@@ -1,7 +1,7 @@
 
 import ReactDOM from 'react-dom';
 import { Routing } from './pages/routing';
-import { Footer } from './components/footer';
+import { Footer } from './components/Footer';
 
 type App = () => void;
 const ROOT_ELEMENT: HTMLElement = document.getElementById('root');
