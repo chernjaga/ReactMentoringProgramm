@@ -1,4 +1,4 @@
-import { Description } from './components/description';
+import { Description } from './components/Description';
 import { Logo } from '../../components/Logo';
 import { stylesConfig } from '../../configs/style.configs';
 
