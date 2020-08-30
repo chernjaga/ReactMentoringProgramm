@@ -1,5 +1,5 @@
 // colors
-$color-black: #232323;
+$color-black: rgb(35, 35, 35);
 $color-gray-tint1: rgb(66, 66, 66);
 $color-gray-tint2: #555555;
 $color-gray-tint2: #969696;
@@ -33,4 +33,8 @@ ul {
 
 li {
     list-style: none;
+}
+
+.blurred {
+    filter: blur(5px)
 }

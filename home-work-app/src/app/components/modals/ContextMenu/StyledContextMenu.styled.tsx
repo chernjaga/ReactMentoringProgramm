@@ -1,9 +1,7 @@
 import styled, { StyledComponent }  from 'styled-components';
 import { stylesConfig } from '../../../configs/style.configs';
 
-export const StyledContextMenu: StyledComponent<'ul', {}> = styled.ul.attrs({
-    role: 'menu'
-})`
+export const StyledContextMenu: StyledComponent<'div', {}> = styled.div`
     background-color: ${stylesConfig.colors.black};
     position: absolute;
     top: 16px;

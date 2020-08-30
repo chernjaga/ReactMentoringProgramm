@@ -23,7 +23,7 @@ export const MovieCard: React.FC<CardProps> = (props: CardProps) => (
             <StyledCard>
                 <Poster>
                     <img src={props.coverUrl} alt={props.title}/>
-                    <EditMenu/>
+                    <EditMenu movieId={props.id}/>
                 </Poster>
 
                 <Title>

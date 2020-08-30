@@ -1,5 +1,4 @@
 import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../configs/style.configs';
 
 export const StyledEditMenu: StyledComponent<'div', {}> = styled.div`
     position: absolute;
