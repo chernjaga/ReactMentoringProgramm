@@ -1,5 +1,5 @@
 import { ModalWindowWrapper } from '../ModalWindowWrapper';
-import { EditForm, EditFormFieldset, EditFormLegend, Label, Input, Button } from './EditFormStyleSet.styled';
+import { EditForm, EditFormFieldset, EditFormLegend, Label, Input, Button, ButtonPanel } from './EditFormStyleSet.styled';
 import { StyledEditModal } from './StyledEditModal.styled';
 import { ModalHeader } from './ModalHeader.styled';
 import { CloseSymbol } from '../../CloseSymbol';
@@ -11,10 +11,17 @@ type EditMenuProps = {
 
 export class EditModal extends React.PureComponent<EditMenuProps> {
     props: EditMenuProps;
+    state: any;
 
     constructor(props: EditMenuProps) {
         super(props);
         this.props = props;
+    }
+
+    componentWillMount(): void {
+        this.setState({
+            isOpen: true
+        })
     }
 
     render(): JSX.Element {
@@ -22,7 +29,7 @@ export class EditModal extends React.PureComponent<EditMenuProps> {
             <ModalWindowWrapper>
                 <StyledEditModal>
                     <ModalHeader>
-                        <CloseSymbol/>
+                            <CloseSymbol/>
                     </ModalHeader>
                     <EditForm>
                         <EditFormFieldset>
@@ -55,14 +62,14 @@ export class EditModal extends React.PureComponent<EditMenuProps> {
                                 <Label>RUNTIME</Label>
                                 <Input type="text"/>
                             </p>
-                            <div>
-                                <Button background={stylesConfig.colors.grayTint2}
-                                        color={stylesConfig.colors.pink}
-                                        border={stylesConfig.colors.pink}>CANCEL</Button>
+                            <ButtonPanel>
                                 <Button color={stylesConfig.colors.white}
                                         background={stylesConfig.colors.pink}
                                         border={stylesConfig.colors.pink}>SAVE</Button>
-                            </div>
+                                <Button background={stylesConfig.colors.grayTint2}
+                                        color={stylesConfig.colors.pink}
+                                        border={stylesConfig.colors.pink}>CANCEL</Button>
+                            </ButtonPanel>
                         </EditFormFieldset>
                     </EditForm>
                 </StyledEditModal>

@@ -11,32 +11,33 @@ type MenuProps = {
     closeIconSize: number
 };
 
-type ClickCallbacks = {
-    [callbackType: string]: (id: number) => JSX.Element
-};
-
 type ContextMenuState = {
     isModalDisplayed: boolean,
     modalName: string | null
 };
 
 const modalRoot: HTMLElement = document.body;
-const clickCallbacksMap: ClickCallbacks = {
-    EDIT: (id: number) => (
-        <ModalPortal modalRoot={modalRoot}>
-            <EditModal movieId={id}></EditModal>
-        </ModalPortal>
-    ),
-    DELETE: (id: number) => (
-        <ModalPortal modalRoot={modalRoot}>
-            <EditModal movieId={id}></EditModal>
-        </ModalPortal>
-    )
-};
 
 export class ContextMenu extends React.PureComponent<MenuProps> {
     props: MenuProps;
     state: ContextMenuState;
+
+    renderModal(modalType: string, id: number): JSX.Element {
+        switch (modalType) {
+            case 'EDIT': 
+                return (
+                    <ModalPortal modalRoot={modalRoot}>
+                        <EditModal movieId={id}></EditModal>
+                    </ModalPortal>
+                );
+            case 'DELETE':
+                return (
+                    <ModalPortal modalRoot={modalRoot}>
+                        <EditModal movieId={id}></EditModal>
+                    </ModalPortal>
+                );
+        }
+    };
 
     componentWillMount(): void {
         this.setState({
@@ -70,7 +71,7 @@ export class ContextMenu extends React.PureComponent<MenuProps> {
                             {item}
                             {
                                 this.state.isModalDisplayed && this.state.modalName === item ?
-                                    clickCallbacksMap[item](this.props.movieId) : null
+                                    this.renderModal(item, this.props.movieId) : null
                             }
                         </StyledMenuItem>
                     ))}
