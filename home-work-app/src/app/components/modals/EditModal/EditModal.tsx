@@ -1,8 +1,8 @@
 import { ModalWindowWrapper } from '../ModalWindowWrapper';
 import { EditForm, EditFormFieldset, EditFormLegend, Label, Input, Button, ButtonPanel } from './EditFormStyleSet.styled';
-import { StyledEditModal } from './StyledEditModal.styled';
-import { ModalHeader } from './ModalHeader.styled';
-import { CloseSymbol } from '../../CloseSymbol';
+import { StyledModal } from '../StyledModal.styled';
+import { ModalHeader } from '../ModalHeader.styled';
+import { CloseSymbol } from '../CloseSymbol';
 import { stylesConfig } from '../../../configs/style.configs';
 
 type EditMenuProps = {
@@ -26,7 +26,7 @@ export class EditModal extends React.PureComponent<EditMenuProps> {
     render(): JSX.Element {
         return (
             <ModalWindowWrapper>
-                <StyledEditModal>
+                <StyledModal>
                     <ModalHeader>
                         <span onClick={this.closeHandler.bind(this)}>
                             <CloseSymbol/>
@@ -73,7 +73,7 @@ export class EditModal extends React.PureComponent<EditMenuProps> {
                             </ButtonPanel>
                         </EditFormFieldset>
                     </EditForm>
-                </StyledEditModal>
+                </StyledModal>
             </ModalWindowWrapper>
         );
     }

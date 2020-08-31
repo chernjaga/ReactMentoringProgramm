@@ -1,7 +1,7 @@
 import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../../configs/style.configs';
+import { stylesConfig } from '../../configs/style.configs';
 
-export const StyledEditModal: StyledComponent<'div', {}> = styled.div`
+export const StyledModal: StyledComponent<'div', {}> = styled.div`
     position: relative;
     margin: 16px auto;
     max-width: 30%;

@@ -1,5 +1,5 @@
 import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../configs/style.configs';
+import { stylesConfig } from '../../configs/style.configs';
 
 const Span: StyledComponent<'span', {}> = styled.span`
     transform: rotateZ(45deg);

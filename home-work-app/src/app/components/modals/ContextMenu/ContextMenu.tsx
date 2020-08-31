@@ -3,7 +3,8 @@ import { StyledMenuItem } from './StyledMenuItem.styled';
 import { CloseIcon } from './CloseIcon';
 import { ModalPortal } from '../ModalPortal';
 import { EditModal } from '../EditModal/EditModal';
-import { CloseSymbol } from '../../CloseSymbol';
+import { CloseSymbol } from '../CloseSymbol';
+import { DeleteModal } from '../DeleteModal/DeleteModal';
 
 type MenuProps = {
     menuItems: string[],
@@ -47,7 +48,7 @@ export class ContextMenu extends React.PureComponent<MenuProps> {
             case 'DELETE':
                 return (
                     <ModalPortal modalRoot={modalRoot}>
-                        <EditModal movieId={id} onClose={this.closeModal.bind(this)}></EditModal>
+                        <DeleteModal></DeleteModal>
                     </ModalPortal>
                 );
         }
