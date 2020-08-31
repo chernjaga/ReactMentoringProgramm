@@ -1,8 +1,8 @@
 import { ContextMenu } from '../modals/ContextMenu/ContextMenu';
-import { ModalPortal } from '../modals/ModalPortal';
 import { MenuIcon } from './MenuIcon.styled';
 import { StyledEditMenu } from './StyledEditMenu.styled';
 import $ from 'jquery';
+import { ModalPortal } from '../modals/CommonModalTemplate/ModalPortal';
 
 type ModalState = {
     isVisibleMenu: boolean;

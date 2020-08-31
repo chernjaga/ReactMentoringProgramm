@@ -2,9 +2,8 @@ import { CommonModalTemplate } from '../CommonModalTemplate/CommonModalTemplate'
 import { MovieForm } from '../MovieForm/MovieForm';
 import { EditMenuProps } from '../../../types';
 
-const formLegend: string = 'EDIT MOVIE';
+const formLegend: string = 'ADD MOVIE';
 const formFields: string[] = [
-    'MOVIE ID',
     'TITLE',
     'RELEASE DATE',
     'MOVIE URL',
@@ -12,7 +11,7 @@ const formFields: string[] = [
     'OVERVIEW',
     'RUNTIME'
 ];
-export class EditModal extends React.PureComponent<EditMenuProps> {
+export class AddMovieModal extends React.PureComponent<EditMenuProps> {
     props: EditMenuProps;
 
     constructor(props: EditMenuProps) {

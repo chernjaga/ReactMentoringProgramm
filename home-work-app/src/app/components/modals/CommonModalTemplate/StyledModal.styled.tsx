@@ -1,5 +1,5 @@
 import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../configs/style.configs';
+import { stylesConfig } from '../../../configs/style.configs';
 
 export const StyledModal: StyledComponent<'div', {}> = styled.div`
     position: relative;

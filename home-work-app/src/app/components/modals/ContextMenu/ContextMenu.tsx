@@ -1,10 +1,10 @@
 import { StyledContextMenu } from './StyledContextMenu.styled';
 import { StyledMenuItem } from './StyledMenuItem.styled';
 import { CloseIcon } from './CloseIcon';
-import { ModalPortal } from '../ModalPortal';
 import { EditModal } from '../EditModal/EditModal';
-import { CloseSymbol } from '../CloseSymbol';
+import { CloseSymbol } from '../CommonModalTemplate/CloseSymbol';
 import { DeleteModal } from '../DeleteModal/DeleteModal';
+import { ModalPortal } from '../CommonModalTemplate/ModalPortal';
 
 type MenuProps = {
     menuItems: string[],
@@ -48,7 +48,7 @@ export class ContextMenu extends React.PureComponent<MenuProps> {
             case 'DELETE':
                 return (
                     <ModalPortal modalRoot={modalRoot}>
-                        <DeleteModal></DeleteModal>
+                        <DeleteModal movieId={id} onClose={this.closeModal.bind(this)}></DeleteModal>
                     </ModalPortal>
                 );
         }
