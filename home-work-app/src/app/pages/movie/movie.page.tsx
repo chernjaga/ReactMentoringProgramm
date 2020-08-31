@@ -1,14 +1,11 @@
-import { Description } from './components/Description';
-import { Logo } from '../../components/Logo';
-import { stylesConfig } from '../../configs/style.configs';
-
-const logoColor: string = stylesConfig.colors.pink;
+import { Description } from './components/Description/Description';
+import { PageTop } from './components/PageTop/PageTop';
 
 export class Movie extends React.PureComponent {
     render(): JSX.Element {
         return (
             <>
-                <Logo logoColor={logoColor}/>
+                <PageTop/>
                 <Description/>
             </>
         );

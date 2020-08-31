@@ -1,6 +1,6 @@
 import { StyledContextMenu } from './StyledContextMenu.styled';
 import { StyledMenuItem } from './StyledMenuItem.styled';
-import { CloseIcon } from './CloseIcon';
+import { CloseIcon } from './CloseIcon.styled';
 import { EditModal } from '../EditModal/EditModal';
 import { CloseSymbol } from '../CommonModalTemplate/CloseSymbol';
 import { DeleteModal } from '../DeleteModal/DeleteModal';
@@ -52,7 +52,7 @@ export class ContextMenu extends React.PureComponent<MenuProps> {
                     </ModalPortal>
                 );
         }
-    };
+    }
 
     componentWillMount(): void {
         this.setState({

@@ -6,7 +6,7 @@ import { CloseSymbol } from './CloseSymbol';
 type CommonModalProps = {
     children: JSX.Element,
     onClose: (event: React.MouseEvent) => void
-}
+};
 
 export class CommonModalTemplate extends React.PureComponent<CommonModalProps> {
     closeHandler(event: React.MouseEvent): void {

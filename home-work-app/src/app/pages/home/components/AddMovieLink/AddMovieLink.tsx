@@ -17,11 +17,12 @@ export class AddMovieLink extends React.PureComponent {
         });
     }
 
-    toggleModal() {
+    toggleModal(): void {
         this.setState({
             isModalOpen: !this.state.isModalOpen
         });
     }
+
     render(): JSX.Element {
         return (
             <StyledLink onClick={this.toggleModal.bind(this)}>
@@ -35,4 +36,3 @@ export class AddMovieLink extends React.PureComponent {
         );
     }
 }
-

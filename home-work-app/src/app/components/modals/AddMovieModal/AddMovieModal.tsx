@@ -27,7 +27,7 @@ export class AddMovieModal extends React.PureComponent<EditMenuProps> {
     render(): JSX.Element {
         return (
             <CommonModalTemplate onClose={this.closeHandler.bind(this)}>
-                <MovieForm legend={formLegend} 
+                <MovieForm legend={formLegend}
                            fields={formFields}/>
             </CommonModalTemplate>
         );
