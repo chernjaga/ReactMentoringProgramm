@@ -1,5 +1,4 @@
 import styled, { StyledComponent }  from 'styled-components';
-
 import { stylesConfig } from '../configs/style.configs';
 import { movieResponse } from '../../../tempData/getMoviesResponse';
 import { MovieCard } from './MovieCard/MovieCard';

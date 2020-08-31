@@ -6,22 +6,21 @@ import { CloseSymbol } from '../../CloseSymbol';
 import { stylesConfig } from '../../../configs/style.configs';
 
 type EditMenuProps = {
-    movieId: number
+    movieId: number,
+    onClose: (event: React.MouseEvent) => void
 };
 
 export class EditModal extends React.PureComponent<EditMenuProps> {
     props: EditMenuProps;
-    state: any;
 
     constructor(props: EditMenuProps) {
         super(props);
         this.props = props;
     }
 
-    componentWillMount(): void {
-        this.setState({
-            isOpen: true
-        })
+    closeHandler(event: React.MouseEvent): void {
+        this.props.onClose(event);
+        event.stopPropagation();
     }
 
     render(): JSX.Element {
@@ -29,7 +28,9 @@ export class EditModal extends React.PureComponent<EditMenuProps> {
             <ModalWindowWrapper>
                 <StyledEditModal>
                     <ModalHeader>
+                        <span onClick={this.closeHandler.bind(this)}>
                             <CloseSymbol/>
+                        </span>
                     </ModalHeader>
                     <EditForm>
                         <EditFormFieldset>

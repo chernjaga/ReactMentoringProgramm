@@ -26,21 +26,29 @@ export class EditMenu extends React.PureComponent {
         });
     }
 
-    toggleModal(event: React.MouseEvent): void {
+    toggleModal(event?: React.MouseEvent): void {
         this.setState({
             isVisibleMenu: !this.state.isVisibleMenu,
             modalRoot: event.target
         });
-
+        event.stopPropagation();
         event.preventDefault();
     }
 
+    closeContextMenu(event: React.MouseEvent): void {
+        this.toggleModal(event);
+        event.stopPropagation();
+        event.preventDefault();
+    }
     renderModal(container: HTMLElement): JSX.Element {
         const modalRoot: HTMLElement = $(container).closest('li')[0];
         if (container) {
             return (
                 <ModalPortal modalRoot={modalRoot}>
-                    <ContextMenu menuItems={menuItems} closeIconSize={closeIconSize} movieId={this.props.movieId}/>
+                    <ContextMenu menuItems={menuItems}
+                                 closeIconSize={closeIconSize}
+                                 movieId={this.props.movieId}
+                                 onCloseMenu={this.closeContextMenu.bind(this)}/>
                 </ModalPortal>
             );
         }

@@ -39,6 +39,7 @@ export const Button: StyledComponent<'button', {}, ButtonProps> = styled.button`
     color: ${(props: ButtonProps) => props.color};
     border: 1px solid ${(props: ButtonProps) => props.border};
     font-size: 1rem;
+    word-wrap: break-word;
     width: 20%;
     padding: 8px;
     font-weight: 100;

@@ -8,7 +8,8 @@ import { CloseSymbol } from '../../CloseSymbol';
 type MenuProps = {
     menuItems: string[],
     movieId: number,
-    closeIconSize: number
+    closeIconSize: number,
+    onCloseMenu: (event: React.MouseEvent) => void
 };
 
 type ContextMenuState = {
@@ -22,18 +23,31 @@ export class ContextMenu extends React.PureComponent<MenuProps> {
     props: MenuProps;
     state: ContextMenuState;
 
+    closeModal(event: React.MouseEvent): void {
+        this.setState({
+            isModalDisplayed: false,
+            modalName: null
+        });
+        this.closeMenu(event);
+    }
+
+    closeMenu(event: React.MouseEvent): void {
+        this.props.onCloseMenu(event);
+        event.stopPropagation();
+    }
+
     renderModal(modalType: string, id: number): JSX.Element {
         switch (modalType) {
-            case 'EDIT': 
+            case 'EDIT':
                 return (
                     <ModalPortal modalRoot={modalRoot}>
-                        <EditModal movieId={id}></EditModal>
+                        <EditModal movieId={id} onClose={this.closeModal.bind(this)}></EditModal>
                     </ModalPortal>
                 );
             case 'DELETE':
                 return (
                     <ModalPortal modalRoot={modalRoot}>
-                        <EditModal movieId={id}></EditModal>
+                        <EditModal movieId={id} onClose={this.closeModal.bind(this)}></EditModal>
                     </ModalPortal>
                 );
         }
@@ -47,10 +61,6 @@ export class ContextMenu extends React.PureComponent<MenuProps> {
     }
 
     clickHandler(item: string, event: React.MouseEvent): void {
-        if (item === 'CLOSE') {
-
-            return;
-        }
         this.setState({
             isModalDisplayed: true,
             modalName: item
@@ -62,7 +72,7 @@ export class ContextMenu extends React.PureComponent<MenuProps> {
     render(): JSX.Element {
         return (
             <StyledContextMenu>
-                <CloseIcon size={this.props.closeIconSize} onClick={this.clickHandler.bind(this, 'CLOSE')}>
+                <CloseIcon size={this.props.closeIconSize} onClick={this.closeMenu.bind(this)}>
                     <CloseSymbol/>
                 </CloseIcon>
                 <ul role="menu">
