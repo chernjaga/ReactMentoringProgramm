@@ -14,11 +14,6 @@ const formFields: string[] = [
 export class AddMovieModal extends React.PureComponent<EditMenuProps> {
     props: EditMenuProps;
 
-    constructor(props: EditMenuProps) {
-        super(props);
-        this.props = props;
-    }
-
     closeHandler(event: React.MouseEvent): void {
         this.props.onClose(event);
         event.stopPropagation();

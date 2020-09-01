@@ -17,22 +17,28 @@ export class AddMovieLink extends React.PureComponent {
         });
     }
 
-    toggleModal(): void {
+    toggleModal(event: React.MouseEvent): void {
+        console.log(this, event.target);
         this.setState({
             isModalOpen: !this.state.isModalOpen
         });
+        event.stopPropagation();
+        event.preventDefault();
     }
 
     render(): JSX.Element {
         return (
-            <StyledLink onClick={this.toggleModal.bind(this)}>
-                + ADD MOVIE
+            <>
+                <StyledLink onClick={this.toggleModal.bind(this)}>
+                    + ADD MOVIE
+                </StyledLink>
                 {this.state.isModalOpen ? (
                     <ModalPortal modalRoot={modalRoot}>
-                        <AddMovieModal onClose={this.toggleModal}/>
+                        <AddMovieModal onClose={this.toggleModal.bind(this)}/>
                     </ModalPortal>
                 ) : null}
-            </StyledLink>
+            </>
+
         );
     }
 }

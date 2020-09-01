@@ -12,7 +12,7 @@ export const MovieForm: React.FC<MovieFormProps> = (props: MovieFormProps) => (
         <EditFormFieldset>
             <EditFormLegend>{props.legend}</EditFormLegend>
             {props.fields.map((field: string): JSX.Element => (
-                <p>
+                <p key={field}>
                     <Label>{field}</Label>
                     <Input type="text"/>
                 </p>

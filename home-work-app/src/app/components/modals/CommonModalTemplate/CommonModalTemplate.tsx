@@ -12,6 +12,7 @@ export class CommonModalTemplate extends React.PureComponent<CommonModalProps> {
     closeHandler(event: React.MouseEvent): void {
         this.props.onClose(event);
         event.stopPropagation();
+        event.preventDefault();
     }
 
     render(): JSX.Element {
