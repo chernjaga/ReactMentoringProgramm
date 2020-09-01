@@ -14,5 +14,8 @@ export const stylesConfig: IStyleConfig = {
     },
     offsets: {
         sideOffset: '10%'
+    },
+    constants: {
+        logoColor: '#f65261'
     }
 }

@@ -11,9 +11,7 @@ const Span: StyledComponent<'span', {}> = styled.span`
 `;
 
 export const CloseSymbol: React.FC = () => (
-    <span>
-        <Span>
-            +
-        </Span>
-    </span>
+    <Span>
+        +
+    </Span>
 );

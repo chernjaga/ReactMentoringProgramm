@@ -7,5 +7,8 @@ export type IStyleConfig = {
     },
     offsets: {
         [key: string]: string
+    },
+    constants: {
+        [key: string]: string
     }
 }
