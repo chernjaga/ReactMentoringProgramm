@@ -18,7 +18,6 @@ export class AddMovieLink extends React.PureComponent {
     }
 
     toggleModal(event: React.MouseEvent): void {
-        console.log(this, event.target);
         this.setState({
             isModalOpen: !this.state.isModalOpen
         });
