@@ -17,5 +17,8 @@ export const stylesConfig: IStyleConfig = {
     },
     constants: {
         logoColor: '#f65261'
+    },
+    fonts: {
+        basic: '"Google Sans", Roboto, RobotoDraft, Helvetica, Arial,sans-serif'
     }
 }

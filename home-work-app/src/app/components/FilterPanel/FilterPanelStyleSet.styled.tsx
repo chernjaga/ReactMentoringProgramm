@@ -13,15 +13,13 @@ export const StyledFilterPanel: StyledComponent<'div', {}> = styled.div`
 
 export const FilterOptions: StyledComponent<'ul', {}> = styled.ul`
     display: flex;
-    gap: 8px;
+    gap: 16px;
     position: relative;
     justify-content: space-between;
     width: 40%;
 `;
 
-export const FilterOptionItem: StyledComponent<'li', {}> = styled.li.attrs({
-    className: 'filterOptionItem'
-})`;
+export const FilterOptionItem: StyledComponent<'li', {}> = styled.li`
     font-size: 1rem;
     cursor: pointer;
     width: max-content;
@@ -29,4 +27,12 @@ export const FilterOptionItem: StyledComponent<'li', {}> = styled.li.attrs({
     &:hover {
         color: ${activeColor};
     };
+        :hover>span:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        border-bottom: 1px #f65261 solid;
+        padding: 17px 0;
+        z-index: 1;
+    }
 `;

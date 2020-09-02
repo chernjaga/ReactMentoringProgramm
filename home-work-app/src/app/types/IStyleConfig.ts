@@ -11,4 +11,8 @@ export type IStyleConfig = {
     constants: {
         [key: string]: string
     }
+    fonts: {
+        basic: string,
+        [key: string]: string
+    }
 }
