@@ -18,7 +18,11 @@
     ],
     "plugins": [
         "@babel/plugin-transform-typescript",
-        "transform-class-properties",
+        [
+            "@babel/plugin-proposal-class-properties", {
+                "loose": true
+            }
+        ],
         [
             "babel-plugin-styled-components", {
                 "minify": false,

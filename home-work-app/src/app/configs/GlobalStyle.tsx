@@ -1,4 +1,4 @@
-import { createGlobalStyle, GlobalStyleComponent } from 'styled-components'
+import { createGlobalStyle, GlobalStyleComponent } from 'styled-components';
 import { stylesConfig } from './style.configs';
 export const GlobalStyle: GlobalStyleComponent<{}, {}> = createGlobalStyle `
     * {
@@ -33,4 +33,3 @@ export const GlobalStyle: GlobalStyleComponent<{}, {}> = createGlobalStyle `
         filter: blur(5px)
     }
 `;
-

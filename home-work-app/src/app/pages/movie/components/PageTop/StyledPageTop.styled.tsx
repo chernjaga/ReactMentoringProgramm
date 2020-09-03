@@ -1,10 +1,9 @@
-import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../../../configs/style.configs';
+import styled, { StyledComponent, ThemeProps, DefaultTheme } from 'styled-components';
 
 export const StyledPageTop: StyledComponent<'div', {}> = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 16px ${stylesConfig.offsets.sideOffset};
+    padding: 16px ${({theme}:ThemeProps<DefaultTheme>) => theme.offsets.sideOffset};
     align-items: center;
-    background-color: ${stylesConfig.colors.black};
+    background-color: ${({theme}:ThemeProps<DefaultTheme>) => theme.colors.black};
 `;

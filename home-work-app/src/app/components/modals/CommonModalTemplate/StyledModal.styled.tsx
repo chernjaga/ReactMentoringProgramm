@@ -1,5 +1,4 @@
-import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../../configs/style.configs';
+import styled, { StyledComponent, ThemeProps, DefaultTheme } from 'styled-components';
 
 export const StyledModal: StyledComponent<'div', {}> = styled.div`
     position: relative;
@@ -8,5 +7,5 @@ export const StyledModal: StyledComponent<'div', {}> = styled.div`
     padding: 24px;
     box-shadow: 0 0 16px #000;
     border-radius: 8px;
-    background-color: ${stylesConfig.colors.black};
+    background-color: ${({theme}:ThemeProps<DefaultTheme>) => theme.colors.black};
 `;

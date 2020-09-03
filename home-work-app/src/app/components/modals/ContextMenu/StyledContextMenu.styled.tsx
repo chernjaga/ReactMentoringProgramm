@@ -1,8 +1,7 @@
-import styled, { StyledComponent }  from 'styled-components';
-import { stylesConfig } from '../../../configs/style.configs';
+import styled, { StyledComponent, ThemeProps, DefaultTheme } from 'styled-components';
 
 export const StyledContextMenu: StyledComponent<'div', {}> = styled.div`
-    background-color: ${stylesConfig.colors.black};
+    background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.black};
     position: absolute;
     top: 16px;
     right: 7%;

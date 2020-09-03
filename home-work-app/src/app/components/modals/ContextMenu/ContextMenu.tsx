@@ -47,13 +47,13 @@ export class ContextMenu extends React.PureComponent<MenuProps, ContextMenuState
             case 'EDIT':
                 return (
                     <ModalPortal modalRoot={modalRoot}>
-                        <EditModal movieId={id} onClose={this.closeModal.bind(this)}></EditModal>
+                        <EditModal movieId={id} onClose={this.closeModal.bind(this)}/>
                     </ModalPortal>
                 );
             case 'DELETE':
                 return (
                     <ModalPortal modalRoot={modalRoot}>
-                        <DeleteModal movieId={id} onClose={this.closeModal.bind(this)}></DeleteModal>
+                        <DeleteModal movieId={id} onClose={this.closeModal.bind(this)}/>
                     </ModalPortal>
                 );
         }
@@ -76,7 +76,10 @@ export class ContextMenu extends React.PureComponent<MenuProps, ContextMenuState
                 </CloseIcon>
                 <ul role="menu">
                     {this.props.menuItems.map((item: string) => (
-                        <ContextMenuItem onClick={this.clickHandler.bind(this, item)} key={item} role="menuItem">
+                        <ContextMenuItem
+                            onClick={this.clickHandler.bind(this, item)}
+                            key={item}
+                            role="menuItem">
                             {item}
                         </ContextMenuItem>
                     ))}

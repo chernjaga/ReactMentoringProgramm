@@ -1,4 +1,4 @@
-import styled, { StyledComponent }  from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 
 type SizeProps = {
     size: number

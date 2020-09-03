@@ -1,5 +1,4 @@
-import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../configs/style.configs';
+import styled, { StyledComponent, DefaultTheme, ThemeProps } from 'styled-components';
 
 export const MenuIcon: StyledComponent<'div', {}> = styled.div`
     position: absolute;
@@ -14,8 +13,8 @@ export const MenuIcon: StyledComponent<'div', {}> = styled.div`
     font-size: 16px;
     justify-content: center;
     align-items: center;
-    background-color: ${stylesConfig.colors.black};
+    background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.black};
     &:hover {
-        background-color: ${stylesConfig.colors.pink};
+        background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.pink};
     }
 `;

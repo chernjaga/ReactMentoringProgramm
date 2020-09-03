@@ -1,4 +1,4 @@
-import styled, { StyledComponent }  from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import { stylesConfig } from '../../configs/style.configs';
 
 export const Select: StyledComponent<'select', {}> = styled.select.attrs({

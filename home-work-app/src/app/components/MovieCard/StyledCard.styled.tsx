@@ -1,4 +1,4 @@
-import styled, { StyledComponent }  from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 
 export const StyledCard: StyledComponent<'span', {}> = styled.span`
     overflow: hidden;

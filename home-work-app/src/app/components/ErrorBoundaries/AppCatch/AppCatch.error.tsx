@@ -10,7 +10,7 @@ export class AppCatch extends React.Component<IError.Props, IError.State> {
             hasError: false
         };
     }
-    
+
     componentDidCatch(error: Error, info: React.ErrorInfo): void {
         this.setState({
             hasError: true

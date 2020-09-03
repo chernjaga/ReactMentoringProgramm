@@ -1,5 +1,5 @@
 import { Logo } from '../../../components/Logo';
-import styled, { StyledComponent }  from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import { stylesConfig } from '../../../configs/style.configs';
 import { AddMovieLink } from './AddMovieLink/AddMovieLink';
 import { SearchForm } from './SearchForm/SearchForm';
@@ -32,8 +32,8 @@ export const Header: React.FC = () => (
     <HeaderWrapper>
         <HeaderDarkCover>
             <HeaderTopLine>
-                <Logo logoColor={logoColor}/>
-                <AddMovieLink></AddMovieLink>
+                <Logo/>
+                <AddMovieLink/>
             </HeaderTopLine>
             <SearchForm/>
         </HeaderDarkCover>

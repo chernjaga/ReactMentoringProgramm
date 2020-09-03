@@ -1,8 +1,5 @@
-import styled, { StyledComponent }  from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import { Logo } from './Logo';
-import { stylesConfig } from '../configs/style.configs';
-
-const logoColor: string = stylesConfig.colors.pink;
 
 const StyledFooter: StyledComponent<'footer', {}> = styled.footer`
     display: flex;
@@ -13,6 +10,6 @@ const StyledFooter: StyledComponent<'footer', {}> = styled.footer`
 
 export const Footer: React.FC = () => (
     <StyledFooter>
-        <Logo logoColor={logoColor}/>
+        <Logo/>
     </StyledFooter>
 );

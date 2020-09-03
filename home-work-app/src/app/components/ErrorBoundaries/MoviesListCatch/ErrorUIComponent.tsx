@@ -5,9 +5,11 @@ const StyledError: StyledComponent<'div', {}> = styled.div`
 `;
 
 export const ErrorUIComponent: React.FC = () => (
-    (<StyledError>
-        <h3>
-            Component is not available
-        </h3>
-    </StyledError>)
+    (
+        <StyledError>
+            <h3>
+                Component is not available
+            </h3>
+        </StyledError>
+    )
 );

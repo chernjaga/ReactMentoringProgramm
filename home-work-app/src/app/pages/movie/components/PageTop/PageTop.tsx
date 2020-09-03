@@ -7,7 +7,7 @@ const logoColor: string = stylesConfig.colors.pink;
 
 export const PageTop: React.FC = () => (
     <StyledPageTop>
-        <Logo logoColor={logoColor}/>
+        <Logo/>
         <HomeLink/>
     </StyledPageTop>
 );

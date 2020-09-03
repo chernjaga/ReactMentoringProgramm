@@ -1,5 +1,4 @@
-import styled, { StyledComponent }  from 'styled-components';
-import { stylesConfig } from '../../configs/style.configs';
+import styled, { StyledComponent } from 'styled-components';
 
 export const YearBorder: StyledComponent<'span', {}> = styled.span`
     border-radius: 4px;

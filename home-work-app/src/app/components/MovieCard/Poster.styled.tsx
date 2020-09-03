@@ -1,4 +1,4 @@
-import styled, { StyledComponent }  from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 
 export const MovieCardPoster: StyledComponent<'div', {}> = styled.div`
     grid-area: 1/1/2/2;

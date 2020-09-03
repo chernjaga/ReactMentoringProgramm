@@ -1,4 +1,4 @@
-import styled, { StyledComponent }  from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import { stylesConfig } from '../../../../configs/style.configs';
 
 export const Label: StyledComponent<'label', {}> = styled.label.attrs({

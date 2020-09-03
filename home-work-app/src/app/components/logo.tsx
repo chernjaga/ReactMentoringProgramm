@@ -1,8 +1,4 @@
-import styled, { StyledComponent }  from 'styled-components';
-
-type StyledProps = {
-    logoColor: string
-};
+import styled, { StyledComponent, DefaultTheme, ThemeProps } from 'styled-components';
 
 const StyledLogo: StyledComponent<'h1', {}> = styled.h1`
     color: #fff;
@@ -12,13 +8,13 @@ const StyledLogo: StyledComponent<'h1', {}> = styled.h1`
     cursor: default;
 `;
 
-const BoldText: StyledComponent<'span', {}, StyledProps> = styled.span`
-    color: ${(props: StyledProps) => props.logoColor};
+const BoldText: StyledComponent<'span', {}> = styled.span`
+    color: ${({theme}: ThemeProps<DefaultTheme>) => theme.constants.logoColor};
     font-weight: 900;
 `;
 
-export const Logo: React.FC<StyledProps> = (props: StyledProps) => (
+export const Logo: React.FC = () => (
     <StyledLogo>
-        <BoldText logoColor={props.logoColor}>netflix</BoldText>roulette
+        <BoldText >netflix</BoldText>roulette
     </StyledLogo>
 );
