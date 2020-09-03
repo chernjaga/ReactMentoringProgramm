@@ -1,35 +1,6 @@
 import { SortOptions } from '../SortOptions/SortOptions';
 import { StyledFilterPanel, FilterOptions, FilterOptionItem } from './FilterPanelStyleSet.styled';
-
-type FilterConfigItem = {
-    title: string,
-    key: number
-};
-
-type FilterConfig = FilterConfigItem[];
-
-const FilterOptionsConfig: FilterConfig = [
-    {
-        title: 'ALL',
-        key: 1
-    },
-    {
-        title: 'DOCUMENTARY',
-        key: 2
-    },
-    {
-        title: 'COMEDY',
-        key: 3
-    },
-    {
-        title: 'HORROR',
-        key: 4
-    },
-    {
-        title: 'CRIME',
-        key: 5
-    }
-];
+import { FilterItems, FilterConfigItem } from '../../types';
 
 const sortOptions: string[] = [
     'RELEASE',
@@ -38,10 +9,10 @@ const sortOptions: string[] = [
     'YEAR'
 ];
 
-export const FilterPanel: React.FC = () => (
+export const FilterPanel: React.FC<{filterItems: FilterItems}> = (props: {filterItems: FilterItems}) => (
     <StyledFilterPanel>
         <FilterOptions>
-            {FilterOptionsConfig.map((item: FilterConfigItem) => (
+            {props.filterItems.map((item: FilterConfigItem) => (
                 <FilterOptionItem key={item.key}>
                     <span></span>
                     {item.title}

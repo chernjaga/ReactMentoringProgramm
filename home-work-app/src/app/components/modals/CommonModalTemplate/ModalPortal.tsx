@@ -1,18 +1,15 @@
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
-type ModalProps = {
+type ModalPortalProps = {
     modalRoot: HTMLElement
 };
-
-export class ModalPortal extends React.Component<ModalProps> {
-    modalRoot: HTMLElement;
+export class ModalPortal extends React.Component<ModalPortalProps> {
     modalContainer: HTMLElement;
 
-    constructor(props: ModalProps) {
+    constructor(props: ModalPortalProps) {
         super(props);
         this.modalContainer = document.createElement('div');
-        this.modalContainer.setAttribute('id', 'modalPortal');
     }
 
     componentDidMount(): void {

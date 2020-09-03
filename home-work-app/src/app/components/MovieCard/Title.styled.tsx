@@ -3,7 +3,7 @@ import { stylesConfig } from '../../configs/style.configs';
 
 const cardBackground: string = stylesConfig.colors.black;
 
-export const Title: StyledComponent<'div', {}> = styled.div`
+export const MovieCardTitle: StyledComponent<'div', {}> = styled.div`
     grid-area: 2/1/2/1;
     padding: 8px 0;
     background-color: ${cardBackground};

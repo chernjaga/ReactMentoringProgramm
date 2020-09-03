@@ -11,18 +11,19 @@ const modalRoot: HTMLElement = document.body;
 export class AddMovieLink extends React.PureComponent {
     state: AddMovieLinkState;
 
-    componentWillMount(): void {
-        this.setState({
+    constructor(props: {}) {
+        super(props);
+        this.state = {
             isModalOpen: false
-        });
+        };
     }
 
     toggleModal(event: React.MouseEvent): void {
+        event.stopPropagation();
+        event.preventDefault();
         this.setState({
             isModalOpen: !this.state.isModalOpen
         });
-        event.stopPropagation();
-        event.preventDefault();
     }
 
     render(): JSX.Element {

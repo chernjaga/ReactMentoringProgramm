@@ -1,7 +1,7 @@
 import styled, { StyledComponent } from 'styled-components';
 import { stylesConfig } from '../../../configs/style.configs';
 
-const Span: StyledComponent<'span', {}> = styled.span`
+const StyledWrapper: StyledComponent<'span', {}> = styled.span`
     transform: rotateZ(45deg);
     display: inline-block;
     cursor: pointer;
@@ -11,7 +11,7 @@ const Span: StyledComponent<'span', {}> = styled.span`
 `;
 
 export const CloseSymbol: React.FC = () => (
-    <Span>
+    <StyledWrapper>
         +
-    </Span>
+    </StyledWrapper>
 );

@@ -18,12 +18,12 @@ const closeIconSize: number = 1;
 export class EditMenu extends React.PureComponent {
     state: ModalState;
     props: ModalProps;
-
-    componentWillMount(): void {
-        this.setState({
+    constructor(props: ModalProps) {
+        super(props);
+        this.state = {
             isVisibleMenu: false,
             modalRoot: null
-        });
+        };
     }
 
     toggleModal(event?: React.MouseEvent): void {

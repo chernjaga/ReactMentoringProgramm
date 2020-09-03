@@ -1,5 +1,5 @@
 import { StyledContextMenu } from './StyledContextMenu.styled';
-import { StyledMenuItem } from './StyledMenuItem.styled';
+import { ContextMenuItem } from './ContextMenuItem.styled';
 import { CloseIcon } from './CloseIcon.styled';
 import { EditModal } from '../EditModal/EditModal';
 import { CloseSymbol } from '../CommonModalTemplate/CloseSymbol';
@@ -20,9 +20,14 @@ type ContextMenuState = {
 
 const modalRoot: HTMLElement = document.body;
 
-export class ContextMenu extends React.PureComponent<MenuProps> {
-    props: MenuProps;
-    state: ContextMenuState;
+export class ContextMenu extends React.PureComponent<MenuProps, ContextMenuState> {
+    constructor(props: MenuProps) {
+        super(props);
+        this.state = {
+            isModalDisplayed: false,
+            modalName: null
+        };
+    }
 
     closeModal(event: React.MouseEvent): void {
         this.setState({
@@ -54,20 +59,13 @@ export class ContextMenu extends React.PureComponent<MenuProps> {
         }
     }
 
-    componentWillMount(): void {
-        this.setState({
-            isModalDisplayed: false,
-            modalName: null
-        });
-    }
-
     clickHandler(item: string, event: React.MouseEvent): void {
+        event.preventDefault();
+        event.stopPropagation();
         this.setState({
             isModalDisplayed: true,
             modalName: item
         });
-        event.preventDefault();
-        event.stopPropagation();
     }
 
     render(): JSX.Element {
@@ -78,13 +76,13 @@ export class ContextMenu extends React.PureComponent<MenuProps> {
                 </CloseIcon>
                 <ul role="menu">
                     {this.props.menuItems.map((item: string) => (
-                        <StyledMenuItem onClick={this.clickHandler.bind(this, item)} key={item}>
+                        <ContextMenuItem onClick={this.clickHandler.bind(this, item)} key={item} role="menuItem">
                             {item}
                             {
                                 this.state.isModalDisplayed && this.state.modalName === item ?
                                     this.renderModal(item, this.props.movieId) : null
                             }
-                        </StyledMenuItem>
+                        </ContextMenuItem>
                     ))}
                 </ul>
             </StyledContextMenu>
