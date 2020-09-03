@@ -78,13 +78,12 @@ export class ContextMenu extends React.PureComponent<MenuProps, ContextMenuState
                     {this.props.menuItems.map((item: string) => (
                         <ContextMenuItem onClick={this.clickHandler.bind(this, item)} key={item} role="menuItem">
                             {item}
-                            {
-                                this.state.isModalDisplayed && this.state.modalName === item ?
-                                    this.renderModal(item, this.props.movieId) : null
-                            }
                         </ContextMenuItem>
                     ))}
                 </ul>
+                {
+                    this.state.isModalDisplayed && this.renderModal(this.state.modalName, this.props.movieId)
+                }
             </StyledContextMenu>
         );
     }
