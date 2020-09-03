@@ -1,6 +1,5 @@
 import { EditForm, EditFormFieldset, EditFormLegend, Label, Input } from './EditFormStyleSet.styled';
 import { ButtonPanel, Button } from '../CommonModalTemplate/ButtonPanel.styled';
-import { stylesConfig } from '../../../configs/style.configs';
 
 type MovieFormProps = {
     legend: string,
@@ -18,12 +17,8 @@ export const MovieForm: React.FC<MovieFormProps> = (props: MovieFormProps) => (
                 </p>
             ))}
             <ButtonPanel>
-                <Button color={stylesConfig.colors.white}
-                        background={stylesConfig.colors.pink}
-                        border={stylesConfig.colors.pink}>SAVE</Button>
-                <Button background={stylesConfig.colors.grayTint2}
-                        color={stylesConfig.colors.pink}
-                        border={stylesConfig.colors.pink}>CANCEL</Button>
+                <Button buttonTheme="saveButton">SAVE</Button>
+                <Button buttonTheme="cancelButton">CANCEL</Button>
             </ButtonPanel>
         </EditFormFieldset>
     </EditForm>

@@ -1,11 +1,10 @@
-import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../configs/style.configs';
+import styled, { StyledComponent, ThemeProps, DefaultTheme } from 'styled-components';
 
 export const Select: StyledComponent<'select', {}> = styled.select.attrs({
     name: 'sortOptions',
     id: 'sortOptions'
 })`
-    background-color: ${stylesConfig.colors.black};
+    background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.black};
     border: none;
     text-decoration: none;
     font-size: 1rem;
@@ -14,15 +13,15 @@ export const Select: StyledComponent<'select', {}> = styled.select.attrs({
     margin-left: 8px;
     box-sizing: border-box;
     &:hover {
-        background-color: ${stylesConfig.colors.pink};
+        background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.pink};
     }
 `;
 
 export const Option: StyledComponent<'option', {}> = styled.option`
-    background-color: ${stylesConfig.colors.black};
+    background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.black};
     font-size: 1rem;
 `;
 
 export const StyledSortOptions: StyledComponent<'div', {}> = styled.div`
-    color: ${stylesConfig.colors.grayTint3};
+    color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.grayTint3};
 `;

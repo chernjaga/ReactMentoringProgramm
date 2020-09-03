@@ -1,11 +1,8 @@
-import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../configs/style.configs';
-
-const cardBackground: string = stylesConfig.colors.black;
+import styled, { StyledComponent, ThemeProps, DefaultTheme } from 'styled-components';
 
 export const MovieCardYear: StyledComponent<'div', {}> = styled.div`
     grid-area: 2/2/2/2;
-    background-color: ${cardBackground};
+    background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.black};
     padding: 8px 0 8px 8px;
     z-index: 1;
     text-align: right;

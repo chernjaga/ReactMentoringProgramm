@@ -1,13 +1,12 @@
-import { createGlobalStyle, GlobalStyleComponent } from 'styled-components';
-import { stylesConfig } from './style.configs';
+import { createGlobalStyle, GlobalStyleComponent, ThemeProps, DefaultTheme } from 'styled-components';
 export const GlobalStyle: GlobalStyleComponent<{}, {}> = createGlobalStyle `
     * {
-       color: ${stylesConfig.colors.white};
-       font-family: ${stylesConfig.fonts.basic};
+       color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.white};
+       font-family: ${({theme}: ThemeProps<DefaultTheme>) => theme.fonts.basic};
     }
 
     body {
-        background-color: ${stylesConfig.colors.grayTint1};
+        background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.grayTint1};
         margin: 0;
         padding: 0;
     }

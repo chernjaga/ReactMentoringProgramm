@@ -1,6 +1,5 @@
 import { CommonModalTemplate } from '../CommonModalTemplate/CommonModalTemplate';
 import { ButtonPanel, Button } from '../CommonModalTemplate/ButtonPanel.styled';
-import { stylesConfig } from '../../../configs/style.configs';
 import { EditMenuProps } from '../../../types';
 
 export class DeleteModal extends React.PureComponent<EditMenuProps> {
@@ -20,9 +19,7 @@ export class DeleteModal extends React.PureComponent<EditMenuProps> {
                         Are you sure you want to delete this movie?
                     </p>
                     <ButtonPanel>
-                    <Button color={stylesConfig.colors.white}
-                                    background={stylesConfig.colors.pink}
-                                    border={stylesConfig.colors.pink}>CONFIRM</Button>
+                        <Button buttonTheme="saveButton">CANCEL</Button>
                     </ButtonPanel>
                 </>
             </CommonModalTemplate>

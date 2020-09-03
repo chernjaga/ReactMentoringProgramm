@@ -1,5 +1,4 @@
-import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../../../configs/style.configs';
+import styled, { StyledComponent, ThemeProps, DefaultTheme } from 'styled-components';
 
 export const Label: StyledComponent<'label', {}> = styled.label.attrs({
     htmlFor: 'searchForm'
@@ -42,7 +41,7 @@ export const Button: StyledComponent<'button', {}> = styled.button.attrs({
     font-size: 1.2rem;
     font-weight: 100;
     padding: 8px;
-    background-color: ${stylesConfig.colors.pink};
+    background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.pink};
     flex-grow: 1;
     &:hover {
         background-color: rgba(246, 82, 97, 0.75);

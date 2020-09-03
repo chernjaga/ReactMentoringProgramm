@@ -1,7 +1,6 @@
-import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../configs/style.configs';
+import styled, { StyledComponent, ThemeProps, DefaultTheme } from 'styled-components';
 
 export const MoviesListStyled: StyledComponent<'section', {}> = styled.section`
-    background-color: ${stylesConfig.colors.black};
-    padding: 32px ${stylesConfig.offsets.sideOffset};
+    background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.black};
+    padding: 32px ${({theme}: ThemeProps<DefaultTheme>) => theme.offsets.sideOffset};
 `;

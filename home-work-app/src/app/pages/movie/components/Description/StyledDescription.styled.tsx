@@ -1,10 +1,6 @@
-import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../../../configs/style.configs';
-
-const sideOffset: string = stylesConfig.offsets.sideOffset;
-const backGroundColor: string = stylesConfig.colors.black;
+import styled, { StyledComponent, ThemeProps, DefaultTheme } from 'styled-components';
 
 export const StyledDescription: StyledComponent<'div', {}> = styled.div`
-    background-color: ${backGroundColor};
-    padding: 16px ${sideOffset};
+    background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.black};
+    padding: 16px ${({theme}: ThemeProps<DefaultTheme>) => theme.offsets.sideOffset};
 `;
