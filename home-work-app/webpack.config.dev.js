@@ -10,6 +10,7 @@ module.exports = {
         open: true,
         contentBase: path.join(__dirname, 'build'),
         hot: true,
+        historyApiFallback: true
     },
 
     plugins: [

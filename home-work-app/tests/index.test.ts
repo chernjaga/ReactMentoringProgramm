@@ -1,7 +1,8 @@
-const testFunction = function() {
+const testTest = () => {
     return 'Passed';
 }
+console.log('asd')
 
 test('Test should be passed', () => {
-    expect(testFunction()).toBe('Passed')
+    expect(testTest()).toBe('Passed')
 });

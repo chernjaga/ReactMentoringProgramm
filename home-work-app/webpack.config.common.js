@@ -2,6 +2,8 @@ const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
 const CaseSensitivePathPlugins = require('case-sensitive-paths-webpack-plugin');
+const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
+const styledComponentsTransformer = createStyledComponentsTransformer();
 
 module.exports = {
 
@@ -12,7 +14,8 @@ module.exports = {
 
     output: {
         filename: '[name].js',
-        path: path.join(__dirname, 'build')
+        path: path.join(__dirname, 'build'),
+        publicPath: '/'
     },
 
     resolve: {
@@ -22,20 +25,11 @@ module.exports = {
 
     module: {
         rules: [
-            {
-                test: /\.tsx?$/,
-                loader: 'ts-loader',
-                exclude: /node_modules/
-            },
            {
-                test: /\.jsx?$/,
+                test: /\.(ts|tsx)?$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        plugins: ['transform-react-jsx', 'plugin-transform-typescript', 'transform-arrow-functions'],
-                        presets: ['env', 'react', 'typescript']
-                    }
+                    loader: 'babel-loader'
                 }
             },
             {
@@ -58,6 +52,10 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 loader: "file-loader?name=/image/[name].[ext]"
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/i,
+                loader: "file-loader?name=/images/[name].[ext]"
             }
         ]
     },
@@ -66,9 +64,10 @@ module.exports = {
         new webpack.DefinePlugin({
             BROWSER_SUPPORTS_HTML5: true
         }),
-        new webpack.ProvidePlugin({ // common imports for all the source
-            react: 'React',
-            _: 'lodash'
+        new webpack.ProvidePlugin({
+            'React': 'react',
+            '_': 'lodash',
+            'styled': 'styled-components'
         }),
         new ExtractTextPlugin('styles.css'),
     ]
