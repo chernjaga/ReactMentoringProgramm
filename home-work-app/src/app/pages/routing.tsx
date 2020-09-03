@@ -7,7 +7,7 @@ export const Routing: React.FC = () => (
     <Router>
         <Switch>
             <Route exact path="/home" component={HomePage}/>
-            <Route path="/movie" component={Movie}/>
+            <Route path="/movie/:id" component={Movie}/>
             <Redirect to="/home"/>
         </Switch>
         <MoviesSection/>

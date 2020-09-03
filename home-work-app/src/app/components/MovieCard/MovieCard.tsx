@@ -19,7 +19,7 @@ type CardProps = {
 
 export const MovieCard: React.FC<CardProps> = ({id, coverUrl, title, genres, releaseDate}: CardProps) => (
     <ListItem>
-        <Link to={`/movie?id=${id}`}>
+        <Link to={`/movie/${id}`}>
             <StyledCard>
                 <MovieCardPoster>
                     <img src={coverUrl} alt={title}/>
