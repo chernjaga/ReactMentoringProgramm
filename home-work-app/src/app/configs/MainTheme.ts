@@ -17,16 +17,16 @@ export const mainTheme: DefaultTheme = {
     },
     constants: {
         logoColor: '#f65261',
-    },
-    cancelButton: {
-        border:  '#f65261',
-        backgroundColor: '#555555',
-        color: '#f65261'
-    },
-    saveButton: {
-        border: '#f65261',
-        backgroundColor: '#f65261',
-        color: '#ffffff'
+        cancelButton: {
+            border:  '#f65261',
+            backgroundColor: '#555555',
+            color: '#f65261'
+        },
+        saveButton: {
+            border: '#f65261',
+            backgroundColor: '#f65261',
+            color: '#ffffff'
+        }
     },
     fonts: {
         basic: '"Google Sans", Roboto, RobotoDraft, Helvetica, Arial,sans-serif'

@@ -2,8 +2,6 @@ const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
 const CaseSensitivePathPlugins = require('case-sensitive-paths-webpack-plugin');
-const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
-const styledComponentsTransformer = createStyledComponentsTransformer();
 
 module.exports = {
 
@@ -65,9 +63,7 @@ module.exports = {
             BROWSER_SUPPORTS_HTML5: true
         }),
         new webpack.ProvidePlugin({
-            'React': 'react',
-            '_': 'lodash',
-            'styled': 'styled-components'
+            'React': 'react'
         }),
         new ExtractTextPlugin('styles.css'),
     ]

@@ -17,16 +17,16 @@ declare module "styled-components" {
     },
     constants: {
         logoColor: string,
-    },
-    cancelButton: {
-        border:  string,
-        backgroundColor: string,
-        color: string
-    },
-    saveButton: {
-        border: string,
-        backgroundColor: string,
-        color: string
+        cancelButton: {
+            border:  string,
+            backgroundColor: string,
+            color: string
+        },
+        saveButton: {
+            border: string,
+            backgroundColor: string,
+            color: string
+        }
     },
     fonts: {
         basic: string,

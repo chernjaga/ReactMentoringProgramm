@@ -1,5 +1,6 @@
 import styled, { StyledComponent, DefaultTheme } from 'styled-components';
 import { mainTheme } from '../../../configs/mainTheme';
+import { get } from 'lodash';
 
 type ButtonProps = {
     buttonTheme: string
@@ -15,11 +16,11 @@ export const ButtonPanel: StyledComponent<'div', {}> = styled.div`
 
 export const Button: StyledComponent<'button', {}, ButtonProps> = styled.button`
     background-color: ${(props: ButtonProps) =>
-        mainTheme[props.buttonTheme].backgroundColor};
+        get(mainTheme, `constants.${props.buttonTheme}.backgroundColor`)};
     color: ${(props: ButtonProps) =>
-        mainTheme[props.buttonTheme].color};
+        get(mainTheme, `constants.${props.buttonTheme}.color`)};
     border: 1px solid ${(props: ButtonProps) =>
-        mainTheme[props.buttonTheme].border};
+        get(mainTheme, `constants.${props.buttonTheme}.border`)};
     font-size: 1rem;
     word-wrap: break-word;
     width: 25%;
