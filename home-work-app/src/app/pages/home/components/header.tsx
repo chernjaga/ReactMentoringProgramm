@@ -1,4 +1,4 @@
-import { Logo } from '../../../components/Logo';
+import { Logo } from '../../../components/Logo/Logo';
 import styled, { StyledComponent, ThemeProps, DefaultTheme } from 'styled-components';
 import { AddMovieLink } from './AddMovieLink/AddMovieLink';
 import { SearchForm } from './SearchForm/SearchForm';

@@ -1,4 +1,4 @@
-import { Logo } from '../../../../components/Logo';
+import { Logo } from '../../../../components/Logo/Logo';
 import { StyledPageTop } from './StyledPageTop.styled';
 import { HomeLink } from '../HomeLink/HomeLink';
 

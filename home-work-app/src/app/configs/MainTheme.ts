@@ -16,7 +16,10 @@ export const mainTheme: DefaultTheme = {
         sideOffset: '10%'
     },
     constants: {
-        logoColor: '#f65261',
+        logoColors: {
+            primary: '#ffffff',
+            secondary: '#f65261'
+        },
         cancelButton: {
             border:  '#f65261',
             backgroundColor: '#555555',

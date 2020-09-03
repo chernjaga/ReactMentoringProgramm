@@ -16,7 +16,10 @@ declare module "styled-components" {
         [key: string]: string
     },
     constants: {
-        logoColor: string,
+        logoColors: {
+            primary: string,
+            secondary: string
+        },
         cancelButton: {
             border:  string,
             backgroundColor: string,
