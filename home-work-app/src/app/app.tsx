@@ -16,7 +16,7 @@ const AppBody: React.FC = () => (
         <ThemeProvider theme={mainTheme}>
             <GlobalStyle/>
             <Routing/>
-            <Footer/>y
+            <Footer/>
         </ThemeProvider>
     </AppCatch>
 );

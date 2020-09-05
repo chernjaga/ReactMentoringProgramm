@@ -5,6 +5,12 @@ import { movieResponse } from '../../../../../../tempData/getMoviesResponse';
 import { find } from 'lodash';
 import { MovieDetailsPoster } from './MovieDetailsPoster.styled';
 import { MovieDetailsContent } from './MovieDetailsContent.styled';
+import { MovieDetailsHeader } from './MovieDetailsHeader';
+import { VoteAverage } from './VoteAverage.styled';
+import { MovieDetailsTitle } from './MovieDetailsTitle.styled';
+import { MovieDetailsTagline } from './MovieDetailsTagline.styled';
+import { MovieDetailsTimeData } from './MovieDetailsTimeData.styled';
+import { MovieDetailsOverview } from './MovieDetailsOverview.styled';
 
 const movieCollection: IApiResponse.IMovie[] = movieResponse.data;
 
@@ -25,18 +31,28 @@ export const Description: React.FC = () => {
         <MovieDetails>
             <MovieDetailsPoster src={poster_path} alt={title}/>
             <MovieDetailsContent>
-                <h2>
-                    {title} ({vote_average})
-                </h2>
-                <p>
+                <MovieDetailsHeader>
+                    <MovieDetailsTitle>
+                        {title}
+                    </MovieDetailsTitle>
+                    <VoteAverage>
+                        {vote_average}
+                    </VoteAverage>
+                </MovieDetailsHeader>
+                <MovieDetailsTagline>
                     {tagline}
-                </p>
-                <p>
-                    {new Date(release_date).getFullYear()} {runtime}min
-                </p>
-                <p>
+                </MovieDetailsTagline>
+                <MovieDetailsTimeData>
+                    <span>
+                        {new Date(release_date).getFullYear()}
+                    </span>
+                    <span>
+                        {runtime}min
+                    </span>
+                </MovieDetailsTimeData>
+                <MovieDetailsOverview>
                     {overview}
-                </p>
+                </MovieDetailsOverview>
             </MovieDetailsContent>
         </MovieDetails>
     );

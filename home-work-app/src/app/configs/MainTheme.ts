@@ -5,6 +5,7 @@ export const mainTheme: DefaultTheme = {
         pink: '#f65261',
         black: '#232323',
         white: '#ffffff',
+        green: '#63d313',
         grayTint1: '#424242',
         grayTint2: '#555555',
         grayTint3: '#969696'

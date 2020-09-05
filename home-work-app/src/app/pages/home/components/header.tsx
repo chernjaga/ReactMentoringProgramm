@@ -11,7 +11,7 @@ const HeaderWrapper: StyledComponent<'header', {}> = styled.header.attrs({
 `;
 
 const HeaderDarkCover: StyledComponent<'div', {}> = styled.div`
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 16px ${({theme}: ThemeProps<DefaultTheme>) => theme.offsets.sideOffset};
     backdrop-filter: blur(2px);
     position: relative;
