@@ -10,12 +10,13 @@ export const EditFormFieldset: StyledComponent<'fieldset', {}> = styled.fieldset
 export const EditFormLegend: StyledComponent<'legend', {}> = styled.legend`
     margin: 0 auto;
     border: none;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    margin-bottom: 16px;
 `;
 export const Label: StyledComponent<'label', {}> = styled.label`
     display: block;
     color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.pink};
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-bottom: 8px;
     font-weight: 100;
 `;
@@ -26,4 +27,5 @@ export const Input: StyledComponent<'input', {}> = styled.input`
     font-size: 1rem;
     padding: 8px;
     box-sizing: border-box;
+    margin-bottom: 16px;
 `;

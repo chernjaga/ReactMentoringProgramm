@@ -10,4 +10,5 @@ export const ModalWindowWrapper: StyledComponent<'div', {}> = styled.div`
     overflow: auto;
     background-color: rgba(35, 35, 35, 0.6);
     backdrop-filter: blur(5px);
+    display: flex;
 `;

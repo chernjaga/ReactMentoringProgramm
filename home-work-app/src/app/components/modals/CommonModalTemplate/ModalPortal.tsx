@@ -12,8 +12,6 @@ export class ModalPortal extends React.Component<ModalPortalProps> {
     }
 
     componentDidMount(): void {
-        if (this.props.modalRoot === document.body) {
-        }
         this.props.modalRoot.appendChild(this.modalContainer);
     }
 

@@ -1,6 +1,7 @@
 import { CommonModalTemplate } from '../CommonModalTemplate/CommonModalTemplate';
 import { ButtonPanel, Button } from '../CommonModalTemplate/ButtonPanel.styled';
 import { EditMenuProps } from '../../../types';
+import { DeleteModalHeader } from './DeleteModalHeader.styled';
 
 export class DeleteModal extends React.PureComponent<EditMenuProps> {
     closeHandler(event: React.MouseEvent): void {
@@ -12,9 +13,9 @@ export class DeleteModal extends React.PureComponent<EditMenuProps> {
         return (
             <CommonModalTemplate onClose={this.closeHandler.bind(this)}>
                 <>
-                    <h2>
+                    <DeleteModalHeader>
                         DELETE MOVIE
-                    </h2>
+                    </DeleteModalHeader>
                     <p>
                         Are you sure you want to delete this movie?
                     </p>
