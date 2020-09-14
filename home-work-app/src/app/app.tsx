@@ -4,7 +4,7 @@ import { Routing } from './pages/routing';
 import { Footer } from './components/Footer/Footer';
 import { AppCatch } from './components/ErrorBoundaries/AppCatch/AppCatch.error';
 import { GlobalStyle } from './configs/GlobalStyle';
-import { mainTheme } from './configs/mainTheme';
+import { mainTheme } from './configs/MainTheme';
 import { ThemeProvider } from 'styled-components';
 
 type App = () => void;

@@ -5,10 +5,6 @@ import $ from 'jquery';
 import { ModalPortal } from '../modals/CommonModalTemplate/ModalPortal';
 import { useState, useCallback } from 'react';
 
-type ModalState = {
-    isVisibleMenu: boolean;
-    modalRoot: HTMLElement | null;
-};
 type ModalProps = {
     movieId: number;
 };

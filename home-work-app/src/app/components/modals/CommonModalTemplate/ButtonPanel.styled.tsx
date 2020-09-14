@@ -1,5 +1,5 @@
-import styled, { StyledComponent, DefaultTheme } from 'styled-components';
-import { mainTheme } from '../../../configs/mainTheme';
+import styled, { StyledComponent } from 'styled-components';
+import { mainTheme } from '../../../configs/MainTheme';
 import { get } from 'lodash';
 
 type ButtonProps = {
