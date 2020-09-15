@@ -13,23 +13,28 @@ import { useEffect, useState } from 'react';
 const filterItems: FilterItems = [
     {
         title: 'ALL',
-        key: 1
+        key: 1,
+        label: 'all'
     },
     {
         title: 'DOCUMENTARY',
-        key: 2
+        key: 2,
+        label: 'doc'
     },
     {
         title: 'COMEDY',
-        key: 3
+        key: 3,
+        label: 'comedy'
     },
     {
         title: 'HORROR',
-        key: 4
+        key: 4,
+        label: 'horror'
     },
     {
         title: 'CRIME',
-        key: 5
+        key: 5,
+        label: 'crime'
     }
 ];
 
