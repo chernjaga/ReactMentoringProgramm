@@ -10,7 +10,7 @@ export const DeleteModal: React.FC<EditMenuProps> = (props: EditMenuProps) => {
     };
 
     return  (
-        <CommonModalTemplate onClose={closeHandler.bind(this)}>
+        <CommonModalTemplate onClose={closeHandler}>
             <>
                 <DeleteModalHeader>
                     DELETE MOVIE

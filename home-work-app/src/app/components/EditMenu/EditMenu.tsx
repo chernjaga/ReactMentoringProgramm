@@ -27,12 +27,6 @@ export const EditMenu: React.FC<ModalProps> = (props: ModalProps) => {
         event.preventDefault();
     };
 
-    const closeContextMenu: React.MouseEventHandler = (event: React.MouseEvent) => {
-        toggleModal(event);
-        event.stopPropagation();
-        event.preventDefault();
-    };
-
     const renderModal: (container: HTMLElement) => JSX.Element = useCallback((container: HTMLElement): JSX.Element => {
         const modalRoot: HTMLElement = $(container).closest('li')[0];
         if (container) {
@@ -41,7 +35,7 @@ export const EditMenu: React.FC<ModalProps> = (props: ModalProps) => {
                     <ContextMenu menuItems={menuItems}
                                  closeIconSize={closeIconSize}
                                  movieId={props.movieId}
-                                 onCloseMenu={closeContextMenu.bind(this)}/>
+                                 onCloseMenu={toggleModal}/>
                 </ModalPortal>
             );
         }
@@ -49,7 +43,7 @@ export const EditMenu: React.FC<ModalProps> = (props: ModalProps) => {
 
     return (
         <StyledEditMenu className="hoverMenu">
-            <MenuIcon onClick={toggleModal.bind(this)}>
+            <MenuIcon onClick={toggleModal}>
                 {state.isVisibleMenu ? renderModal(state.modalRoot) : (<>&#8942;</>)}
             </MenuIcon>
         </StyledEditMenu>

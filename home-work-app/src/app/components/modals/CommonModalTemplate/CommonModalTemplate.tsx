@@ -19,7 +19,7 @@ export const CommonModalTemplate: React.FC<CommonModalProps> = (props: CommonMod
         <ModalWindowWrapper>
             <StyledModal>
                 <ModalHeader>
-                    <span onClick={closeHandler.bind(this)}>
+                    <span onClick={closeHandler}>
                         <CloseSymbol/>
                     </span>
                 </ModalHeader>

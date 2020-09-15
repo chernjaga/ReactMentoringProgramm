@@ -20,7 +20,7 @@ export const EditModal: React.FC<EditMenuProps> = (props: EditMenuProps) => {
     };
 
     return (
-        <CommonModalTemplate onClose={closeHandler.bind(this)}>
+        <CommonModalTemplate onClose={closeHandler}>
             <MovieForm legend={formLegend}
                        fields={formFields}/>
         </CommonModalTemplate>

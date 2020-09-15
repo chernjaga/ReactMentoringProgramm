@@ -9,8 +9,8 @@ type ModalPortalProps = {
 export const ModalPortal: React.FC<ModalPortalProps> = (props: ModalPortalProps) => {
     const modalContainer: HTMLElement = document.createElement('div');
     useEffect((): void => {
-        console.log(props);
         props.modalRoot.appendChild(modalContainer);
     }, []);
+
     return ReactDOM.createPortal(props.children, modalContainer);
 };

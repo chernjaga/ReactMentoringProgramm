@@ -57,13 +57,13 @@ export const ContextMenu: React.FC<MenuProps> = (props: MenuProps) => {
             case 'EDIT':
                 return (
                     <ModalPortal modalRoot={modalRoot}>
-                        <EditModal movieId={movieId} onClose={closeModal.bind(this)}/>
+                        <EditModal movieId={movieId} onClose={closeModal}/>
                     </ModalPortal>
                 );
             case 'DELETE':
                 return (
                     <ModalPortal modalRoot={modalRoot}>
-                        <DeleteModal movieId={movieId} onClose={closeModal.bind(this)}/>
+                        <DeleteModal movieId={movieId} onClose={closeModal}/>
                     </ModalPortal>
                 );
         }
@@ -71,7 +71,7 @@ export const ContextMenu: React.FC<MenuProps> = (props: MenuProps) => {
 
     return (
         <StyledContextMenu>
-                <CloseIcon size={props.closeIconSize} onClick={closeMenu.bind(this)}>
+                <CloseIcon size={props.closeIconSize} onClick={closeMenu}>
                     <CloseSymbol/>
                 </CloseIcon>
                 <ul role="menu">
