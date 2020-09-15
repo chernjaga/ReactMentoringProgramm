@@ -1,7 +1,7 @@
 import { MovieDetails } from './MovieDetails';
 import { useParams } from 'react-router-dom';
 import { IApiResponse } from '../../../../interfaces/IApiResponse';
-import { movieResponse } from '../../../../../../tempData/getMoviesResponse';
+import { movieResponse } from '../../../../../../tempData/GetMoviesResponse';
 import { find } from 'lodash';
 import { MovieDetailsPoster } from './MovieDetailsPoster.styled';
 import { MovieDetailsContent } from './MovieDetailsContent.styled';
@@ -14,9 +14,10 @@ import { MovieDetailsOverview } from './MovieDetailsOverview.styled';
 
 const movieCollection: IApiResponse.IMovie[] = movieResponse.data;
 
-export const Description: React.FC = () => {
-    const {id} = useParams();
-    const movie: IApiResponse.IMovie = find(movieCollection, {id: Number(id)});
+export const Description: React.FC = () =>
+{
+    const { id }: {id: string} = useParams();
+    const movie: IApiResponse.IMovie = find( movieCollection, { id: Number( id ) } );
     const {
         title,
         overview,
@@ -29,7 +30,7 @@ export const Description: React.FC = () => {
 
     return (
         <MovieDetails>
-            <MovieDetailsPoster src={poster_path} alt={title}/>
+            <MovieDetailsPoster src={poster_path} alt={title} />
             <MovieDetailsContent>
                 <MovieDetailsHeader>
                     <MovieDetailsTitle>
@@ -44,7 +45,7 @@ export const Description: React.FC = () => {
                 </MovieDetailsTagline>
                 <MovieDetailsTimeData>
                     <span>
-                        {new Date(release_date).getFullYear()}
+                        {new Date( release_date ).getFullYear()}
                     </span>
                     <span>
                         {runtime}min

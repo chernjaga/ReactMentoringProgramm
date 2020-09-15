@@ -6,11 +6,15 @@ type ModalPortalProps = {
     children: ReactNode
 };
 
-export const ModalPortal: React.FC<ModalPortalProps> = (props: ModalPortalProps) => {
-    const modalContainer: HTMLElement = document.createElement('div');
-    useEffect((): void => {
-        props.modalRoot.appendChild(modalContainer);
-    }, []);
+export const ModalPortal: React.FC<ModalPortalProps> = ( props: ModalPortalProps ) => {
+    const modalContainer: HTMLElement = document.createElement( 'div' );
+    useEffect( (): () => void => {
+        props.modalRoot.appendChild( modalContainer );
 
-    return ReactDOM.createPortal(props.children, modalContainer);
+        return () => {
+            props.modalRoot.appendChild( modalContainer );
+        };
+    }, [] );
+
+    return ReactDOM.createPortal( props.children, modalContainer );
 };

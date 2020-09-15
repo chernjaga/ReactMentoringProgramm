@@ -1,6 +1,6 @@
 {
     "extends": [
-        "tslint:recommended", "tslint-react", "tslint-clean-code"
+        "tslint:latest", "tslint-react", "tslint-clean-code", "tslint-config-prettier"
     ],
     "rules": {
         "max-line-length": {
@@ -19,6 +19,7 @@
         "no-duplicate-variable": [true, "check-parameters"],
         "no-return-await": true,
         "array-type": [true, "array-simple"],
+        "no-implicit-dependencies": [true, "dev"],
         "newline-before-return": true,
         "no-trailing-whitespace": true,
         "import-spacing": true,

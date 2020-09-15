@@ -1,6 +1,17 @@
 import styled, { StyledComponent, DefaultTheme, ThemeProps } from 'styled-components';
 
-export const MenuIcon: StyledComponent<'div', {}> = styled.div`
+type IconProps = {
+    className?: string,
+    onClick: (event: React.MouseEvent) => void
+};
+
+const MenuIconComponent: React.FC<IconProps> = ({className, onClick}: IconProps) => (
+    <div onClick={onClick} className={className}>
+        &#8942;
+    </div>
+);
+
+export const MenuIcon: StyledComponent<React.FC<IconProps>, DefaultTheme> = styled(MenuIconComponent)`
     position: absolute;
     border-radius: 50%;
     top: 16px;

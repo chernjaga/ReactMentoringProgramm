@@ -14,7 +14,7 @@ export const FilterPanel: React.FC<{filterItems: FilterItems}> = (props: {filter
         <FilterOptions>
             {props.filterItems.map((item: FilterConfigItem) => (
                 <FilterOptionItem key={item.key}>
-                    {item.title}
+                        {item.title}
                 </FilterOptionItem>
             ))}
         </FilterOptions>

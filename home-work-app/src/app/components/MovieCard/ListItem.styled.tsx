@@ -1,9 +1,9 @@
 import styled, { StyledComponent } from 'styled-components';
-import { StyledEditMenu } from '../EditMenu/StyledEditMenu.styled';
+import { EditMenu } from '../EditMenu/EditMenu';
 
 export const ListItem: StyledComponent<'li', {}> = styled.li`
     position: relative;
-    &:hover ${StyledEditMenu} {
+    &:hover ${EditMenu} {
         display: block;
         position: absolute;
         top: 0;

@@ -6,8 +6,8 @@ import { useState } from 'react';
 const modalRoot: HTMLElement = document.body;
 
 export const AddMovieLink: React.FC = () => {
-    const [isModalOpen, toggle] = useState(false);
-    const clickHandler: () => void = () => toggle(!isModalOpen);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const clickHandler: () => void = () => setIsModalOpen(!isModalOpen);
 
     return (
         <>
@@ -16,7 +16,7 @@ export const AddMovieLink: React.FC = () => {
             </StyledLink>
             {isModalOpen && (
                 <ModalPortal modalRoot={modalRoot}>
-                    <AddMovieModal onClose={clickHandler}/>
+                    <AddMovieModal onClose={clickHandler} />
                 </ModalPortal>
             )}
         </>

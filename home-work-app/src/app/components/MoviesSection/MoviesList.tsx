@@ -2,13 +2,13 @@ import { MovieCard } from '../MovieCard/MovieCard';
 import { IApiResponse } from '../../interfaces/IApiResponse';
 
 type MoviesProps = {
-    response: IApiResponse.GetMovies
+    response: IApiResponse.GetMoviesResponse
 };
 
-export const MoviesList: React.FC<MoviesProps> = (props: MoviesProps) => (
+export const MoviesList: React.FC<MoviesProps> = ( props: MoviesProps ) => (
     <>
         {props.response.data.map(
-            (movie: IApiResponse.IMovie) => (
+            ( movie: IApiResponse.IMovie ) => (
                 <MovieCard
                     coverUrl={movie.poster_path}
                     title={movie.title}

@@ -4,7 +4,7 @@ export const StyledFilterPanel: StyledComponent<'div', {}> = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-between;
-    border-bottom: 1px solid ${({theme}:ThemeProps<DefaultTheme>) => theme.colors.grayTint2};
+    border-bottom: 1px solid ${({ theme }: ThemeProps<DefaultTheme>) => theme.colors.grayTint2};
     margin-bottom: 16px;
 `;
 
@@ -22,9 +22,9 @@ export const FilterOptionItem: StyledComponent<'li', {}> = styled.li`
     width: max-content;
     position:relative;
     &:hover {
-        color: ${({theme}:ThemeProps<DefaultTheme>) => theme.colors.pink};
+        color: ${({ theme }: ThemeProps<DefaultTheme>) => theme.colors.pink};
     };
-        :hover>span:before {
+        &:hover:before {
         content: '';
         position: absolute;
         width: 100%;

@@ -13,7 +13,7 @@ export const MovieForm: React.FC<MovieFormProps> = (props: MovieFormProps) => (
             {props.fields.map((field: string): JSX.Element => (
                 <p key={field}>
                     <Label>{field}</Label>
-                    <Input type="text"/>
+                    <Input type="text" />
                 </p>
             ))}
             <ButtonPanel>
