@@ -9,6 +9,7 @@ import { FilterItems } from '../../types';
 import { MovieService } from '../../services/MovieService';
 import { IApiResponse } from '../../interfaces/IApiResponse';
 import { useEffect, useState } from 'react';
+import { Spinner } from '../Spinner/Spinner';
 
 const filterItems: FilterItems = [
     {
@@ -61,7 +62,9 @@ export const MoviesSection: React.FC = () => {
                         </>
                     ) :
                     (
-                        <div>Searching ...</div>
+                        <div>
+                            SEARCHING <Spinner size={8}/>
+                        </div>
                     )
                 }
         </MoviesListStyled>

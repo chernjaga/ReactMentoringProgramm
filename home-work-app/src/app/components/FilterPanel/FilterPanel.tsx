@@ -10,7 +10,6 @@ const sortOptions: string[] = [
     'YEAR'
 ];
 
-
 export const FilterPanel: React.FC<{filterItems: FilterItems}> = (props: {filterItems: FilterItems}) => {
     const [sortByParam, setSortByParam] = useState('title');
     const [filterByParam, setFilterByParam] = useState('all');

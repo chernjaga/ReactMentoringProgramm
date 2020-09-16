@@ -30,6 +30,10 @@ export const mainTheme: DefaultTheme = {
             border: '#f65261',
             backgroundColor: '#f65261',
             color: '#ffffff'
+        },
+        spinnerColors: {
+            primary: '#232323',
+            secondary: '#969696'
         }
     },
     fonts: {

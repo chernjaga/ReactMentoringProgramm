@@ -29,6 +29,10 @@ declare module "styled-components" {
             border: string,
             backgroundColor: string,
             color: string
+        },
+        spinnerColors: {
+            primary: string,
+            secondary: string
         }
     },
     fonts: {

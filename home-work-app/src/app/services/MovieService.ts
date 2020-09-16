@@ -8,7 +8,7 @@ export class MovieService {
         {
             setTimeout(() => {
                 resolve(movieResponse);
-            }, 1000);
+            }, 4000);
         });
 
         return response;
