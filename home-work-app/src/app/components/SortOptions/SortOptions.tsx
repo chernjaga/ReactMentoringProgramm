@@ -15,7 +15,7 @@ export const SortOptions: React.FC<SortProps> = ({values, onValueChange}: SortPr
     return (
         <StyledSortOptions>
             Sort By:
-            <Select onChange={handleChange}>
+            <Select onChange={handleChange} defaultValue="TITLE">
                 {values.map((value: string): JSX.Element => (
                     <Option value={value} key={value}>
                         {value}

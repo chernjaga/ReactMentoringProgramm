@@ -33,3 +33,7 @@ export const FilterOptionItem: StyledComponent<'li', {}> = styled.li`
         z-index: 1;
     }
 `;
+
+export const SelectedFilterOptionItem: StyledComponent<'li', {}> = styled(FilterOptionItem)`
+    color: ${({ theme }: ThemeProps<DefaultTheme>) => theme.colors.pink};
+`;

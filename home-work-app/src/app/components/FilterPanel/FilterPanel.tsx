@@ -1,7 +1,7 @@
 import { SortOptions } from '../SortOptions/SortOptions';
-import { StyledFilterPanel, FilterOptions, FilterOptionItem } from './FilterPanelStyleSet.styled';
+import { StyledFilterPanel, FilterOptions, FilterOptionItem , SelectedFilterOptionItem} from './FilterPanelStyleSet.styled';
 import { FilterItems, FilterConfigItem } from '../../types';
-import { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 const sortOptions: string[] = [
     'RELEASE',
@@ -10,52 +10,54 @@ const sortOptions: string[] = [
     'YEAR'
 ];
 
-type FilterParams = {
-    sortBy: string,
-    filterBy: string
-};
-
-const initFilterParams: FilterParams = {
-    sortBy: 'release',
-    filterBy: 'all'
-};
 
 export const FilterPanel: React.FC<{filterItems: FilterItems}> = (props: {filterItems: FilterItems}) => {
+    const [sortByParam, setSortByParam] = useState('title');
+    const [filterByParam, setFilterByParam] = useState('all');
+    const [selectedItemKey, setSelectedItemKey] = useState(1);
 
-    const [stateParams, setStateParams] = useState(initFilterParams);
-
-    const getNewParams: (type: keyof FilterParams, value: string) => FilterParams = (
-        type: keyof FilterParams,
-        value: string
-    ) => {
-        const outputParams: FilterParams = stateParams;
-        outputParams[type] = value;
-
-        return outputParams;
-    };
-
-    const setFilterValue: (sortValue: string) => void = (filterValue: string) => {
-        setStateParams(getNewParams('filterBy', filterValue));
-        changeListHandler(stateParams);
+    const setFilterValue: (sortValue: string, key: number) => void = (filterValue: string, key: number) => {
+        setSelectedItemKey(key);
+        setFilterByParam(filterValue);
+        changeListHandler(sortByParam, filterByParam);
     };
     const setSortValue: (sortValue: string) => void = (sortValue: string) => {
-        setStateParams(getNewParams('sortBy', sortValue));
-        changeListHandler(stateParams);
+        setSortByParam(sortValue);
+        changeListHandler(sortByParam, filterByParam);
     };
 
-    const changeListHandler: (params: FilterParams) => void = useCallback((params: FilterParams): void => {
+    const changeListHandler: (
+        sortBy: string,
+        filterBy: string
+    ) => void = useCallback((
+        sortBy: string,
+        filterBy: string
+    ): void => {
         // do something
-        // console.log(params);
-    }, [stateParams]);
+        // console.log(sortBy, filterBy);
+    }, [sortByParam, filterByParam]);
 
     return (
         <StyledFilterPanel>
             <FilterOptions>
-                {props.filterItems.map((item: FilterConfigItem) => (
-                    <FilterOptionItem key={item.key} onClick={setFilterValue.bind(this, item.label)}>
-                            {item.title}
-                    </FilterOptionItem>
-                ))}
+                {
+                    props.filterItems.map((item: FilterConfigItem) => {
+                        if (item.key === selectedItemKey) {
+                            return (
+                                <SelectedFilterOptionItem key={item.key}
+                                                          onClick={setFilterValue.bind(this, item.label, item.key)}>
+                                    {item.title}
+                                </SelectedFilterOptionItem>
+                            );
+                        }
+
+                        return (
+                            <FilterOptionItem key={item.key} onClick={setFilterValue.bind(this, item.label, item.key)}>
+                                    {item.title}
+                            </FilterOptionItem>
+                        );
+                    })
+                }
             </FilterOptions>
             <SortOptions onValueChange={setSortValue.bind(this)} values={sortOptions}/>
         </StyledFilterPanel>
