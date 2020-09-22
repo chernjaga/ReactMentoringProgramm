@@ -5,6 +5,15 @@ export namespace IApiResponse {
     offset: number;
     totalAmount: number;
   }
+
+  export type RequestConfig = {
+    method: string,
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: string
+  };
+
   export type IMovie = {
     budget: number;
     genres: string[];

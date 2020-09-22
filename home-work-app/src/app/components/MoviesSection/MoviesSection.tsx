@@ -1,4 +1,3 @@
-// import { movieResponse } from '../../../../tempData/GetMoviesResponse';
 import { FilterPanel } from '../FilterPanel/FilterPanel';
 import { MoviesListCatch } from '../ErrorBoundaries/MoviesListCatch/MoviesListCatch.error';
 import { MoviesList } from './MoviesList';
@@ -42,31 +41,31 @@ const filterItems: FilterItems = [
 export const MoviesSection: React.FC = () => {
     const [movies, setMovies] = useState(null);
     useEffect(() => {
-        MovieService.getMovies()
+        MovieService.getMovies({limit: 20})
             .then((collection: IApiResponse.GetMoviesResponse) => setMovies(collection));
     }, [movies]); // search will be updated
 
     return (
         <MoviesListStyled>
             <FilterPanel filterItems={filterItems} />
-                {
-                    movies ?
-                    (
-                        <>
-                            <ItemsFound amount={movies.data.length} />
-                            <MoviesListContainer>
-                                <MoviesListCatch>
-                                    <MoviesList response={movies} />
-                                </MoviesListCatch>
-                            </MoviesListContainer>
-                        </>
-                    ) :
-                    (
-                        <div>
-                            SEARCHING <Spinner size={8}/>
-                        </div>
-                    )
-                }
+            {
+                movies ?
+                (
+                    <>
+                        <ItemsFound amount={movies.data.length} />
+                        <MoviesListContainer>
+                            <MoviesListCatch>
+                                <MoviesList response={movies} />
+                            </MoviesListCatch>
+                        </MoviesListContainer>
+                    </>
+                ) :
+                (
+                    <div>
+                        SEARCHING <Spinner size={8}/>
+                    </div>
+                )
+            }
         </MoviesListStyled>
     );
 };
