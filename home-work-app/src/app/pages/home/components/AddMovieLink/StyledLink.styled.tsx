@@ -1,11 +1,10 @@
-import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../../../configs/style.configs';
+import styled, { StyledComponent, ThemeProps, DefaultTheme } from 'styled-components';
 
 export const StyledLink: StyledComponent<'div', {}> = styled.div.attrs({
     role: 'button'
 })`
     background-color: rgba(255, 255, 255, 0.25);
-    color: ${stylesConfig.colors.pink};
+    color: ${({ theme }: ThemeProps<DefaultTheme>) => theme.colors.pink};
     padding: 8px;
     border-radius: 4px;
     cursor: pointer;

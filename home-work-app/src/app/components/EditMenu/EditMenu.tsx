@@ -1,66 +1,41 @@
 import { ContextMenu } from '../modals/ContextMenu/ContextMenu';
 import { MenuIcon } from './MenuIcon.styled';
-import { StyledEditMenu } from './StyledEditMenu.styled';
-import $ from 'jquery';
-import { ModalPortal } from '../modals/CommonModalTemplate/ModalPortal';
+import { useState } from 'react';
+import styled, { StyledComponent, DefaultTheme } from 'styled-components';
 
-type ModalState = {
-    isVisibleMenu: boolean;
-    modalRoot: HTMLElement | null;
-};
 type ModalProps = {
-    movieId: number;
+    movieId: number,
+    className?: string
 };
 
 const menuItems: string[] = ['EDIT', 'DELETE'];
 const closeIconSize: number = 1;
 
-export class EditMenu extends React.PureComponent {
-    state: ModalState;
-    props: ModalProps;
-    constructor(props: ModalProps) {
-        super(props);
-        this.state = {
-            isVisibleMenu: false,
-            modalRoot: null
-        };
-    }
+const EditMenuComponent: React.FC<ModalProps> = ({className, movieId}: ModalProps) => {
+    const [isVisibleMenu, setIsVisibleMenu] = useState(false);
 
-    toggleModal(event?: React.MouseEvent): void {
-        this.setState({
-            isVisibleMenu: !this.state.isVisibleMenu,
-            modalRoot: event.target
-        });
+    const toggleModal: React.MouseEventHandler = (event?: React.MouseEvent) => {
+        setIsVisibleMenu(!isVisibleMenu);
         event.stopPropagation();
         event.preventDefault();
-    }
+    };
 
-    closeContextMenu(event: React.MouseEvent): void {
-        this.toggleModal(event);
-        event.stopPropagation();
-        event.preventDefault();
-    }
-    renderModal(container: HTMLElement): JSX.Element {
-        const modalRoot: HTMLElement = $(container).closest('li')[0];
-        if (container) {
-            return (
-                <ModalPortal modalRoot={modalRoot}>
+    return (
+        <div className={className}>
+            {isVisibleMenu ? (
                     <ContextMenu menuItems={menuItems}
-                                 closeIconSize={closeIconSize}
-                                 movieId={this.props.movieId}
-                                 onCloseMenu={this.closeContextMenu.bind(this)}/>
-                </ModalPortal>
-            );
-        }
-    }
+                                closeIconSize={closeIconSize}
+                                movieId={movieId}
+                                onCloseMenu={toggleModal}
+                    />
+                ) : (
+                    <MenuIcon onClick={toggleModal}/>
+                )
+            }
+        </div>
+    );
+};
 
-    render(): JSX.Element {
-        return (
-            <StyledEditMenu className="hoverMenu">
-                <MenuIcon onClick={this.toggleModal.bind(this)}>
-                    {this.state.isVisibleMenu ? this.renderModal(this.state.modalRoot) : (<>&#8942;</>)}
-                </MenuIcon>
-            </StyledEditMenu>
-        );
-    }
-}
+export const EditMenu: StyledComponent<React.FC<ModalProps>, DefaultTheme> = styled(EditMenuComponent)`
+    display: none;
+`;

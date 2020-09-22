@@ -1,7 +1,17 @@
-import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../configs/style.configs';
+import styled, { StyledComponent, DefaultTheme, ThemeProps } from 'styled-components';
 
-export const MenuIcon: StyledComponent<'div', {}> = styled.div`
+type IconProps = {
+    className?: string,
+    onClick: (event: React.MouseEvent) => void
+};
+
+const MenuIconComponent: React.FC<IconProps> = ({className, onClick}: IconProps) => (
+    <div onClick={onClick} className={className}>
+        &#8942;
+    </div>
+);
+
+export const MenuIcon: StyledComponent<React.FC<IconProps>, DefaultTheme> = styled(MenuIconComponent)`
     position: absolute;
     border-radius: 50%;
     top: 16px;
@@ -14,8 +24,8 @@ export const MenuIcon: StyledComponent<'div', {}> = styled.div`
     font-size: 16px;
     justify-content: center;
     align-items: center;
-    background-color: ${stylesConfig.colors.black};
+    background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.black};
     &:hover {
-        background-color: ${stylesConfig.colors.pink};
+        background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.pink};
     }
 `;

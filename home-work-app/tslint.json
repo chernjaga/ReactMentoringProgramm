@@ -1,10 +1,16 @@
 {
-    "extends": "tslint:recommended",
+    "extends": [
+        "tslint:latest", "tslint-react", "tslint-clean-code", "tslint-config-prettier"
+    ],
     "rules": {
         "max-line-length": {
             "options": [120]
         },
         "new-parens": true,
+        "arrow-parens": true,
+        "prefer-dry-conditionals": true,
+        "no-map-without-usage": true,
+        "align": [true, "parameters", "statements"],
         "no-arg": true,
         "no-bitwise": true,
         "no-conditional-assignment": true,
@@ -13,8 +19,10 @@
         "no-duplicate-variable": [true, "check-parameters"],
         "no-return-await": true,
         "array-type": [true, "array-simple"],
+        "no-implicit-dependencies": [true, "dev"],
         "newline-before-return": true,
         "no-trailing-whitespace": true,
+        "import-spacing": true,
         "semicolon": [true, "always", "ignore-bound-class-methods"],
         "whitespace": [true, "check-branch", "check-operator", "check-typecast"],
         "no-console": {
@@ -23,9 +31,7 @@
         },
         "no-any": true,
         "promise-function-async": [
-            true,
-            "check-function-declaration",
-            "check-method-declaration"
+            true
         ],
         "typedef": [
             true,
@@ -33,11 +39,20 @@
             "arrow-parameter",
             "variable-declaration",
             "member-variable-declaration"
-        ]
+        ],
+        "jsx-curly-spacing ": [
+            "always"
+        ],
+        "jsx-no-multiline-js": false,
+        "jsx-self-close": true,
+        "jsx-wrap-multiline": true,
+        "jsx-boolean-value": false,
+        "jsx-no-bind": false
     },
     "jsRules": {
         "max-line-length": {
             "options": [120]
-        }
+        },
+        "no-trailing-whitespace": true
     }
 }

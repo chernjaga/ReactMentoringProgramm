@@ -1,5 +1,4 @@
-import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../../configs/style.configs';
+import styled, { StyledComponent, DefaultTheme, ThemeProps } from 'styled-components';
 
 export const EditForm: StyledComponent<'form', {}> = styled.form`
     font-size: 1rem;
@@ -11,20 +10,22 @@ export const EditFormFieldset: StyledComponent<'fieldset', {}> = styled.fieldset
 export const EditFormLegend: StyledComponent<'legend', {}> = styled.legend`
     margin: 0 auto;
     border: none;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    margin-bottom: 16px;
 `;
 export const Label: StyledComponent<'label', {}> = styled.label`
     display: block;
-    color: ${stylesConfig.colors.pink};
-    font-size: 1rem;
+    color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.pink};
+    font-size: 1.2rem;
     margin-bottom: 8px;
     font-weight: 100;
 `;
 
 export const Input: StyledComponent<'input', {}> = styled.input`
     width: 100%;
-    background-color: ${stylesConfig.colors.grayTint1};
+    background-color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.grayTint1};
     font-size: 1rem;
     padding: 8px;
     box-sizing: border-box;
+    margin-bottom: 16px;
 `;

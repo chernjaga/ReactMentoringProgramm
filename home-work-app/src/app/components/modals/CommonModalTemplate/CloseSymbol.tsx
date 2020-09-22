@@ -1,17 +1,21 @@
-import styled, { StyledComponent } from 'styled-components';
-import { stylesConfig } from '../../../configs/style.configs';
+import styled, { StyledComponent, ThemeProps, DefaultTheme } from 'styled-components';
 
-const StyledWrapper: StyledComponent<'span', {}> = styled.span`
+type CloseSymbolProps = {
+    onClick: (event: React.MouseEvent) => void,
+    className?: string
+};
+
+const CloseSymbolWrapper: React.FC<CloseSymbolProps> = ({className, onClick}: CloseSymbolProps) => (
+    <span className={className} onClick={onClick}>
+        +
+    </span>
+);
+
+export const CloseSymbol: StyledComponent<React.FC<CloseSymbolProps>, DefaultTheme> = styled(CloseSymbolWrapper)`
     transform: rotateZ(45deg);
     display: inline-block;
     cursor: pointer;
     &:hover {
-        color: ${stylesConfig.colors.pink}
+        color: ${({theme}:ThemeProps<DefaultTheme>) => theme.colors.pink}
     }
 `;
-
-export const CloseSymbol: React.FC = () => (
-    <StyledWrapper>
-        +
-    </StyledWrapper>
-);

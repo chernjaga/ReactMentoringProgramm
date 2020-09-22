@@ -1,11 +1,7 @@
-import { Logo } from '../../../components/Logo';
-import styled, { StyledComponent }  from 'styled-components';
-import { stylesConfig } from '../../../configs/style.configs';
+import { Logo } from '../../../components/Logo/Logo';
+import styled, { StyledComponent, ThemeProps, DefaultTheme } from 'styled-components';
 import { AddMovieLink } from './AddMovieLink/AddMovieLink';
 import { SearchForm } from './SearchForm/SearchForm';
-
-const logoColor: string = stylesConfig.colors.pink;
-const sideOffset: string = stylesConfig.offsets.sideOffset;
 
 const HeaderWrapper: StyledComponent<'header', {}> = styled.header.attrs({
     role: 'header'
@@ -15,8 +11,8 @@ const HeaderWrapper: StyledComponent<'header', {}> = styled.header.attrs({
 `;
 
 const HeaderDarkCover: StyledComponent<'div', {}> = styled.div`
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 16px ${sideOffset};
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 16px ${({theme}: ThemeProps<DefaultTheme>) => theme.offsets.sideOffset};
     backdrop-filter: blur(2px);
     position: relative;
 `;
@@ -32,8 +28,8 @@ export const Header: React.FC = () => (
     <HeaderWrapper>
         <HeaderDarkCover>
             <HeaderTopLine>
-                <Logo logoColor={logoColor}/>
-                <AddMovieLink></AddMovieLink>
+                <Logo/>
+                <AddMovieLink/>
             </HeaderTopLine>
             <SearchForm/>
         </HeaderDarkCover>

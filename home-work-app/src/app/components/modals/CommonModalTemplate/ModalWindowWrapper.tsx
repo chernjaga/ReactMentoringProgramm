@@ -1,4 +1,4 @@
-import styled, { StyledComponent }  from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 
 export const ModalWindowWrapper: StyledComponent<'div', {}> = styled.div`
     position: fixed;
@@ -9,4 +9,6 @@ export const ModalWindowWrapper: StyledComponent<'div', {}> = styled.div`
     z-index: 2;
     overflow: auto;
     background-color: rgba(35, 35, 35, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
 `;

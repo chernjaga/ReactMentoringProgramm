@@ -12,20 +12,17 @@ const formFields: string[] = [
     'OVERVIEW',
     'RUNTIME'
 ];
-export class EditModal extends React.PureComponent<EditMenuProps> {
-    props: EditMenuProps;
 
-    closeHandler(event: React.MouseEvent): void {
-        this.props.onClose(event);
+export const EditModal: React.FC<EditMenuProps> = (props: EditMenuProps) => {
+    const closeHandler: React.MouseEventHandler = (event: React.MouseEvent) => {
+        props.onClose(event);
         event.stopPropagation();
-    }
+    };
 
-    render(): JSX.Element {
-        return (
-            <CommonModalTemplate onClose={this.closeHandler.bind(this)}>
-                <MovieForm legend={formLegend}
-                           fields={formFields}/>
-            </CommonModalTemplate>
-        );
-    }
-}
+    return (
+        <CommonModalTemplate onClose={closeHandler}>
+            <MovieForm legend={formLegend}
+                       fields={formFields}/>
+        </CommonModalTemplate>
+    );
+};

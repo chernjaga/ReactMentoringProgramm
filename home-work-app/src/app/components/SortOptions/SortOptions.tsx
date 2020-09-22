@@ -1,18 +1,27 @@
 import { StyledSortOptions, Select, Option } from './SortOptionsStyleSet.styled';
 
 type SortProps = {
-    values: string[]
+    values: string[],
+    onValueChange: (value: string) => void
 };
 
-export const SortOptions: React.FC<SortProps> = (props: SortProps) => (
-    <StyledSortOptions>
-        Sort By:
-        <Select>
-            {props.values.map((value: string): JSX.Element => (
-                <Option value={value} key={value}>
-                    {value}
-                </Option>
-            ))}
-        </Select>
-    </StyledSortOptions>
-);
+type ChangeEventType = (event: React.ChangeEvent<HTMLSelectElement>) => void;
+
+export const SortOptions: React.FC<SortProps> = ({values, onValueChange}: SortProps) => {
+    const handleChange: ChangeEventType = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        onValueChange(event.target.value.toLocaleLowerCase());
+    };
+
+    return (
+        <StyledSortOptions>
+            Sort By:
+            <Select onChange={handleChange} defaultValue="TITLE">
+                {values.map((value: string): JSX.Element => (
+                    <Option value={value} key={value}>
+                        {value}
+                    </Option>
+                ))}
+            </Select>
+        </StyledSortOptions>
+    );
+};

@@ -8,25 +8,21 @@ type CommonModalProps = {
     onClose: (event: React.MouseEvent) => void
 };
 
-export class CommonModalTemplate extends React.PureComponent<CommonModalProps> {
-    closeHandler(event: React.MouseEvent): void {
-        this.props.onClose(event);
+export const CommonModalTemplate: React.FC<CommonModalProps> = (props: CommonModalProps) => {
+    const closeHandler: React.MouseEventHandler = (event: React.MouseEvent) => {
+        props.onClose(event);
         event.stopPropagation();
         event.preventDefault();
-    }
+    };
 
-    render(): JSX.Element {
-        return (
-            <ModalWindowWrapper>
-                <StyledModal>
-                    <ModalHeader>
-                        <span onClick={this.closeHandler.bind(this)}>
-                            <CloseSymbol/>
-                        </span>
-                    </ModalHeader>
-                    {(this.props.children)}
-                </StyledModal>
-            </ModalWindowWrapper>
-        );
-    }
-}
+    return (
+        <ModalWindowWrapper>
+            <StyledModal>
+                <ModalHeader>
+                    <CloseSymbol onClick={closeHandler}/>
+                </ModalHeader>
+                {(props.children)}
+            </StyledModal>
+        </ModalWindowWrapper>
+    );
+};

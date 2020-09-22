@@ -1,30 +1,20 @@
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import { ReactNode, useEffect } from 'react';
 
 type ModalPortalProps = {
-    modalRoot: HTMLElement
+    modalRoot: HTMLElement,
+    children: ReactNode
 };
-export class ModalPortal extends React.Component<ModalPortalProps> {
-    modalContainer: HTMLElement;
 
-    constructor(props: ModalPortalProps) {
-        super(props);
-        this.modalContainer = document.createElement('div');
-    }
+export const ModalPortal: React.FC<ModalPortalProps> = ( props: ModalPortalProps ) => {
+    const modalContainer: HTMLElement = document.createElement( 'div' );
+    useEffect( (): () => void => {
+        props.modalRoot.appendChild( modalContainer );
 
-    componentDidMount(): void {
-        if (this.props.modalRoot === document.body) {
-            $('#root').addClass('blurred');
-        }
-        this.props.modalRoot.appendChild(this.modalContainer);
-    }
+        return () => {
+            props.modalRoot.appendChild( modalContainer );
+        };
+    }, [] );
 
-    componentWillUnmount(): void {
-        this.props.modalRoot.removeChild(this.modalContainer);
-        $('#root').removeClass('blurred');
-    }
-
-    render(): JSX.Element {
-        return ReactDOM.createPortal(this.props.children, this.modalContainer);
-    }
-}
+    return ReactDOM.createPortal( props.children, modalContainer );
+};
