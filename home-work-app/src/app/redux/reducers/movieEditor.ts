@@ -1,8 +1,11 @@
+import { store } from '../store';
+
 type EditorState = {
     currentAction: string,
+    movieId?: number | string
 };
 
-type EditorEction = {
+type EditorAction = {
     type: string,
     payload: {
         [key: string]: string | number
@@ -11,21 +14,29 @@ type EditorEction = {
 
 type Reducer = (
     state: EditorState,
-    action: EditorEction
+    action: EditorAction
 ) => EditorState;
 
-const deleteHandler: (payload: any) => void = (payload) => {
-    console.log(payload);
+const getDeleteState: (id: string | number) => EditorState = (id: string | number): EditorState => {
+    const currentState: EditorState = {
+        currentAction: 'delete',
+        movieId: id
+    };
+
+    return currentState;
 };
 
 const initialEditState: EditorState = {
-    currentAction: 'init'
+    currentAction: 'initial'
 };
 
-export const movieEditor: Reducer = (state: EditorState = initialEditState, action: EditorEction) => {
+export const movieEditor: Reducer = (state: EditorState = initialEditState, action: EditorAction): EditorState => {
     switch (action.type.toUpperCase()) {
-        case 'DELETE': deleteHandler(action.payload);
+        case 'DELETE': 
+            return getDeleteState(action.payload.movieId);
+        default:
+            return {
+                currentAction: 'initial'
+            };
     }
-
-    return state;
 };

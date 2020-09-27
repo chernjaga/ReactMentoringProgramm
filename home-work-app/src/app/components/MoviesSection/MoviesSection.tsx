@@ -4,12 +4,18 @@ import { MoviesList } from './MoviesList';
 import { MoviesListContainer } from './MoviesListContainer.styled';
 import { ItemsFound } from './ItemsFound';
 import { MoviesListStyled } from './MoviesList.styled';
-import { FilterItems } from '../../types';
+import { FilterItems, IAppConstants } from '../../types';
 import { MovieService } from '../../services/MovieService';
 import { IApiResponse } from '../../interfaces/IApiResponse';
 import { useEffect, useState } from 'react';
 import { Spinner } from '../Spinner/Spinner';
 import { store } from '../../redux/store';
+import { remove } from 'lodash';
+
+type DeleteHandler = (
+    collection: IApiResponse.GetMoviesResponse,
+    id: string
+) => IApiResponse.GetMoviesResponse;
 
 const filterItems: FilterItems = [
     {
@@ -39,17 +45,34 @@ const filterItems: FilterItems = [
     }
 ];
 
+const getMoviesWithoutRemoved: DeleteHandler = (collection: IApiResponse.GetMoviesResponse, id: string) => {
+    // tslint:disable-next-line: no-any
+    const currentCollection: any =
+        remove(collection.data, (item: IApiResponse.IMovie) => item.id.toString() === id);
+
+    return currentCollection;
+};
+
 export const MoviesSection: React.FC = () => {
     const [movies, setMovies] = useState(null);
     store.subscribe(() => {
-        setMovies(store.getState().fetch.currentMovies);
+        const currentAction: string = store.getState().edit.currentAction;
+
+        switch (currentAction) {
+            case 'delete': setMovies(getMoviesWithoutRemoved(
+                    store.getState().fetch.currentMovies,
+                    store.getState().edit.movieId
+                )
+            );
+            default: setMovies(store.getState().fetch.currentMovies);
+        }
     });
 
     return (
         <MoviesListStyled>
             <FilterPanel filterItems={filterItems} />
             {
-                movies ?
+                movies && movies.data ?
                 (
                     <>
                         <ItemsFound amount={movies.data.length} />
@@ -62,7 +85,7 @@ export const MoviesSection: React.FC = () => {
                 ) :
                 (
                     <div>
-                        SEARCHING <Spinner size={8}/>
+                        SEARCHING <Spinner size={12}/>
                     </div>
                 )
             }

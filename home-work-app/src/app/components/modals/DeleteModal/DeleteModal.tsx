@@ -2,7 +2,7 @@ import { CommonModalTemplate } from '../CommonModalTemplate/CommonModalTemplate'
 import { ButtonPanel, Button } from '../CommonModalTemplate/ButtonPanel.styled';
 import { EditMenuProps } from '../../../types';
 import { DeleteModalHeader } from './DeleteModalHeader.styled';
-import { store } from '../../../redux/store';
+import { MovieService } from '../../../services/MovieService';
 
 export const DeleteModal: React.FC<EditMenuProps> = (props: EditMenuProps) => {
     const closeHandler: React.MouseEventHandler = (event: React.MouseEvent) => {
@@ -11,12 +11,7 @@ export const DeleteModal: React.FC<EditMenuProps> = (props: EditMenuProps) => {
     };
 
     const deleteHandler: React.MouseEventHandler = (event: React.MouseEvent) => {
-        store.dispatch({
-            type: 'delete',
-            payload: {
-                movieId: props.movieId
-            }
-        });
+        MovieService.movieActionRequest(`${props.movieId}`, 'removeItem');
         closeHandler(event);
     };
 

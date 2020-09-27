@@ -11,13 +11,30 @@ import { MovieDetailsTitle } from './MovieDetailsTitle.styled';
 import { MovieDetailsTagline } from './MovieDetailsTagline.styled';
 import { MovieDetailsTimeData } from './MovieDetailsTimeData.styled';
 import { MovieDetailsOverview } from './MovieDetailsOverview.styled';
+import { MovieService } from '../../../../services/MovieService';
+import { useState, useEffect } from 'react';
 
-const movieCollection: IApiResponse.IMovie[] = movieResponse.data;
+// const movieCollection: IApiResponse.IMovie[] = movieResponse.data;
 
 export const Description: React.FC = () =>
 {
     const { id }: {id: string} = useParams();
-    const movie: IApiResponse.IMovie = find( movieCollection, { id: Number( id ) } );
+    const [movie, setMovie] = useState({
+        title: null,
+        poster_path: null,
+        vote_average: null,
+        tagline: null,
+        release_date: null,
+        runtime: null,
+        overview: null
+    });
+
+    useEffect(() => {
+        MovieService.movieActionRequest(id).then((response: IApiResponse.IMovie) => {
+            setMovie(response);
+        });
+    }, [movie]);
+
     const {
         title,
         overview,

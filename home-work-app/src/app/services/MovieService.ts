@@ -10,6 +10,7 @@ export class MovieService {
         let method: string;
         switch (command) {
             case 'createMovieItem': method = 'POST';
+            case 'removeItem': method = 'DELETE';
             default: method = 'GET';
         }
 
@@ -27,7 +28,7 @@ export class MovieService {
         if (params && Object.keys(params).length) {
             url = url + '?';
             forIn(params, (value: string | number | string[] , key: string): void => {
-                url = url + `${key}=${value}&`;
+                url = url + `${key}=${value}&sortOrder=desc&limit=20`;
             });
         }
 
@@ -45,6 +46,27 @@ export class MovieService {
         store.dispatch({
             type: 'UPDATE',
             payload: response
+        });
+
+        return response;
+    }
+
+    static async movieActionRequest(id: string, command?: string): Promise<IApiResponse.IMovie> {
+        const response: IApiResponse.IMovie = await fetch(
+            `${this.apiUrl}/${id}`,
+            this.getRequestConfig(command)
+        ).then((fetchedData: Response): Promise<IApiResponse.IMovie> => fetchedData.json());
+        if (command === 'removeItem') {
+            store.dispatch({
+                type: 'DELETE',
+                payload: {
+                    movieId: id
+                }
+            });
+        }
+
+        store.dispatch({
+            type: 'initial',
         });
 
         return response;

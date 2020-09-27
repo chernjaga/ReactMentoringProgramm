@@ -24,11 +24,21 @@ type RequestParams = {
 };
 
 export const FilterPanel: React.FC<{filterItems: FilterItems}> = (props: {filterItems: FilterItems}) => {
-    const [sortByParam, setSortByParam] = useState('');
+    const [sortByParam, setSortByParam] = useState('title');
     const [filterByParam, setFilterByParam] = useState('');
     const [selectedItemKey, setSelectedItemKey] = useState(1);
 
-    const setFilterValue: (filterValue: string, key: number) => void = (filterValue: string, key: number) => {
+    const setFilterValue: (
+        filterValue: string,
+        key: number,
+        event: React.MouseEvent
+    ) => void = (
+        filterValue: string,
+        key: number,
+        event: React.MouseEvent
+    ) => {
+        event.stopPropagation();
+        event.preventDefault();
         setSelectedItemKey(key);
         setFilterByParam(filterValue);
         changeListHandler(sortByParam, filterByParam);
