@@ -9,6 +9,7 @@ import { MovieService } from '../../services/MovieService';
 import { IApiResponse } from '../../interfaces/IApiResponse';
 import { useEffect, useState } from 'react';
 import { Spinner } from '../Spinner/Spinner';
+import { store } from '../../redux/store';
 
 const filterItems: FilterItems = [
     {
@@ -19,7 +20,7 @@ const filterItems: FilterItems = [
     {
         title: 'DOCUMENTARY',
         key: 2,
-        label: 'doc'
+        label: 'documentary'
     },
     {
         title: 'COMEDY',
@@ -40,10 +41,9 @@ const filterItems: FilterItems = [
 
 export const MoviesSection: React.FC = () => {
     const [movies, setMovies] = useState(null);
-    useEffect(() => {
-        MovieService.getMovies({limit: 20})
-            .then((collection: IApiResponse.GetMoviesResponse) => setMovies(collection));
-    }, []); // search will be updated
+    store.subscribe(() => {
+        setMovies(store.getState().fetch.currentMovies);
+    });
 
     return (
         <MoviesListStyled>

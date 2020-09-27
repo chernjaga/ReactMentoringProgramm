@@ -1,16 +1,26 @@
+import { IApiResponse } from '../../interfaces/IApiResponse';
+
 type FetchState = {
-    isRefreshed: boolean
+    currentMovies: IApiResponse.IMovie[]
 };
 
+type FetchAction = {
+    type: string,
+    payload: IApiResponse.IMovie[]
+};
 type Reducer = (
-    state: FetchState
+    state: FetchState,
+    action: FetchAction
 ) => FetchState;
 
-export const initialFetchState: FetchState = {
-    isRefreshed: false
+const initialFetchState: FetchState = {
+    currentMovies: [],
 };
 
-export const fetchMovies: Reducer = (state: FetchState = initialFetchState) => {
+export const fetchMovies: Reducer = (state: FetchState = initialFetchState, action: FetchAction) => {
+    if (action.type === 'UPDATE') {
+        state.currentMovies = action.payload;
+    }
 
     return state;
 };

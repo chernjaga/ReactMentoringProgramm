@@ -9,7 +9,7 @@ type ChangeEventType = (event: React.ChangeEvent<HTMLSelectElement>) => void;
 
 export const SortOptions: React.FC<SortProps> = ({values, onValueChange}: SortProps) => {
     const handleChange: ChangeEventType = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        onValueChange(event.target.value.toLocaleLowerCase());
+        onValueChange(event.target.value);
     };
 
     return (

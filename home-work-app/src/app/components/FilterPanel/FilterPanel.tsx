@@ -2,20 +2,33 @@ import { SortOptions } from '../SortOptions/SortOptions';
 import { StyledFilterPanel, FilterOptions, FilterOptionItem , SelectedFilterOptionItem} from './FilterPanelStyleSet.styled';
 import { FilterItems, FilterConfigItem } from '../../types';
 import React, { useCallback, useState } from 'react';
+import { MovieService } from '../../services/MovieService';
 
 const sortOptions: string[] = [
     'RELEASE',
     'TITLE',
-    'GENRE',
-    'YEAR'
+    'RATING'
 ];
 
+const sortMap: {
+    [key: string]: string
+} = {
+    release: 'release_date',
+    title: 'title',
+    rating: 'vote_average'
+};
+
+type RequestParams = {
+    sortBy: string,
+    filter?: string[]
+};
+
 export const FilterPanel: React.FC<{filterItems: FilterItems}> = (props: {filterItems: FilterItems}) => {
-    const [sortByParam, setSortByParam] = useState('title');
-    const [filterByParam, setFilterByParam] = useState('all');
+    const [sortByParam, setSortByParam] = useState('');
+    const [filterByParam, setFilterByParam] = useState('');
     const [selectedItemKey, setSelectedItemKey] = useState(1);
 
-    const setFilterValue: (sortValue: string, key: number) => void = (filterValue: string, key: number) => {
+    const setFilterValue: (filterValue: string, key: number) => void = (filterValue: string, key: number) => {
         setSelectedItemKey(key);
         setFilterByParam(filterValue);
         changeListHandler(sortByParam, filterByParam);
@@ -32,9 +45,15 @@ export const FilterPanel: React.FC<{filterItems: FilterItems}> = (props: {filter
         sortBy: string,
         filterBy: string
     ): void => {
-        // do something
-        // console.log(sortBy, filterBy);
-    }, [sortByParam, filterByParam]);
+        const requestParams: RequestParams = {
+            sortBy: sortMap[sortBy.toLowerCase()]
+        };
+        if (filterBy !== 'all') {
+            requestParams.filter = [filterBy];
+        }
+        MovieService.getMovies(requestParams);
+
+    }, []);
 
     return (
         <StyledFilterPanel>
