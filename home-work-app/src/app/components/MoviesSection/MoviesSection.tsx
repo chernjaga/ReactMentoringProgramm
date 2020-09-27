@@ -65,6 +65,7 @@ export const MoviesSection: React.FC = () => {
                     store.getState().edit.movieId
                 )
             );
+            case 'add': console.log('add');
             default: setMovies(store.getState().fetch.currentMovies);
         }
     });

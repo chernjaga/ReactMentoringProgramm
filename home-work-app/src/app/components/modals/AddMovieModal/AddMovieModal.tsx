@@ -21,6 +21,7 @@ export const AddMovieModal: React.FC<EditMenuProps> = (props: EditMenuProps) => 
     return (
         <CommonModalTemplate onClose={closeHandler}>
             <MovieForm legend={formLegend}
+                       closeHandler={closeHandler}
                        fields={formFields}/>
         </CommonModalTemplate>
     );
