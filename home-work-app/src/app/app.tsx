@@ -14,7 +14,7 @@ type App = () => void;
 const ROOT_ELEMENT: HTMLElement = document.getElementById('root');
 
 const AppBody: React.FC = () => {
-    MovieService.getMovies({limit: 20});
+    MovieService.getMovies({limit: 20, sortBy: 'title'});
 
     return (
         <AppCatch>

@@ -55,6 +55,7 @@ const getMoviesWithoutRemoved: DeleteHandler = (collection: IApiResponse.GetMovi
 
 export const MoviesSection: React.FC = () => {
     const [movies, setMovies] = useState(null);
+
     store.subscribe(() => {
         const currentAction: string = store.getState().edit.currentAction;
 
@@ -85,7 +86,7 @@ export const MoviesSection: React.FC = () => {
                 ) :
                 (
                     <div>
-                        SEARCHING <Spinner size={12}/>
+                        SEARCHING <Spinner size={8}/>
                     </div>
                 )
             }

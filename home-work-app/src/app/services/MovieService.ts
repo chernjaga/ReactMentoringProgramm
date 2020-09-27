@@ -28,7 +28,11 @@ export class MovieService {
         if (params && Object.keys(params).length) {
             url = url + '?';
             forIn(params, (value: string | number | string[] , key: string): void => {
-                url = url + `${key}=${value}&sortOrder=desc&limit=20`;
+                let sortDirection: string = 'desc';
+                if (key === 'sortBy' && value === 'title') {
+                    sortDirection = 'acs';
+                }
+                url = url + `${key}=${value}&sortOrder=${sortDirection}&limit=20&`;
             });
         }
 
