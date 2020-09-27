@@ -43,7 +43,7 @@ export const MoviesSection: React.FC = () => {
     useEffect(() => {
         MovieService.getMovies({limit: 20})
             .then((collection: IApiResponse.GetMoviesResponse) => setMovies(collection));
-    }, [movies]); // search will be updated
+    }, []); // search will be updated
 
     return (
         <MoviesListStyled>

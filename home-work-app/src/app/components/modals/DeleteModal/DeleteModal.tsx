@@ -9,6 +9,10 @@ export const DeleteModal: React.FC<EditMenuProps> = (props: EditMenuProps) => {
         event.stopPropagation();
     };
 
+    const deleteHandler: React.MouseEventHandler = (event: React.MouseEvent) => {
+        console.log('DELETE');
+    };
+
     return  (
         <CommonModalTemplate onClose={closeHandler}>
             <>
@@ -19,7 +23,7 @@ export const DeleteModal: React.FC<EditMenuProps> = (props: EditMenuProps) => {
                     Are you sure you want to delete this movie?
                 </p>
                 <ButtonPanel>
-                    <Button buttonTheme="saveButton">CANCEL</Button>
+                    <Button buttonTheme="saveButton" onClick={deleteHandler}>DELETE</Button>
                 </ButtonPanel>
             </>
         </CommonModalTemplate>

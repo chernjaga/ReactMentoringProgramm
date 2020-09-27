@@ -7,6 +7,7 @@ import { MovieCardTitle } from './Title.styled';
 import { MovieCardGenres } from './Genres.styled';
 import { MovieCardYear } from './Year.styled';
 import { YearBorder } from './YearBorder.styled';
+import { SyntheticEvent } from 'react';
 
 type CardProps = {
     title: string,
