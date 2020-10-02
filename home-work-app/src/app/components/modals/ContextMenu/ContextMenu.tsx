@@ -10,6 +10,7 @@ import { useState } from 'react';
 type MenuProps = {
     menuItems: string[],
     movieId: number,
+    onMovieDelete: any,
     closeIconSize: number,
     onCloseMenu: (event: React.MouseEvent) => void
 };
@@ -59,7 +60,7 @@ export const ContextMenu: React.FC<MenuProps> = (props: MenuProps) => {
             case 'DELETE':
                 return (
                     <ModalPortal modalRoot={modalRoot}>
-                        <DeleteModal movieId={movieId} onClose={closeModal} />
+                        <DeleteModal movieId={movieId} onClose={closeModal} onMovieDelete={onMovieDelete}/>
                     </ModalPortal>
                 );
         }

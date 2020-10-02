@@ -11,6 +11,8 @@ import { useEffect, useState } from 'react';
 import { Spinner } from '../Spinner/Spinner';
 import { store } from '../../redux/store';
 import { remove } from 'lodash';
+import { connect } from 'react-redux';
+import { deleteMovieAction } from '../../redux/actions/deleteMovie'
 
 type DeleteHandler = (
     collection: IApiResponse.GetMoviesResponse,
@@ -53,22 +55,16 @@ const getMoviesWithoutRemoved: DeleteHandler = (collection: IApiResponse.GetMovi
     return currentCollection;
 };
 
-export const MoviesSection: React.FC = () => {
+const mapStateToProps: any = (state: any): any => ({
+    moviesCollection: state.editMoviesCollection.movies,
+});
+
+const mapDispatchToProps: any = {
+    deleteMovie: deleteMovieAction
+};
+
+const MoviesSectionComponent: React.FC<any> = ({ moviesCollection, deleteMovie }) => {
     const [movies, setMovies] = useState(null);
-
-    store.subscribe(() => {
-        const currentAction: string = store.getState().edit.currentAction;
-
-        switch (currentAction) {
-            case 'delete': setMovies(getMoviesWithoutRemoved(
-                    store.getState().fetch.currentMovies,
-                    store.getState().edit.movieId
-                )
-            );
-            case 'add': console.log('add');
-            default: setMovies(store.getState().fetch.currentMovies);
-        }
-    });
 
     return (
         <MoviesListStyled>
@@ -80,7 +76,7 @@ export const MoviesSection: React.FC = () => {
                         <ItemsFound amount={movies.data.length} />
                         <MoviesListContainer>
                             <MoviesListCatch>
-                                <MoviesList response={movies} />
+                                <MoviesList moviesList={movies} onMovieDelete={deleteMovie}/>
                             </MoviesListCatch>
                         </MoviesListContainer>
                     </>
@@ -94,3 +90,7 @@ export const MoviesSection: React.FC = () => {
         </MoviesListStyled>
     );
 };
+
+export const MoviesSection: any = connect(mapStateToProps, mapDispatchToProps)(MoviesSectionComponent);
+
+// перенести в moviesList компоненты MoviesListCatch и ItemsFound.

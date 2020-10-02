@@ -5,13 +5,14 @@ import styled, { StyledComponent, DefaultTheme } from 'styled-components';
 
 type ModalProps = {
     movieId: number,
-    className?: string
+    className?: string,
+    onMovieDelete: any
 };
 
 const menuItems: string[] = ['EDIT', 'DELETE'];
 const closeIconSize: number = 1;
 
-const EditMenuComponent: React.FC<ModalProps> = ({className, movieId}: ModalProps) => {
+const EditMenuComponent: React.FC<ModalProps> = ({ className, movieId, onMovieDelete}: ModalProps) => {
     const [isVisibleMenu, setIsVisibleMenu] = useState(false);
 
     const toggleModal: React.MouseEventHandler = (event?: React.MouseEvent) => {
@@ -25,6 +26,7 @@ const EditMenuComponent: React.FC<ModalProps> = ({className, movieId}: ModalProp
             {isVisibleMenu ? (
                     <ContextMenu menuItems={menuItems}
                                 closeIconSize={closeIconSize}
+                                onMovieDelete={onMovieDelete}
                                 movieId={movieId}
                                 onCloseMenu={toggleModal}
                     />

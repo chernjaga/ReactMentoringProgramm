@@ -5,5 +5,5 @@ import { movieEditor } from './reducers/movieEditor';
 // export const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
 export const store: Store = createStore(combineReducers({
     fetch: fetchMovies,
-    edit: movieEditor
+    editMoviesCollection: movieEditor
 }));

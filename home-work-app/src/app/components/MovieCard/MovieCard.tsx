@@ -15,16 +15,17 @@ type CardProps = {
     genres: string[],
     coverUrl: string,
     id: number,
+    onMovieDelete: any,
     key?: number
 };
 
-export const MovieCard: React.FC<CardProps> = ({id, coverUrl, title, genres, releaseDate}: CardProps) => (
+export const MovieCard: React.FC<CardProps> = ({ id, coverUrl, title, genres, releaseDate, onMovieDelete }: CardProps) => (
     <ListItem>
         <Link to={`/movie/${id}`}>
             <StyledCard>
                 <MovieCardPoster>
                     <img src={coverUrl} alt={title}/>
-                    <EditMenu movieId={id}/>
+                    <EditMenu movieId={id} onMovieDelete={onMovieDelete}/>
                 </MovieCardPoster>
 
                 <MovieCardTitle>

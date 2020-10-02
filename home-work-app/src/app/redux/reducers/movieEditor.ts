@@ -32,11 +32,12 @@ const initialEditState: EditorState = {
 
 export const movieEditor: Reducer = (state: EditorState = initialEditState, action: EditorAction): EditorState => {
     switch (action.type.toUpperCase()) {
-        case 'DELETE': 
-            return getDeleteState(action.payload.movieId);
-        default:
+        case 'DELETE':
             return {
-                currentAction: 'initial'
+                ...state,
+                movies: state.movies.filter((movie: any): any => movie.id !== action.payload.id),
             };
+        default:
+            return state;
     }
 };

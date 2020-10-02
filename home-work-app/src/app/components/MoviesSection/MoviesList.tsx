@@ -1,23 +1,23 @@
-import { MovieCard } from '../MovieCard/MovieCard';
-import { IApiResponse } from '../../interfaces/IApiResponse';
+import { MovieCard } from "../MovieCard/MovieCard";
+import { IApiResponse } from "../../interfaces/IApiResponse";
 
 type MoviesProps = {
-    response: IApiResponse.GetMoviesResponse
+    moviesList: IApiResponse.GetMoviesResponse;
+    onMovieDelete: (id: number | string) => any;
 };
 
-export const MoviesList: React.FC<MoviesProps> = ( props: MoviesProps ) => (
+export const MoviesList: React.FC<MoviesProps> = ({ moviesList, onMovieDelete}) => (
     <>
-        {props.response.data.map(
-            ( movie: IApiResponse.IMovie ) => (
-                <MovieCard
-                    coverUrl={movie.poster_path}
-                    title={movie.title}
-                    releaseDate={movie.release_date}
-                    genres={movie.genres}
-                    id={movie.id}
-                    key={movie.id}
-                />
-            )
-        )}
+        {moviesList.data.map((movie: IApiResponse.IMovie) => (
+            <MovieCard
+                onMovieDelete={onMovieDelete}
+                coverUrl={movie.poster_path}
+                title={movie.title}
+                releaseDate={movie.release_date}
+                genres={movie.genres}
+                id={movie.id}
+                key={movie.id}
+            />
+        ))}
     </>
 );

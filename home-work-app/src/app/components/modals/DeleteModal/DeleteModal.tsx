@@ -4,14 +4,15 @@ import { EditMenuProps } from '../../../types';
 import { DeleteModalHeader } from './DeleteModalHeader.styled';
 import { MovieService } from '../../../services/MovieService';
 
-export const DeleteModal: React.FC<EditMenuProps> = (props: EditMenuProps) => {
+export const DeleteModal: React.FC<EditMenuProps> = ({ movieId, onClose, onMovieDelete}: EditMenuProps) => {
     const closeHandler: React.MouseEventHandler = (event: React.MouseEvent) => {
-        props.onClose(event);
+        onClose(event);
         event.stopPropagation();
     };
 
     const deleteHandler: React.MouseEventHandler = (event: React.MouseEvent) => {
-        MovieService.movieActionRequest(`${props.movieId}`, 'removeItem');
+        // MovieService.movieActionRequest(`${movieId}`, 'removeItem'); вынести в thunk
+        onMovieDelete(movieId);
         closeHandler(event);
     };
 
