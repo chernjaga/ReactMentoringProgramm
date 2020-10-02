@@ -2,13 +2,14 @@ import { MovieCard } from "../MovieCard/MovieCard";
 import { IApiResponse } from "../../interfaces/IApiResponse";
 
 type MoviesProps = {
-    moviesList: IApiResponse.GetMoviesResponse;
-    onMovieDelete: (id: number | string) => any;
+    moviesList: IApiResponse.IMovie[];
+    onMovieDelete: (id: number | string) => void;
 };
 
+// tslint:disable-next-line: typedef
 export const MoviesList: React.FC<MoviesProps> = ({ moviesList, onMovieDelete}) => (
     <>
-        {moviesList.data.map((movie: IApiResponse.IMovie) => (
+        {moviesList.map((movie: IApiResponse.IMovie) => (
             <MovieCard
                 onMovieDelete={onMovieDelete}
                 coverUrl={movie.poster_path}

@@ -1,5 +1,6 @@
 import { IMovieActions } from '../interfaces/IMovieActions';
 
 export type MapDispatchToProps = {
-    deleteMovie: IMovieActions.Remove
+    deleteMovie: IMovieActions.Remove,
+    update: IMovieActions.Update
 };

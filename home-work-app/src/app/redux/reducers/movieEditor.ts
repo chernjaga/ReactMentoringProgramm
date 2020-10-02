@@ -1,7 +1,11 @@
 import { IApiResponse } from '../../interfaces/IApiResponse';
 import { MovieAction, MovieActionReducer, MovieState } from '../../types';
 
-export const movieEditor: MovieActionReducer = (state: MovieState, action: MovieAction): MovieState => {
+const initialState: MovieState = {
+    movies: []
+};
+
+export const movieEditor: MovieActionReducer = (state: MovieState = initialState, action: MovieAction): MovieState => {
     switch (action.type.toUpperCase()) {
         case 'DELETE':
             return {
@@ -10,6 +14,7 @@ export const movieEditor: MovieActionReducer = (state: MovieState, action: Movie
             };
         case 'UPDATE':
             return {
+                ...state,
                 movies: action.movies
             };
         default:
