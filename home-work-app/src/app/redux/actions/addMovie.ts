@@ -1,9 +1,10 @@
 import { IApiResponse } from '../../interfaces/IApiResponse';
-import { AddAction, IMovieActions } from '../../interfaces/IMovieActions';
+import { IMovieActions } from '../../interfaces/IMovieActions';
+import { MovieAction } from '../../types';
 
-export const deleteMovie: IMovieActions.Add = (formData: IApiResponse.IMovie): AddAction => {
+export const add: IMovieActions.Add = (formData: IApiResponse.IMovie): MovieAction => {
     return {
-        type: 'ADD_ITEM',
-        payload: formData
+        type: 'ADD',
+        formData
     };
 };

@@ -4,66 +4,31 @@ import { MoviesList } from './MoviesList';
 import { MoviesListContainer } from './MoviesListContainer.styled';
 import { ItemsFound } from './ItemsFound';
 import { MoviesListStyled } from './MoviesList.styled';
-import { FilterItems, IAppConstants } from '../../types';
-import { MovieService } from '../../services/MovieService';
+import { FilterItems, GlobalState, IAppConstants, MapDispatchToProps, MapStateToProps, MovieState } from '../../types';
 import { IApiResponse } from '../../interfaces/IApiResponse';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Spinner } from '../Spinner/Spinner';
-import { store } from '../../redux/store';
-import { remove } from 'lodash';
 import { connect } from 'react-redux';
-import { deleteMovieAction } from '../../redux/actions/deleteMovie'
+import { deleteMovieAction } from '../../redux/actions/deleteMovie';
+import { AppConstants } from '../../configs/appConstants';
+import { IMovieActions } from '../../interfaces/IMovieActions';
 
-type DeleteHandler = (
-    collection: IApiResponse.GetMoviesResponse,
-    id: string
-) => IApiResponse.GetMoviesResponse;
-
-const filterItems: FilterItems = [
-    {
-        title: 'ALL',
-        key: 1,
-        label: 'all'
-    },
-    {
-        title: 'DOCUMENTARY',
-        key: 2,
-        label: 'documentary'
-    },
-    {
-        title: 'COMEDY',
-        key: 3,
-        label: 'comedy'
-    },
-    {
-        title: 'HORROR',
-        key: 4,
-        label: 'horror'
-    },
-    {
-        title: 'CRIME',
-        key: 5,
-        label: 'crime'
-    }
-];
-
-const getMoviesWithoutRemoved: DeleteHandler = (collection: IApiResponse.GetMoviesResponse, id: string) => {
-    // tslint:disable-next-line: no-any
-    const currentCollection: any =
-        remove(collection.data, (item: IApiResponse.IMovie) => item.id.toString() === id);
-
-    return currentCollection;
+type MoviesSectionProps = {
+    moviesCollection: IApiResponse.IMovie,
+    deleteMovie: IMovieActions.Remove
 };
 
-const mapStateToProps: any = (state: any): any => ({
-    moviesCollection: state.editMoviesCollection.movies,
+const filterItems: FilterItems = AppConstants.filterItems;
+
+const mapStateToProps: MapStateToProps = (state: GlobalState): {moviesCollection: IApiResponse.IMovie[]} => ({
+    moviesCollection: state.movieEditor.movies,
 });
 
-const mapDispatchToProps: any = {
+const mapDispatchToProps: MapDispatchToProps = {
     deleteMovie: deleteMovieAction
 };
 
-const MoviesSectionComponent: React.FC<any> = ({ moviesCollection, deleteMovie }) => {
+const MoviesSectionComponent: React.FC<MoviesSectionProps> = ({ moviesCollection, deleteMovie }) => {
     const [movies, setMovies] = useState(null);
 
     return (
@@ -91,6 +56,7 @@ const MoviesSectionComponent: React.FC<any> = ({ moviesCollection, deleteMovie }
     );
 };
 
-export const MoviesSection: any = connect(mapStateToProps, mapDispatchToProps)(MoviesSectionComponent);
+export const MoviesSection: React.FC<MoviesSectionProps> =
+    connect(mapStateToProps, mapDispatchToProps)(MoviesSectionComponent);
 
 // перенести в moviesList компоненты MoviesListCatch и ItemsFound.

@@ -1,9 +1,8 @@
-import { combineReducers, createStore, Store } from 'redux';
-import { fetchMovies } from './reducers/fetchMovies';
+import { applyMiddleware, combineReducers, createStore, Store } from 'redux';
+import thunk from 'redux-thunk';
 import { movieEditor } from './reducers/movieEditor';
 
 // export const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
 export const store: Store = createStore(combineReducers({
-    fetch: fetchMovies,
-    editMoviesCollection: movieEditor
-}));
+    movieEditor
+}), applyMiddleware(thunk));

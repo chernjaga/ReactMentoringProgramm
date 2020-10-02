@@ -1,8 +1,9 @@
-import { DeleteAction, IMovieActions } from '../../interfaces/IMovieActions';
+import { IMovieActions } from '../../interfaces/IMovieActions';
+import { MovieAction } from '../../types';
 
-export const deleteMovieAction: IMovieActions.Remove = (movieId: number): any => {
+export const deleteMovieAction: IMovieActions.Remove = (movieId: number): MovieAction => {
     return {
-        type: "DELETE",
+        type: 'DELETE',
         movieId,
     };
 };
