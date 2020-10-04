@@ -1,7 +1,6 @@
 import { forIn } from 'lodash';
 import { AppConstants } from '../configs/appConstants';
 import { IApiResponse } from '../interfaces/IApiResponse';
-import { store } from '../redux/store';
 
 export class MovieService {
     static apiUrl: string = AppConstants.apiConfig.url;
