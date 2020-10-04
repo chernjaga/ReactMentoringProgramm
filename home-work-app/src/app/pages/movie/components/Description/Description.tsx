@@ -1,5 +1,5 @@
 import { MovieDetails } from './MovieDetails';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { IApiResponse } from '../../../../interfaces/IApiResponse';
 import { MovieDetailsPoster } from './MovieDetailsPoster.styled';
 import { MovieDetailsContent } from './MovieDetailsContent.styled';
@@ -17,6 +17,7 @@ import { useState, useEffect } from 'react';
 export const Description: React.FC = () =>
 {
     const { id }: {id: string} = useParams();
+    const history: any = useHistory();
     const [movie, setMovie] = useState({
         title: null,
         poster_path: null,
@@ -28,7 +29,10 @@ export const Description: React.FC = () =>
     });
     useEffect(() => {
         MovieService.movieActionRequest({ id: Number.parseInt(id, 10)})
-        .then((response: IApiResponse.IMovie) => {
+        .then((response: any): void => {
+            if (response.status === 404) {
+                history.push('/home');
+            }
             setMovie(response);
         });
     }, [id]);

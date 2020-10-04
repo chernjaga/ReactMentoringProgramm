@@ -11,11 +11,12 @@ type MovieActionRequestParams = {
 export class MovieService {
     static apiUrl: string = AppConstants.apiConfig.url;
 
-    static getRequestConfig(command?: string, data?: {[key: string]: string | number}): IApiResponse.RequestConfig {
+    static getRequestConfig(command?: string, data?: IApiResponse.IMovie): IApiResponse.RequestConfig {
         let method: string;
         switch (command) {
             case 'ADD': method = 'POST'; break;
             case 'DELETE': method = 'DELETE'; break;
+            case 'EDIT': method = 'PUT'; break;
             default: method = 'GET';
         }
 
@@ -59,13 +60,17 @@ export class MovieService {
         id,
         command,
         formData
-    }: MovieActionRequestParams): Promise<IApiResponse.IMovie> {
-        const response: IApiResponse.IMovie = await fetch(
+    }: MovieActionRequestParams): Promise<IApiResponse.GetMoviesResponse> {
+        const response: IApiResponse.GetMoviesResponse = await fetch(
             `${this.apiUrl}/${id || ''}`,
             this.getRequestConfig(command, formData)
-        ).then((fetchedData: Response): any =>
-            fetchedData.status === 200 ? fetchedData.json() : fetchedData
-        );
+        ).then((fetchedData: IApiResponse.GetMoviesResponse):
+        Promise<IApiResponse.GetMoviesResponse> | IApiResponse.GetMoviesResponse => {
+            switch (fetchedData.status) {
+                case 200: return fetchedData.json();
+                case 204: return fetchedData;
+            }
+        });
 
         return response;
     }

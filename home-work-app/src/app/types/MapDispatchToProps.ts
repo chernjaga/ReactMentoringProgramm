@@ -5,4 +5,5 @@ export interface MapDispatchToProps {
     update?: IMovieActions.Update;
     setUpdated?: IMovieActions.setStatus;
     add?: IMovieActions.Add;
+    edit?: IMovieActions.Add;
 }

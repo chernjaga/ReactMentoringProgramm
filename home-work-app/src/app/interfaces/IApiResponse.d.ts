@@ -1,5 +1,5 @@
 export namespace IApiResponse {
-  export interface GetMoviesResponse {
+  export interface GetMoviesResponse extends Response {
     data: IMovie[];
     limit: number;
     offset: number;

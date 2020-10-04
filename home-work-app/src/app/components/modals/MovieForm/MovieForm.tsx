@@ -3,6 +3,7 @@ import { ButtonPanel, Button } from '../CommonModalTemplate/ButtonPanel.styled';
 import { MapDispatchToProps } from '../../../types';
 import { addMovie } from '../../../redux/actions/addMovie';
 import { connect } from 'react-redux';
+import { editMovie } from '../../../redux/actions/editMovie';
 
 interface MovieFormProps extends MapDispatchToProps {
     legend: string;
@@ -12,13 +13,15 @@ interface MovieFormProps extends MapDispatchToProps {
 }
 
 const mapDispatchToProps: MapDispatchToProps = {
-    add: addMovie
+    add: addMovie,
+    edit: editMovie
 };
 
 const MovieFormComponent: React.FC<MovieFormProps> = ({
     legend,
     fields,
     movieId,
+    edit,
     closeHandler,
     add
 }: MovieFormProps) => {
@@ -28,10 +31,16 @@ const MovieFormComponent: React.FC<MovieFormProps> = ({
     };
     const save: React.MouseEventHandler = (event: React.MouseEvent): void => {
         if (isEditForm) {
-            // edit()
+            edit({
+                title: 'AAAAAAAA',
+                poster_path: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fsuperlama.by%2Fposter-s-personagami-rik-i-morti-8212&psig=AOvVaw0x3jyvzaT9N7uKDmqPBygO&ust=1601909570594000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjG9KyYm-wCFQAAAAAdAAAAABAD',
+                overview: 'asdmalkmadklsmdkldad',
+                runtime: 666,
+                id: movieId
+            })
         } else {
             add({
-                title: "AAAAAAAA",
+                title: 'AAAAAAAA',
                 poster_path: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fsuperlama.by%2Fposter-s-personagami-rik-i-morti-8212&psig=AOvVaw0x3jyvzaT9N7uKDmqPBygO&ust=1601909570594000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjG9KyYm-wCFQAAAAAdAAAAABAD',
                 overview: 'asdmalkmadklsmdkldad',
                 runtime: 666,
