@@ -1,8 +1,27 @@
+import { IApiResponse } from '../../interfaces/IApiResponse';
 import { IMovieActions } from '../../interfaces/IMovieActions';
-import { MovieAction } from '../../types';
+import { MovieService } from '../../services/MovieService';
+import { store } from '../store';
 
-export const updateMovieAction: IMovieActions.Update = (): MovieAction => {
-    return {
-        type: 'UPDATE'
-    };
+type RequestParams = {
+    sortBy: string,
+    filter?: string[]
+};
+
+export const updateMovieAction: IMovieActions.Update = (queryParams?: RequestParams): any => (dispatch: any) => {
+    const isUpdated: boolean = store.getState().movieEditor.isUpdated;
+    if (!isUpdated) {
+        MovieService.getMovies(queryParams)
+        .then((response: IApiResponse.GetMoviesResponse) => {
+            dispatch({
+                type: 'UPDATE',
+                movies: response.data
+            });
+        }).then(() => {
+           dispatch({
+                type: 'UPDATE_FINISHED',
+                isUpdated: true
+           });
+        });
+    }
 };

@@ -9,8 +9,8 @@ export class MovieService {
     static getRequestConfig(command?: string, data?: {[key: string]: string | number}): IApiResponse.RequestConfig {
         let method: string;
         switch (command) {
-            case 'createMovieItem': method = 'POST';
-            case 'removeItem': method = 'DELETE';
+            case 'ADD': method = 'POST';
+            case 'DELETE': method = 'DELETE';
             default: method = 'GET';
         }
 
@@ -47,31 +47,14 @@ export class MovieService {
         )
         .then((fetchedData: Response): Promise<IApiResponse.GetMoviesResponse> => fetchedData.json());
 
-        store.dispatch({
-            type: 'UPDATE',
-            payload: response
-        });
-
         return response;
     }
 
-    static async movieActionRequest(id: string, command?: string): Promise<IApiResponse.IMovie> {
+    static async movieActionRequest(id: number, command?: string): Promise<IApiResponse.IMovie> {
         const response: IApiResponse.IMovie = await fetch(
             `${this.apiUrl}/${id}`,
             this.getRequestConfig(command)
         ).then((fetchedData: Response): Promise<IApiResponse.IMovie> => fetchedData.json());
-        if (command === 'removeItem') {
-            store.dispatch({
-                type: 'DELETE',
-                payload: {
-                    movieId: id
-                }
-            });
-        }
-
-        store.dispatch({
-            type: 'initial',
-        });
 
         return response;
     }

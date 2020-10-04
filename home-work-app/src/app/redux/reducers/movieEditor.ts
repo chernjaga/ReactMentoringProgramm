@@ -2,7 +2,8 @@ import { IApiResponse } from '../../interfaces/IApiResponse';
 import { MovieAction, MovieActionReducer, MovieState } from '../../types';
 
 const initialState: MovieState = {
-    movies: []
+    movies: [],
+    isUpdated: false
 };
 
 export const movieEditor: MovieActionReducer = (state: MovieState = initialState, action: MovieAction): MovieState => {
@@ -16,6 +17,11 @@ export const movieEditor: MovieActionReducer = (state: MovieState = initialState
             return {
                 ...state,
                 movies: action.movies
+            };
+        case 'UPDATE_FINISHED':
+            return {
+                ...state,
+                isUpdated: action.isUpdated
             };
         default:
             return state;

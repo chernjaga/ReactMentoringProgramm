@@ -1,8 +1,22 @@
 import { SortOptions } from '../SortOptions/SortOptions';
 import { StyledFilterPanel, FilterOptions, FilterOptionItem , SelectedFilterOptionItem} from './FilterPanelStyleSet.styled';
-import { FilterItems, FilterConfigItem } from '../../types';
+import { FilterItems, FilterConfigItem, MapDispatchToProps } from '../../types';
 import React, { useCallback, useState } from 'react';
-import { MovieService } from '../../services/MovieService';
+import { setUpdateStatus } from '../../redux/actions/setUpdateStatus';
+import { updateMovieAction } from '../../redux/actions/updateMovies';
+import { connect } from 'react-redux';
+import { IMovieActions } from '../../interfaces/IMovieActions';
+
+type RequestParams = {
+    sortBy: string,
+    filter?: string[]
+};
+
+type FilterPanelProps = {
+    filterItems: FilterItems,
+    setUpdated: IMovieActions.setStatus,
+    update: IMovieActions.Update
+};
 
 const sortOptions: string[] = [
     'RELEASE',
@@ -18,12 +32,14 @@ const sortMap: {
     rating: 'vote_average'
 };
 
-type RequestParams = {
-    sortBy: string,
-    filter?: string[]
+const mapDispatchToProps: MapDispatchToProps = {
+    update: updateMovieAction,
+    setUpdated: setUpdateStatus
 };
 
-export const FilterPanel: React.FC<{filterItems: FilterItems}> = (props: {filterItems: FilterItems}) => {
+const FilterPanelComponent: React.FC<{filterItems: FilterItems}> = (
+    {filterItems, setUpdated, update}: FilterPanelProps
+) => {
     const [sortByParam, setSortByParam] = useState('title');
     const [filterByParam, setFilterByParam] = useState('all');
     const [selectedItemKey, setSelectedItemKey] = useState(1);
@@ -61,7 +77,9 @@ export const FilterPanel: React.FC<{filterItems: FilterItems}> = (props: {filter
         if (filterBy !== 'all') {
             requestParams.filter = [filterBy];
         }
-        MovieService.getMovies(requestParams);
+        setUpdated(false);
+        update(requestParams);
+        // MovieService.getMovies(requestParams);
 
     }, []);
 
@@ -69,7 +87,7 @@ export const FilterPanel: React.FC<{filterItems: FilterItems}> = (props: {filter
         <StyledFilterPanel>
             <FilterOptions>
                 {
-                    props.filterItems.map((item: FilterConfigItem) => {
+                    filterItems.map((item: FilterConfigItem) => {
                         if (item.key === selectedItemKey) {
                             return (
                                 <SelectedFilterOptionItem key={item.key}
@@ -91,3 +109,8 @@ export const FilterPanel: React.FC<{filterItems: FilterItems}> = (props: {filter
         </StyledFilterPanel>
     );
 };
+
+export const FilterPanel: React.FC<{filterItems: FilterItems}> = connect(
+    (): {} => ({}),
+    mapDispatchToProps
+)(FilterPanelComponent);

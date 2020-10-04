@@ -2,7 +2,6 @@ import { CommonModalTemplate } from '../CommonModalTemplate/CommonModalTemplate'
 import { ButtonPanel, Button } from '../CommonModalTemplate/ButtonPanel.styled';
 import { EditMenuProps } from '../../../types';
 import { DeleteModalHeader } from './DeleteModalHeader.styled';
-import { MovieService } from '../../../services/MovieService';
 
 export const DeleteModal: React.FC<EditMenuProps> = ({ movieId, onClose, onMovieDelete}: EditMenuProps) => {
     const closeHandler: React.MouseEventHandler = (event: React.MouseEvent) => {
@@ -11,7 +10,6 @@ export const DeleteModal: React.FC<EditMenuProps> = ({ movieId, onClose, onMovie
     };
 
     const deleteHandler: React.MouseEventHandler = (event: React.MouseEvent) => {
-        // MovieService.movieActionRequest(`${movieId}`, 'removeItem'); вынести в thunk
         onMovieDelete(movieId);
         closeHandler(event);
     };

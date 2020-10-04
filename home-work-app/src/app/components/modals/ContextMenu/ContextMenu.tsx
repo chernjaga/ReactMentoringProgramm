@@ -60,7 +60,7 @@ export const ContextMenu: React.FC<MenuProps> = (props: MenuProps) => {
             case 'DELETE':
                 return (
                     <ModalPortal modalRoot={modalRoot}>
-                        <DeleteModal movieId={movieId} onClose={closeModal} onMovieDelete={onMovieDelete}/>
+                        <DeleteModal movieId={movieId} onClose={closeModal} onMovieDelete={props.onMovieDelete}/>
                     </ModalPortal>
                 );
         }

@@ -1,7 +1,6 @@
 import { FilterPanel } from '../FilterPanel/FilterPanel';
 import { MoviesListCatch } from '../ErrorBoundaries/MoviesListCatch/MoviesListCatch.error';
 import { MoviesList } from './MoviesList';
-import { MoviesListContainer } from './MoviesListContainer.styled';
 import { ItemsFound } from './ItemsFound';
 import { MoviesListStyled } from './MoviesList.styled';
 import { FilterItems, GlobalState, MapDispatchToProps, MapStateToProps, MovieState } from '../../types';
@@ -13,6 +12,7 @@ import { deleteMovieAction } from '../../redux/actions/deleteMovie';
 import { AppConstants } from '../../configs/appConstants';
 import { IMovieActions } from '../../interfaces/IMovieActions';
 import { updateMovieAction } from '../../redux/actions/updateMovies';
+import { setUpdateStatus } from '../../redux/actions/setUpdateStatus';
 
 type MoviesSectionProps = {
     moviesCollection: IApiResponse.IMovie,
@@ -22,23 +22,27 @@ type MoviesSectionProps = {
 
 const filterItems: FilterItems = AppConstants.filterItems;
 
-const mapStateToProps: MapStateToProps = (state: GlobalState): {moviesCollection: IApiResponse.IMovie[]} => ({
-    moviesCollection: state.movieEditor.movies,
+const mapStateToProps: MapStateToProps = (state: GlobalState): {
+    moviesCollection: IApiResponse.IMovie[]
+} => ({
+    moviesCollection: state.movieEditor.movies
 });
 
 const mapDispatchToProps: MapDispatchToProps = {
     deleteMovie: deleteMovieAction,
-    update: updateMovieAction,
+    update: updateMovieAction
 };
 
-// tslint:disable-next-line: typedef
-const MoviesSectionComponent: React.FC<MoviesSectionProps> = ({ moviesCollection, deleteMovie, update }) => {
+const MoviesSectionComponent: React.FC<MoviesSectionProps> = ({
+    moviesCollection,
+    deleteMovie,
+    update
+}: MoviesSectionProps) => {
     const [movies, setMovies] = useState(null);
-
     useEffect(() => {
-        update();
-        setMovies(moviesCollection);
-    }, []);
+            update();
+            setMovies(moviesCollection);
+    }, [moviesCollection]);
 
     return (
         <MoviesListStyled>
@@ -48,11 +52,9 @@ const MoviesSectionComponent: React.FC<MoviesSectionProps> = ({ moviesCollection
                 (
                     <>
                         <ItemsFound amount={movies.length} />
-                        <MoviesListContainer>
-                            <MoviesListCatch>
-                                <MoviesList moviesList={movies} onMovieDelete={deleteMovie}/>
-                            </MoviesListCatch>
-                        </MoviesListContainer>
+                        <MoviesListCatch>
+                            <MoviesList moviesList={movies} onMovieDelete={deleteMovie}/>
+                        </MoviesListCatch>
                     </>
                 ) :
                 (
