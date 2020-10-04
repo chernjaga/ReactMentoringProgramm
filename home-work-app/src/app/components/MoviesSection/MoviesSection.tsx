@@ -12,13 +12,10 @@ import { deleteMovieAction } from '../../redux/actions/deleteMovie';
 import { AppConstants } from '../../configs/appConstants';
 import { IMovieActions } from '../../interfaces/IMovieActions';
 import { updateMovieAction } from '../../redux/actions/updateMovies';
-import { setUpdateStatus } from '../../redux/actions/setUpdateStatus';
 
-type MoviesSectionProps = {
-    moviesCollection: IApiResponse.IMovie,
-    deleteMovie: IMovieActions.Remove,
-    update: IMovieActions.Update
-};
+interface MoviesSectionProps extends MapDispatchToProps {
+    moviesCollection: IApiResponse.IMovie;
+}
 
 const filterItems: FilterItems = AppConstants.filterItems;
 

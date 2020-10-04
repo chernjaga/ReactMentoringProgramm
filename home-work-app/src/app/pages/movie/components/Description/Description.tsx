@@ -1,8 +1,6 @@
 import { MovieDetails } from './MovieDetails';
 import { useParams } from 'react-router-dom';
 import { IApiResponse } from '../../../../interfaces/IApiResponse';
-import { movieResponse } from '../../../../../../tempData/GetMoviesResponse';
-import { find } from 'lodash';
 import { MovieDetailsPoster } from './MovieDetailsPoster.styled';
 import { MovieDetailsContent } from './MovieDetailsContent.styled';
 import { MovieDetailsHeader } from './MovieDetailsHeader';
@@ -28,12 +26,12 @@ export const Description: React.FC = () =>
         runtime: null,
         overview: null
     });
-
     useEffect(() => {
-        MovieService.movieActionRequest(id).then((response: IApiResponse.IMovie) => {
+        MovieService.movieActionRequest({ id: Number.parseInt(id, 10)})
+        .then((response: IApiResponse.IMovie) => {
             setMovie(response);
         });
-    }, [movie]);
+    }, [id]);
 
     const {
         title,

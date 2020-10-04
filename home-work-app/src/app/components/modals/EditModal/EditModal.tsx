@@ -13,15 +13,16 @@ const formFields: string[] = [
     'RUNTIME'
 ];
 
-export const EditModal: React.FC<EditMenuProps> = (props: EditMenuProps) => {
+export const EditModal: React.FC<EditMenuProps> = ({movieId, onClose}: EditMenuProps) => {
     const closeHandler: React.MouseEventHandler = (event: React.MouseEvent) => {
-        props.onClose(event);
+        onClose(event);
         event.stopPropagation();
     };
 
     return (
         <CommonModalTemplate onClose={closeHandler}>
             <MovieForm legend={formLegend}
+                       movieId={movieId}
                        fields={formFields}/>
         </CommonModalTemplate>
     );

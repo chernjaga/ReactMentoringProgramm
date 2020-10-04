@@ -9,8 +9,7 @@ type RequestParams = {
 };
 
 export const updateMovieAction: IMovieActions.Update = (queryParams?: RequestParams): any => (dispatch: any) => {
-    const isUpdated: boolean = store.getState().movieEditor.isUpdated;
-    if (!isUpdated) {
+    if (!store.getState().movieEditor.isUpdated) {
         MovieService.getMovies(queryParams)
         .then((response: IApiResponse.GetMoviesResponse) => {
             dispatch({

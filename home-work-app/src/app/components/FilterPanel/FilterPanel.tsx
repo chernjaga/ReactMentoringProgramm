@@ -12,11 +12,9 @@ type RequestParams = {
     filter?: string[]
 };
 
-type FilterPanelProps = {
-    filterItems: FilterItems,
-    setUpdated: IMovieActions.setStatus,
-    update: IMovieActions.Update
-};
+interface FilterPanelProps extends MapDispatchToProps {
+    filterItems: FilterItems;
+}
 
 const sortOptions: string[] = [
     'RELEASE',

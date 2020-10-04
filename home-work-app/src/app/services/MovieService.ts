@@ -2,19 +2,25 @@ import { forIn } from 'lodash';
 import { AppConstants } from '../configs/appConstants';
 import { IApiResponse } from '../interfaces/IApiResponse';
 
+type MovieActionRequestParams = {
+    id?: number,
+    command?: string,
+    formData?: IApiResponse.IMovie
+}
+
 export class MovieService {
     static apiUrl: string = AppConstants.apiConfig.url;
 
     static getRequestConfig(command?: string, data?: {[key: string]: string | number}): IApiResponse.RequestConfig {
         let method: string;
         switch (command) {
-            case 'ADD': method = 'POST';
-            case 'DELETE': method = 'DELETE';
+            case 'ADD': method = 'POST'; break;
+            case 'DELETE': method = 'DELETE'; break;
             default: method = 'GET';
         }
 
         return {
-            method: 'GET',
+            method,
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -49,11 +55,17 @@ export class MovieService {
         return response;
     }
 
-    static async movieActionRequest(id: number, command?: string): Promise<IApiResponse.IMovie> {
+    static async movieActionRequest({
+        id,
+        command,
+        formData
+    }: MovieActionRequestParams): Promise<IApiResponse.IMovie> {
         const response: IApiResponse.IMovie = await fetch(
-            `${this.apiUrl}/${id}`,
-            this.getRequestConfig(command)
-        ).then((fetchedData: Response): Promise<IApiResponse.IMovie> => fetchedData.json());
+            `${this.apiUrl}/${id || ''}`,
+            this.getRequestConfig(command, formData)
+        ).then((fetchedData: Response): any =>
+            fetchedData.status === 200 ? fetchedData.json() : fetchedData
+        );
 
         return response;
     }
