@@ -77,7 +77,6 @@ const FilterPanelComponent: React.FC<{filterItems: FilterItems}> = (
         }
         setUpdated(false);
         update(requestParams);
-        // MovieService.getMovies(requestParams);
 
     }, []);
 

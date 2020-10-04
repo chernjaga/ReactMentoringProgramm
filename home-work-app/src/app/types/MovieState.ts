@@ -2,5 +2,6 @@ import { IApiResponse } from '../interfaces/IApiResponse';
 
 export type MovieState = {
     movies: IApiResponse.IMovie[],
-    isUpdated: boolean
+    isUpdated: boolean,
+    queryParams: any
 };

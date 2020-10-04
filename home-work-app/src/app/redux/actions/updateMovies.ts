@@ -19,7 +19,8 @@ export const updateMovieAction: IMovieActions.Update = (queryParams?: RequestPar
         }).then(() => {
            dispatch({
                 type: 'UPDATE_FINISHED',
-                isUpdated: true
+                isUpdated: true,
+                queryParams
            });
         });
     }

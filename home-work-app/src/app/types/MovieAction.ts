@@ -8,6 +8,7 @@ export type MovieAction = {
           'UPDATE_FINISHED',
     movies?: IApiResponse.IMovie[],
     movieId?: number,
+    queryParams?: any,
     formData?: IApiResponse.IMovie,
     isUpdated?: boolean
 };
