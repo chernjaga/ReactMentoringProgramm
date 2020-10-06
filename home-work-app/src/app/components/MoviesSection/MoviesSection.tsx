@@ -10,7 +10,6 @@ import { Spinner } from '../Spinner/Spinner';
 import { connect } from 'react-redux';
 import { deleteMovieAction } from '../../redux/actions/deleteMovie';
 import { AppConstants } from '../../configs/appConstants';
-import { IMovieActions } from '../../interfaces/IMovieActions';
 import { updateMovieAction } from '../../redux/actions/updateMovies';
 
 interface MoviesSectionProps extends MapDispatchToProps {

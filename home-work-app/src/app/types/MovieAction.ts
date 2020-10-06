@@ -1,14 +1,4 @@
-import { IApiResponse } from '../interfaces/IApiResponse';
+import { Dispatch } from 'redux';
+import { DispatchProps } from '.';
 
-export type MovieAction = {
-    type: 'UPDATE' |
-          'DELETE' |
-          'ADD' |
-          'EDIT' |
-          'UPDATE_FINISHED',
-    movies?: IApiResponse.IMovie[],
-    movieId?: number,
-    queryParams?: any,
-    formData?: IApiResponse.IMovie,
-    isUpdated?: boolean
-};
+export type MovieAction = (dispatch: Dispatch<DispatchProps>) => void;

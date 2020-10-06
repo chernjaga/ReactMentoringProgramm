@@ -1,14 +1,15 @@
+
+import { Dispatch } from 'redux';
 import { IApiResponse } from '../../interfaces/IApiResponse';
 import { IMovieActions } from '../../interfaces/IMovieActions';
+import { IQueryParams } from '../../interfaces/IQueryParams';
 import { MovieService } from '../../services/MovieService';
+import { DispatchProps, MovieAction } from '../../types';
 import { store } from '../store';
 
-type RequestParams = {
-    sortBy: string,
-    filter?: string[]
-};
-
-export const updateMovieAction: IMovieActions.Update = (queryParams?: RequestParams): any => (dispatch: any) => {
+export const updateMovieAction: IMovieActions.Update = (queryParams?: IQueryParams): MovieAction =>
+    (dispatch: Dispatch<DispatchProps>) =>
+{
     if (!store.getState().movieEditor.isUpdated) {
         MovieService.getMovies(queryParams)
         .then((response: IApiResponse.GetMoviesResponse) => {

@@ -6,7 +6,7 @@ import styled, { StyledComponent, DefaultTheme } from 'styled-components';
 type ModalProps = {
     movieId: number,
     className?: string,
-    onMovieDelete: any
+    onMovieDelete: () => void
 };
 
 const menuItems: string[] = ['EDIT', 'DELETE'];

@@ -15,7 +15,7 @@ type CardProps = {
     genres: string[],
     coverUrl: string,
     id: number,
-    onMovieDelete: any,
+    onMovieDelete: () => void,
     key?: number
 };
 
