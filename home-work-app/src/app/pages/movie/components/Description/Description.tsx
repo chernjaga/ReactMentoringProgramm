@@ -14,9 +14,7 @@ import { IApiResponse } from '../../../../interfaces/IApiResponse';
 
 export const Description: React.FC = () => {
     const { id }: { id: string } = useParams();
-    const [movie, setMovie] = useState({
-        title: '',
-    });
+    const [movie, setMovie] = useState(null);
     const getMovieSet: () => void = async () => {
         const movieSet: IApiResponse.IMovie = await MovieService.movieActionRequest({
             id: Number.parseInt(id, 10),

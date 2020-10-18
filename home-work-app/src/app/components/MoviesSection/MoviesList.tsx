@@ -8,7 +8,6 @@ type MoviesProps = {
     className?: string;
 };
 
-// tslint:disable-next-line: typedef
 export const MoviesListComponent: React.FC<MoviesProps> = ({
     moviesList,
     onMovieDelete,
