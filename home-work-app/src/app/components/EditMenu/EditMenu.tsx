@@ -6,11 +6,14 @@ import { MenuIcon } from './MenuIcon.styled';
 type ModalProps = {
     movieId: number;
     className: string;
-    onMovieDelete: () => void;
+    onMovieDelete: (id: number) => void;
 };
 
+enum CloseIconSize {
+    small = 1,
+}
+
 const menuItems: string[] = ['EDIT', 'DELETE'];
-const closeIconSize = 1;
 
 const EditMenuComponent: React.FC<ModalProps> = ({
     className,
@@ -30,7 +33,7 @@ const EditMenuComponent: React.FC<ModalProps> = ({
             {isVisibleMenu ? (
                 <ContextMenu
                     menuItems={menuItems}
-                    closeIconSize={closeIconSize}
+                    closeIconSize={CloseIconSize.small}
                     onMovieDelete={onMovieDelete}
                     movieId={movieId}
                     onCloseMenu={toggleModal}

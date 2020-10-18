@@ -1,20 +1,39 @@
-import { EditForm, EditFormFieldset, EditFormLegend, Label, Input } from './EditFormStyleSet.styled';
-import { ButtonPanel, Button } from '../CommonModalTemplate/ButtonPanel.styled';
-import { MapDispatchToProps } from '../../../types';
-import { addMovie } from '../../../redux/actions/addMovie';
 import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import {
+    EditForm,
+    EditFormFieldset,
+    EditFormLegend,
+    Label,
+    Input,
+} from './EditFormStyleSet.styled';
+import { ButtonPanel, Button } from '../CommonModalTemplate/ButtonPanel.styled';
+import { FormField, MapDispatchToProps } from '../../../types';
+import { addMovie } from '../../../redux/actions/addMovie';
 import { editMovie } from '../../../redux/actions/editMovie';
+import { IApiResponse } from '../../../interfaces/IApiResponse';
+import { MovieService } from '../../../services/MovieService';
 
 interface MovieFormProps extends MapDispatchToProps {
     legend: string;
-    fields: string[];
+    fields: FormField[];
     movieId?: number;
     closeHandler?: (event: React.MouseEvent) => void;
 }
 
 const mapDispatchToProps: MapDispatchToProps = {
     add: addMovie,
-    edit: editMovie
+    edit: editMovie,
+};
+
+const initialValues: IApiResponse.IMovie = {
+    id: 0,
+    overview: 'overview',
+    title: 'title',
+    release_date: 'release date',
+    genres: ['genres'],
+    runtime: 0,
+    poster_path: 'poster_path',
 };
 
 const MovieFormComponent: React.FC<MovieFormProps> = ({
@@ -23,46 +42,61 @@ const MovieFormComponent: React.FC<MovieFormProps> = ({
     movieId,
     edit,
     closeHandler,
-    add
+    add,
 }: MovieFormProps) => {
     const isEditForm: boolean = !!movieId;
+    const [movie, setMovie] = useState({
+        ...initialValues,
+    });
     const cancel: React.MouseEventHandler = (event: React.MouseEvent): void => {
         closeHandler(event);
     };
+
     const save: React.MouseEventHandler = (event: React.MouseEvent): void => {
-        if (isEditForm) {
-            edit({
-                title: 'AAAAAAAA',
-                poster_path: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fsuperlama.by%2Fposter-s-personagami-rik-i-morti-8212&psig=AOvVaw0x3jyvzaT9N7uKDmqPBygO&ust=1601909570594000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjG9KyYm-wCFQAAAAAdAAAAABAD',
-                overview: 'asdmalkmadklsmdkldad',
-                runtime: 666,
-                id: movieId
-            })
-        } else {
-            add({
-                title: 'AAAAAAAA',
-                poster_path: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fsuperlama.by%2Fposter-s-personagami-rik-i-morti-8212&psig=AOvVaw0x3jyvzaT9N7uKDmqPBygO&ust=1601909570594000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjG9KyYm-wCFQAAAAAdAAAAABAD',
-                overview: 'asdmalkmadklsmdkldad',
-                runtime: 666,
-                id: 111111
-            });
-        }
+        // if (isEditForm) {
+        //     edit({});
+        // } else {
+        //     add({});
+        // }
         closeHandler(event);
     };
+
+    useEffect(() => {
+        if (movieId) {
+            MovieService.movieActionRequest({
+                id: movieId,
+            }).then((requestedMovie: IApiResponse.IMovie) => {
+                setMovie(requestedMovie);
+            });
+        } else {
+            setMovie({ ...initialValues });
+        }
+    }, []);
 
     return (
         <EditForm>
             <EditFormFieldset>
                 <EditFormLegend>{legend}</EditFormLegend>
-                {fields.map((field: string): JSX.Element => (
-                    <p key={field}>
-                        <Label>{field}</Label>
-                        <Input type="text" />
-                    </p>
-                ))}
+                {fields.map(
+                    (field: FormField): JSX.Element => (
+                        <React.Fragment key={field.movieField}>
+                            <Label htmlFor={field.movieField}>{field.label}</Label>
+                            <Input
+                                type="text"
+                                name={field.label}
+                                id={field.movieField}
+                                placeholder={movie[field.movieField].toString()}
+                            />
+                        </React.Fragment>
+                    )
+                )}
                 <ButtonPanel>
-                    <Button buttonTheme="saveButton" onClick={save}>{ isEditForm? 'EDIT' : 'SAVE'}</Button>
-                    <Button buttonTheme="cancelButton" onClick={cancel}>CANCEL</Button>
+                    <Button buttonTheme="saveButton" onClick={save} type="submit">
+                        {isEditForm ? 'EDIT' : 'SAVE'}
+                    </Button>
+                    <Button buttonTheme="cancelButton" onClick={cancel}>
+                        CANCEL
+                    </Button>
                 </ButtonPanel>
             </EditFormFieldset>
         </EditForm>

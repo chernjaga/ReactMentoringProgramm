@@ -1,15 +1,19 @@
+import styled, { DefaultTheme, StyledComponent } from 'styled-components';
 import { MovieCard } from '../MovieCard/MovieCard';
 import { IApiResponse } from '../../interfaces/IApiResponse';
-import styled, { DefaultTheme, StyledComponent } from 'styled-components';
 
 type MoviesProps = {
     moviesList: IApiResponse.IMovie[];
     onMovieDelete: (id: number | string) => void;
-    className?: string
+    className?: string;
 };
 
 // tslint:disable-next-line: typedef
-export const MoviesListComponent: React.FC<MoviesProps> = ({ moviesList, onMovieDelete, className }) => (
+export const MoviesListComponent: React.FC<MoviesProps> = ({
+    moviesList,
+    onMovieDelete,
+    className,
+}: MoviesProps) => (
     <div className={className}>
         {moviesList.map((movie: IApiResponse.IMovie) => (
             <MovieCard
@@ -25,7 +29,9 @@ export const MoviesListComponent: React.FC<MoviesProps> = ({ moviesList, onMovie
     </div>
 );
 
-export const MoviesList: StyledComponent<React.FC<MoviesProps>, DefaultTheme> = styled(MoviesListComponent)`
+export const MoviesList: StyledComponent<React.FC<MoviesProps>, DefaultTheme> = styled(
+    MoviesListComponent
+)`
     padding-top: 16px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

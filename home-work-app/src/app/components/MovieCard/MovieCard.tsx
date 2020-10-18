@@ -14,7 +14,7 @@ type CardProps = {
     genres: string[];
     coverUrl: string;
     id: number;
-    onMovieDelete: () => void;
+    onMovieDelete: (id: number) => void;
 };
 
 export const MovieCard: React.FC<CardProps> = ({

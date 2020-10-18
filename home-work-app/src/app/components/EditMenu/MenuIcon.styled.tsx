@@ -1,4 +1,4 @@
-import styled, { StyledComponent, DefaultTheme, ThemeProps } from "styled-components";
+import styled, { StyledComponent, DefaultTheme, ThemeProps } from 'styled-components';
 
 type IconProps = {
     className: string;
@@ -6,7 +6,7 @@ type IconProps = {
 };
 
 const MenuIconComponent: React.FC<IconProps> = ({ className, onClick }: IconProps) => (
-    <div onClick={onClick} className={className}>
+    <div onClick={onClick} className={className} aria-hidden="true">
         &#8942;
     </div>
 );
@@ -26,8 +26,8 @@ export const MenuIcon: StyledComponent<React.FC<IconProps>, DefaultTheme> = styl
     font-size: 16px;
     justify-content: center;
     align-items: center;
-    background-color: ${({ theme }: ThemeProps<DefaultTheme>) => theme.colors.black};
+    background-color: ${({ theme }: ThemeProps<DefaultTheme>): string => theme.colors.black};
     &:hover {
-        background-color: ${({ theme }: ThemeProps<DefaultTheme>) => theme.colors.pink};
+        background-color: ${({ theme }: ThemeProps<DefaultTheme>): string => theme.colors.pink};
     }
 `;

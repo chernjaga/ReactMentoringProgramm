@@ -1,5 +1,6 @@
-import { MovieDetails } from './MovieDetails';
 import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { MovieDetails } from './MovieDetails';
 import { MovieDetailsPoster } from './MovieDetailsPoster.styled';
 import { MovieDetailsContent } from './MovieDetailsContent.styled';
 import { MovieDetailsHeader } from './MovieDetailsHeader';
@@ -9,18 +10,17 @@ import { MovieDetailsTagline } from './MovieDetailsTagline.styled';
 import { MovieDetailsTimeData } from './MovieDetailsTimeData.styled';
 import { MovieDetailsOverview } from './MovieDetailsOverview.styled';
 import { MovieService } from '../../../../services/MovieService';
-import { useState, useEffect } from 'react';
 import { IApiResponse } from '../../../../interfaces/IApiResponse';
-
-// const movieCollection: IApiResponse.IMovie[] = movieResponse.data;
 
 export const Description: React.FC = () => {
     const { id }: { id: string } = useParams();
     const [movie, setMovie] = useState({
-        title: ''
+        title: '',
     });
     const getMovieSet: () => void = async () => {
-        const movieSet: IApiResponse.IMovie = await MovieService.movieActionRequest({ id: Number.parseInt(id, 10) });
+        const movieSet: IApiResponse.IMovie = await MovieService.movieActionRequest({
+            id: Number.parseInt(id, 10),
+        });
         setMovie(movieSet);
     };
 
@@ -35,7 +35,7 @@ export const Description: React.FC = () => {
         poster_path,
         runtime,
         release_date,
-        vote_average
+        vote_average,
     }: IApiResponse.IMovie = movie;
 
     return (
@@ -43,27 +43,15 @@ export const Description: React.FC = () => {
             <MovieDetailsPoster src={poster_path} alt={title} />
             <MovieDetailsContent>
                 <MovieDetailsHeader>
-                    <MovieDetailsTitle>
-                        {title}
-                    </MovieDetailsTitle>
-                    <VoteAverage>
-                        {vote_average}
-                    </VoteAverage>
+                    <MovieDetailsTitle>{title}</MovieDetailsTitle>
+                    <VoteAverage>{vote_average}</VoteAverage>
                 </MovieDetailsHeader>
-                <MovieDetailsTagline>
-                    {tagline}
-                </MovieDetailsTagline>
+                <MovieDetailsTagline>{tagline}</MovieDetailsTagline>
                 <MovieDetailsTimeData>
-                    <span>
-                        {new Date(release_date).getFullYear()}
-                    </span>
-                    <span>
-                        {runtime}min
-                    </span>
+                    <span>{new Date(release_date).getFullYear().toString()}</span>
+                    <span>{runtime}min</span>
                 </MovieDetailsTimeData>
-                <MovieDetailsOverview>
-                    {overview}
-                </MovieDetailsOverview>
+                <MovieDetailsOverview>{overview}</MovieDetailsOverview>
             </MovieDetailsContent>
         </MovieDetails>
     );

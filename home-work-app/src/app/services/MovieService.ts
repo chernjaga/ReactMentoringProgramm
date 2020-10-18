@@ -4,10 +4,10 @@ import { IApiResponse } from '../interfaces/IApiResponse';
 import { IQueryParams } from '../interfaces/IQueryParams';
 
 type MovieActionRequestParams = {
-    id?: number,
-    command?: string,
-    formData?: IApiResponse.IMovie
-}
+    id?: number;
+    command?: string;
+    formData?: IApiResponse.IMovie;
+};
 
 export class MovieService {
     static apiUrl: string = AppConstants.apiConfig.url;
@@ -18,23 +18,23 @@ export class MovieService {
     ): IApiResponse.RequestConfig {
         let method: string;
         switch (command) {
-            case "ADD":
-                method = "POST";
+            case 'ADD':
+                method = 'POST';
                 break;
-            case "DELETE":
-                method = "DELETE";
+            case 'DELETE':
+                method = 'DELETE';
                 break;
-            case "EDIT":
-                method = "PUT";
+            case 'EDIT':
+                method = 'PUT';
                 break;
             default:
-                method = "GET";
+                method = 'GET';
         }
 
         return {
             method,
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         };
@@ -43,13 +43,13 @@ export class MovieService {
     static getURL(params?: IQueryParams): string {
         let url: string = this.apiUrl;
         if (params && Object.keys(params).length) {
-            url = url + "?";
+            url += '?';
             forIn(params, (value: string | number | string[], key: string): void => {
-                let sortDirection: string = "desc";
-                if (key === "sortBy" && value === "title") {
-                    sortDirection = "acs";
+                let sortDirection: string = 'desc';
+                if (key === 'sortBy' && value === 'title') {
+                    sortDirection = 'acs';
                 }
-                url = url + `${key}=${value}&sortOrder=${sortDirection}&limit=20&`;
+                url += `${key}=${value}&sortOrder=${sortDirection}&limit=20&`;
             });
         }
 
@@ -71,13 +71,21 @@ export class MovieService {
         id,
         command,
         formData,
-    }: MovieActionRequestParams): Promise<IApiResponse.IMovie> {
-        const response: IApiResponse.IMovie = await fetch(
-            `${this.apiUrl}/${id || ""}`,
-            this.getRequestConfig(command, formData)
-        ).then(
-            (fetchedData: Response): Promise<IApiResponse.IMovie> => fetchedData.json()
-        );
+    }: MovieActionRequestParams): Promise<IApiResponse.IMovie | {}> {
+        let response: unknown;
+        switch (command) {
+            case 'DELETE':
+                response = await fetch(
+                    `${this.apiUrl}/${id || ''}`,
+                    this.getRequestConfig(command, formData)
+                );
+                break;
+            default:
+                response = await fetch(
+                    `${this.apiUrl}/${id || ''}`,
+                    this.getRequestConfig(command, formData)
+                ).then((fetchedData: Response): Promise<IApiResponse.IMovie> => fetchedData.json());
+        }
 
         return response;
     }
