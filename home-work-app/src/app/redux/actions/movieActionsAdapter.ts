@@ -14,7 +14,7 @@ export const actionAdapter: ActionAdapter = ({
 }: MovieActionParams): MovieAction => (dispatch: Dispatch<DispatchProps>): void => {
     const { queryParams } = store.getState().movieEditor;
 
-    MovieService.movieActionRequest({ id: movieId, command, formData }).then(() => {
+    MovieService.movieActionRequest({ id: movieId, command, formData }).then((_response: any) => {
         dispatch({
             type: 'UPDATE_FINISHED',
             isUpdated: false,
@@ -31,6 +31,7 @@ export const actionAdapter: ActionAdapter = ({
                     type: 'UPDATE_FINISHED',
                     isUpdated: true,
                     queryParams,
+                    errorMessage: _response.messages ? _response.messages : null,
                 });
             });
     });

@@ -14,42 +14,40 @@ import { IApiResponse } from '../../../../interfaces/IApiResponse';
 
 export const Description: React.FC = () => {
     const { id }: { id: string } = useParams();
-    const [movie, setMovie] = useState(null);
+    const [movie, setMovie] = useState({
+        title: '',
+        poster_path: '',
+        vote_average: '',
+        tagline: '',
+        release_date: '',
+        runtime: '',
+        overview: '',
+    });
     const getMovieSet: () => void = async () => {
-        const movieSet: IApiResponse.IMovie = await MovieService.movieActionRequest({
+        const movieSet: IApiResponse.IMovie | {} = await MovieService.movieActionRequest({
             id: Number.parseInt(id, 10),
         });
-        setMovie(movieSet);
+        setMovie({ ...movieSet });
     };
 
     useEffect(() => {
         getMovieSet();
     }, [id]);
 
-    const {
-        title,
-        overview,
-        tagline,
-        poster_path,
-        runtime,
-        release_date,
-        vote_average,
-    }: IApiResponse.IMovie = movie;
-
     return (
         <MovieDetails>
-            <MovieDetailsPoster src={poster_path} alt={title} />
+            <MovieDetailsPoster src={movie.poster_path} alt={movie.title} />
             <MovieDetailsContent>
                 <MovieDetailsHeader>
-                    <MovieDetailsTitle>{title}</MovieDetailsTitle>
-                    <VoteAverage>{vote_average}</VoteAverage>
+                    <MovieDetailsTitle>{movie.title}</MovieDetailsTitle>
+                    <VoteAverage>{movie.vote_average}</VoteAverage>
                 </MovieDetailsHeader>
-                <MovieDetailsTagline>{tagline}</MovieDetailsTagline>
+                <MovieDetailsTagline>{movie.tagline}</MovieDetailsTagline>
                 <MovieDetailsTimeData>
-                    <span>{new Date(release_date).getFullYear().toString()}</span>
-                    <span>{runtime}min</span>
+                    <span>{new Date(movie.release_date).getFullYear().toString()}</span>
+                    <span>{movie.runtime}min</span>
                 </MovieDetailsTimeData>
-                <MovieDetailsOverview>{overview}</MovieDetailsOverview>
+                <MovieDetailsOverview>{movie.overview}</MovieDetailsOverview>
             </MovieDetailsContent>
         </MovieDetails>
     );

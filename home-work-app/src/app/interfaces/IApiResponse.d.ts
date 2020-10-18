@@ -24,7 +24,7 @@ export namespace IApiResponse {
         revenue?: number;
         runtime?: number;
         tagline?: string;
-        title?: string;
+        title: string;
         vote_average?: number;
         vote_count?: number;
         key?: number;

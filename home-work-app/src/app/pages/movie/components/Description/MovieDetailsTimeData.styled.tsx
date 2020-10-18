@@ -6,6 +6,6 @@ export const MovieDetailsTimeData: StyledComponent<'p', {}> = styled.p`
     display: flex;
     gap: 24px;
     span {
-        color: ${({theme}: ThemeProps<DefaultTheme>) => theme.colors.pink};
+        color: ${({ theme }: ThemeProps<DefaultTheme>): string => theme.colors.pink};
     }
 `;

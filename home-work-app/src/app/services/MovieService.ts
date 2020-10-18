@@ -9,6 +9,10 @@ type MovieActionRequestParams = {
     formData?: IApiResponse.IMovie;
 };
 
+type EmptyDescription = {
+    [key: string]: undefined;
+};
+
 export class MovieService {
     static apiUrl: string = AppConstants.apiConfig.url;
 
