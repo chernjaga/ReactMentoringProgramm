@@ -1,72 +1,69 @@
-// import { movieResponse } from '../../../../tempData/GetMoviesResponse';
 import { FilterPanel } from '../FilterPanel/FilterPanel';
 import { MoviesListCatch } from '../ErrorBoundaries/MoviesListCatch/MoviesListCatch.error';
 import { MoviesList } from './MoviesList';
-import { MoviesListContainer } from './MoviesListContainer.styled';
 import { ItemsFound } from './ItemsFound';
 import { MoviesListStyled } from './MoviesList.styled';
-import { FilterItems } from '../../types';
-import { MovieService } from '../../services/MovieService';
+import { FilterItems, GlobalState, MapDispatchToProps, MapStateToProps, MovieState } from '../../types';
 import { IApiResponse } from '../../interfaces/IApiResponse';
 import { useEffect, useState } from 'react';
 import { Spinner } from '../Spinner/Spinner';
+import { connect } from 'react-redux';
+import { deleteMovieAction } from '../../redux/actions/deleteMovie';
+import { AppConstants } from '../../configs/appConstants';
+import { updateMovieAction } from '../../redux/actions/updateMovies';
 
-const filterItems: FilterItems = [
-    {
-        title: 'ALL',
-        key: 1,
-        label: 'all'
-    },
-    {
-        title: 'DOCUMENTARY',
-        key: 2,
-        label: 'doc'
-    },
-    {
-        title: 'COMEDY',
-        key: 3,
-        label: 'comedy'
-    },
-    {
-        title: 'HORROR',
-        key: 4,
-        label: 'horror'
-    },
-    {
-        title: 'CRIME',
-        key: 5,
-        label: 'crime'
-    }
-];
+interface MoviesSectionProps extends MapDispatchToProps {
+    moviesCollection: IApiResponse.IMovie;
+}
 
-export const MoviesSection: React.FC = () => {
+const filterItems: FilterItems = AppConstants.filterItems;
+
+const mapStateToProps: MapStateToProps = (state: GlobalState): {
+    moviesCollection: IApiResponse.IMovie[]
+} => ({
+    moviesCollection: state.movieEditor.movies
+});
+
+const mapDispatchToProps: MapDispatchToProps = {
+    deleteMovie: deleteMovieAction,
+    update: updateMovieAction
+};
+
+const MoviesSectionComponent: React.FC<MoviesSectionProps> = ({
+    moviesCollection,
+    deleteMovie,
+    update
+}: MoviesSectionProps) => {
     const [movies, setMovies] = useState(null);
     useEffect(() => {
-        MovieService.getMovies()
-            .then((collection: IApiResponse.GetMoviesResponse) => setMovies(collection));
-    }, [movies]); // search will be updated
+            update();
+            setMovies(moviesCollection);
+    }, [moviesCollection]);
 
     return (
         <MoviesListStyled>
             <FilterPanel filterItems={filterItems} />
-                {
-                    movies ?
-                    (
-                        <>
-                            <ItemsFound amount={movies.data.length} />
-                            <MoviesListContainer>
-                                <MoviesListCatch>
-                                    <MoviesList response={movies} />
-                                </MoviesListCatch>
-                            </MoviesListContainer>
-                        </>
-                    ) :
-                    (
-                        <div>
-                            SEARCHING <Spinner size={8}/>
-                        </div>
-                    )
-                }
+            {
+                movies  ?
+                (
+                    <>
+                        <ItemsFound amount={movies.length} />
+                        <MoviesListCatch>
+                            <MoviesList moviesList={movies} onMovieDelete={deleteMovie}/>
+                        </MoviesListCatch>
+                    </>
+                ) :
+                (
+                    <div>
+                        SEARCHING <Spinner size={8}/>
+                    </div>
+                )
+            }
         </MoviesListStyled>
     );
 };
+
+export const MoviesSection: React.FC<MoviesSectionProps> =
+    connect(mapStateToProps, mapDispatchToProps)(MoviesSectionComponent);
+
+// перенести в moviesList компоненты MoviesListCatch и ItemsFound.

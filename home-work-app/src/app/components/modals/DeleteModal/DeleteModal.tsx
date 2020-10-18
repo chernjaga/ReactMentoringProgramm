@@ -3,10 +3,15 @@ import { ButtonPanel, Button } from '../CommonModalTemplate/ButtonPanel.styled';
 import { EditMenuProps } from '../../../types';
 import { DeleteModalHeader } from './DeleteModalHeader.styled';
 
-export const DeleteModal: React.FC<EditMenuProps> = (props: EditMenuProps) => {
+export const DeleteModal: React.FC<EditMenuProps> = ({ movieId, onClose, onMovieDelete}: EditMenuProps) => {
     const closeHandler: React.MouseEventHandler = (event: React.MouseEvent) => {
-        props.onClose(event);
+        onClose(event);
         event.stopPropagation();
+    };
+
+    const deleteHandler: React.MouseEventHandler = (event: React.MouseEvent) => {
+        onMovieDelete(movieId);
+        closeHandler(event);
     };
 
     return  (
@@ -19,7 +24,7 @@ export const DeleteModal: React.FC<EditMenuProps> = (props: EditMenuProps) => {
                     Are you sure you want to delete this movie?
                 </p>
                 <ButtonPanel>
-                    <Button buttonTheme="saveButton">CANCEL</Button>
+                    <Button buttonTheme="saveButton" onClick={deleteHandler}>DELETE</Button>
                 </ButtonPanel>
             </>
         </CommonModalTemplate>

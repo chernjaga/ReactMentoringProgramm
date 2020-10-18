@@ -1,8 +1,5 @@
 import { MovieDetails } from './MovieDetails';
 import { useParams } from 'react-router-dom';
-import { IApiResponse } from '../../../../interfaces/IApiResponse';
-import { movieResponse } from '../../../../../../tempData/GetMoviesResponse';
-import { find } from 'lodash';
 import { MovieDetailsPoster } from './MovieDetailsPoster.styled';
 import { MovieDetailsContent } from './MovieDetailsContent.styled';
 import { MovieDetailsHeader } from './MovieDetailsHeader';
@@ -11,13 +8,26 @@ import { MovieDetailsTitle } from './MovieDetailsTitle.styled';
 import { MovieDetailsTagline } from './MovieDetailsTagline.styled';
 import { MovieDetailsTimeData } from './MovieDetailsTimeData.styled';
 import { MovieDetailsOverview } from './MovieDetailsOverview.styled';
+import { MovieService } from '../../../../services/MovieService';
+import { useState, useEffect } from 'react';
+import { IApiResponse } from '../../../../interfaces/IApiResponse';
 
-const movieCollection: IApiResponse.IMovie[] = movieResponse.data;
+// const movieCollection: IApiResponse.IMovie[] = movieResponse.data;
 
-export const Description: React.FC = () =>
-{
-    const { id }: {id: string} = useParams();
-    const movie: IApiResponse.IMovie = find( movieCollection, { id: Number( id ) } );
+export const Description: React.FC = () => {
+    const { id }: { id: string } = useParams();
+    const [movie, setMovie] = useState({
+        title: ''
+    });
+    const getMovieSet: () => void = async () => {
+        const movieSet: IApiResponse.IMovie = await MovieService.movieActionRequest({ id: Number.parseInt(id, 10) });
+        setMovie(movieSet);
+    };
+
+    useEffect(() => {
+        getMovieSet();
+    }, [id]);
+
     const {
         title,
         overview,
@@ -26,7 +36,7 @@ export const Description: React.FC = () =>
         runtime,
         release_date,
         vote_average
-    } = movie;
+    }: IApiResponse.IMovie = movie;
 
     return (
         <MovieDetails>
@@ -45,7 +55,7 @@ export const Description: React.FC = () =>
                 </MovieDetailsTagline>
                 <MovieDetailsTimeData>
                     <span>
-                        {new Date( release_date ).getFullYear()}
+                        {new Date(release_date).getFullYear()}
                     </span>
                     <span>
                         {runtime}min

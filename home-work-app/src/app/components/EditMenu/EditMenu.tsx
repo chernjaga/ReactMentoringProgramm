@@ -1,17 +1,22 @@
-import { ContextMenu } from '../modals/ContextMenu/ContextMenu';
-import { MenuIcon } from './MenuIcon.styled';
 import { useState } from 'react';
 import styled, { StyledComponent, DefaultTheme } from 'styled-components';
+import { ContextMenu } from '../modals/ContextMenu/ContextMenu';
+import { MenuIcon } from './MenuIcon.styled';
 
 type ModalProps = {
-    movieId: number,
-    className?: string
+    movieId: number;
+    className: string;
+    onMovieDelete: () => void;
 };
 
 const menuItems: string[] = ['EDIT', 'DELETE'];
-const closeIconSize: number = 1;
+const closeIconSize = 1;
 
-const EditMenuComponent: React.FC<ModalProps> = ({className, movieId}: ModalProps) => {
+const EditMenuComponent: React.FC<ModalProps> = ({
+    className,
+    movieId,
+    onMovieDelete,
+}: ModalProps) => {
     const [isVisibleMenu, setIsVisibleMenu] = useState(false);
 
     const toggleModal: React.MouseEventHandler = (event?: React.MouseEvent) => {
@@ -23,19 +28,22 @@ const EditMenuComponent: React.FC<ModalProps> = ({className, movieId}: ModalProp
     return (
         <div className={className}>
             {isVisibleMenu ? (
-                    <ContextMenu menuItems={menuItems}
-                                closeIconSize={closeIconSize}
-                                movieId={movieId}
-                                onCloseMenu={toggleModal}
-                    />
-                ) : (
-                    <MenuIcon onClick={toggleModal}/>
-                )
-            }
+                <ContextMenu
+                    menuItems={menuItems}
+                    closeIconSize={closeIconSize}
+                    onMovieDelete={onMovieDelete}
+                    movieId={movieId}
+                    onCloseMenu={toggleModal}
+                />
+            ) : (
+                <MenuIcon onClick={toggleModal} className="" />
+            )}
         </div>
     );
 };
 
-export const EditMenu: StyledComponent<React.FC<ModalProps>, DefaultTheme> = styled(EditMenuComponent)`
+export const EditMenu: StyledComponent<React.FC<ModalProps>, DefaultTheme> = styled(
+    EditMenuComponent
+)`
     display: none;
 `;

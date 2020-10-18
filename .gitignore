@@ -111,3 +111,6 @@ build/
 **/build/
 **/build/*.*
 home-work-app/build
+home-work-app/build/
+home-work-app/build/*.*
+home-work-app/build/**/*.*

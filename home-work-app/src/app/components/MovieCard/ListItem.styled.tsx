@@ -3,7 +3,7 @@ import { EditMenu } from '../EditMenu/EditMenu';
 
 export const ListItem: StyledComponent<'li', {}> = styled.li`
     position: relative;
-    &:hover ${EditMenu} {
+    &:hover ${ EditMenu } {
         display: block;
         position: absolute;
         top: 0;
@@ -15,5 +15,6 @@ export const ListItem: StyledComponent<'li', {}> = styled.li`
     }
     img {
         width: 140%;
+        min-height: 330px;
     }
 `;

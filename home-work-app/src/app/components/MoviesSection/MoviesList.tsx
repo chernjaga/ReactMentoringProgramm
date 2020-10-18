@@ -1,23 +1,33 @@
 import { MovieCard } from '../MovieCard/MovieCard';
 import { IApiResponse } from '../../interfaces/IApiResponse';
+import styled, { DefaultTheme, StyledComponent } from 'styled-components';
 
 type MoviesProps = {
-    response: IApiResponse.GetMoviesResponse
+    moviesList: IApiResponse.IMovie[];
+    onMovieDelete: (id: number | string) => void;
+    className?: string
 };
 
-export const MoviesList: React.FC<MoviesProps> = ( props: MoviesProps ) => (
-    <>
-        {props.response.data.map(
-            ( movie: IApiResponse.IMovie ) => (
-                <MovieCard
-                    coverUrl={movie.poster_path}
-                    title={movie.title}
-                    releaseDate={movie.release_date}
-                    genres={movie.genres}
-                    id={movie.id}
-                    key={movie.id}
-                />
-            )
-        )}
-    </>
+// tslint:disable-next-line: typedef
+export const MoviesListComponent: React.FC<MoviesProps> = ({ moviesList, onMovieDelete, className }) => (
+    <div className={className}>
+        {moviesList.map((movie: IApiResponse.IMovie) => (
+            <MovieCard
+                onMovieDelete={onMovieDelete}
+                coverUrl={movie.poster_path}
+                title={movie.title}
+                releaseDate={movie.release_date}
+                genres={movie.genres}
+                id={movie.id}
+                key={movie.id}
+            />
+        ))}
+    </div>
 );
+
+export const MoviesList: StyledComponent<React.FC<MoviesProps>, DefaultTheme> = styled(MoviesListComponent)`
+    padding-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 32px;
+`;
