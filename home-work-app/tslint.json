@@ -7,6 +7,7 @@
         "tslint-config-prettier"
     ],
     "rules": {
+        "prefixWithI": true,
         "max-line-length": {
             "options": [
                 120

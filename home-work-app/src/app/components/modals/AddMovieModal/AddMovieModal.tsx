@@ -1,15 +1,34 @@
 import { CommonModalTemplate } from '../CommonModalTemplate/CommonModalTemplate';
 import { MovieForm } from '../MovieForm/MovieForm';
-import { EditMenuProps } from '../../../types';
+import { EditMenuProps, FormField } from '../../../types';
 
 const formLegend: string = 'ADD MOVIE';
-const formFields: string[] = [
-    'TITLE',
-    'RELEASE DATE',
-    'MOVIE URL',
-    'GENRE',
-    'OVERVIEW',
-    'RUNTIME'
+
+const formFields: FormField[] = [
+    {
+        label: 'TITLE',
+        movieField: 'title',
+    },
+    {
+        label: 'RELEASE DATE',
+        movieField: 'release_date',
+    },
+    {
+        label: 'POSTER URL',
+        movieField: 'poster_path',
+    },
+    {
+        label: 'GENRE',
+        movieField: 'genres',
+    },
+    {
+        label: 'OVERVIEW',
+        movieField: 'overview',
+    },
+    {
+        label: 'RUNTIME',
+        movieField: 'runtime',
+    },
 ];
 
 export const AddMovieModal: React.FC<EditMenuProps> = (props: EditMenuProps) => {
@@ -20,9 +39,7 @@ export const AddMovieModal: React.FC<EditMenuProps> = (props: EditMenuProps) => 
 
     return (
         <CommonModalTemplate onClose={closeHandler}>
-            <MovieForm legend={formLegend}
-                       closeHandler={closeHandler}
-                       fields={formFields}/>
+            <MovieForm legend={formLegend} closeHandler={closeHandler} fields={formFields} />
         </CommonModalTemplate>
     );
 };

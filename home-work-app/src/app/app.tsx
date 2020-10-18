@@ -15,13 +15,13 @@ const ROOT_ELEMENT: HTMLElement = document.getElementById('root');
 const AppBody: React.FC = () => {
     return (
         <AppCatch>
-            <Provider store={store}>
-                <ThemeProvider theme={mainTheme}>
+            <ThemeProvider theme={mainTheme}>
+                <Provider store={store}>
                     <GlobalStyle />
                     <Routing />
                     <Footer />
-                </ThemeProvider>
-            </Provider>
+                </Provider>
+            </ThemeProvider>
         </AppCatch>
     );
 };

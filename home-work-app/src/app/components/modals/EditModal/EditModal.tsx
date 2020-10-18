@@ -1,19 +1,43 @@
 import { CommonModalTemplate } from '../CommonModalTemplate/CommonModalTemplate';
 import { MovieForm } from '../MovieForm/MovieForm';
-import { EditMenuProps } from '../../../types';
+import { EditMenuProps, FormField } from '../../../types';
 
-const formLegend: string = 'EDIT MOVIE';
-const formFields: string[] = [
-    'MOVIE ID',
-    'TITLE',
-    'RELEASE DATE',
-    'MOVIE URL',
-    'GENRE',
-    'OVERVIEW',
-    'RUNTIME'
+enum FormLegend {
+    EDIT = 'EDIT MOVIE',
+}
+
+const formFields: FormField[] = [
+    {
+        label: 'MOVIE ID',
+        movieField: 'id',
+    },
+    {
+        label: 'TITLE',
+        movieField: 'title',
+    },
+    {
+        label: 'RELEASE DATE',
+        movieField: 'release_date',
+    },
+    {
+        label: 'POSTER URL',
+        movieField: 'poster_path',
+    },
+    {
+        label: 'GENRE',
+        movieField: 'genres',
+    },
+    {
+        label: 'OVERVIEW',
+        movieField: 'overview',
+    },
+    {
+        label: 'RUNTIME',
+        movieField: 'runtime',
+    },
 ];
 
-export const EditModal: React.FC<EditMenuProps> = ({movieId, onClose}: EditMenuProps) => {
+export const EditModal: React.FC<EditMenuProps> = ({ movieId, onClose }: EditMenuProps) => {
     const closeHandler: React.MouseEventHandler = (event: React.MouseEvent) => {
         onClose(event);
         event.stopPropagation();
@@ -21,9 +45,12 @@ export const EditModal: React.FC<EditMenuProps> = ({movieId, onClose}: EditMenuP
 
     return (
         <CommonModalTemplate onClose={closeHandler}>
-            <MovieForm legend={formLegend}
-                       movieId={movieId}
-                       fields={formFields}/>
+            <MovieForm
+                legend={FormLegend.EDIT}
+                movieId={movieId}
+                fields={formFields}
+                closeHandler={closeHandler}
+            />
         </CommonModalTemplate>
     );
 };

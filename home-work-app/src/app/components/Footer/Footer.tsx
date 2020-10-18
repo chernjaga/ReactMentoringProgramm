@@ -3,6 +3,6 @@ import { FooterWrapper } from './FooterWrapper.styled';
 
 export const Footer: React.FC = () => (
     <FooterWrapper>
-        <Logo/>
+        <Logo />
     </FooterWrapper>
 );

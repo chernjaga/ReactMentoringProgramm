@@ -1,5 +1,5 @@
-export const ItemsFound: React.FC<{ amount: number }> = (props: { amount: number }) => (
-  <>
-    <b>{props.amount}</b> movies found
-  </>
+export const ItemsFound: React.FC<{ amount: number }> = ({ amount }: { amount: number }) => (
+    <>
+        <b>{amount}</b> movies found
+    </>
 );

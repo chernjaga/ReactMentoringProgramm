@@ -8,3 +8,5 @@ export * from './GlobalState';
 export * from './MapStateToProps';
 export * from './MapDispatchToProps';
 export * from './DispatchProps';
+export * from './ThemeHandler';
+export * from './FormField';
