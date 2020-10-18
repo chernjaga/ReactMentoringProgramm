@@ -7,3 +7,4 @@ export * from './MovieActionReducer';
 export * from './GlobalState';
 export * from './MapStateToProps';
 export * from './MapDispatchToProps';
+export * from './DispatchProps';

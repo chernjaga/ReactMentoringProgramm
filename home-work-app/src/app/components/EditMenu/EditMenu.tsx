@@ -1,7 +1,7 @@
-import { useState } from "react";
-import styled, { StyledComponent, DefaultTheme } from "styled-components";
-import { ContextMenu } from "../modals/ContextMenu/ContextMenu";
-import { MenuIcon } from "./MenuIcon.styled";
+import { useState } from 'react';
+import styled, { StyledComponent, DefaultTheme } from 'styled-components';
+import { ContextMenu } from '../modals/ContextMenu/ContextMenu';
+import { MenuIcon } from './MenuIcon.styled';
 
 type ModalProps = {
     movieId: number;
@@ -9,7 +9,7 @@ type ModalProps = {
     onMovieDelete: () => void;
 };
 
-const menuItems: string[] = ["EDIT", "DELETE"];
+const menuItems: string[] = ['EDIT', 'DELETE'];
 const closeIconSize = 1;
 
 const EditMenuComponent: React.FC<ModalProps> = ({
@@ -36,7 +36,7 @@ const EditMenuComponent: React.FC<ModalProps> = ({
                     onCloseMenu={toggleModal}
                 />
             ) : (
-                <MenuIcon onClick={toggleModal} />
+                <MenuIcon onClick={toggleModal} className="" />
             )}
         </div>
     );

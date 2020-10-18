@@ -10,7 +10,7 @@ import { useState } from 'react';
 type MenuProps = {
     menuItems: string[],
     movieId: number,
-    onMovieDelete: any,
+    onMovieDelete: () => void,
     closeIconSize: number,
     onCloseMenu: (event: React.MouseEvent) => void
 };

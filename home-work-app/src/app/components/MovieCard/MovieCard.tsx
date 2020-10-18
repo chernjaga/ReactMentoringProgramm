@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
-import { EditMenu } from "../EditMenu/EditMenu";
-import { ListItem } from "./ListItem.styled";
-import { StyledCard } from "./StyledCard.styled";
-import { MovieCardPoster } from "./Poster.styled";
-import { MovieCardTitle } from "./Title.styled";
-import { MovieCardGenres } from "./Genres.styled";
-import { MovieCardYear } from "./Year.styled";
-import { YearBorder } from "./YearBorder.styled";
+import { Link } from 'react-router-dom';
+import { EditMenu } from '../EditMenu/EditMenu';
+import { ListItem } from './ListItem.styled';
+import { StyledCard } from './StyledCard.styled';
+import { MovieCardPoster } from './Poster.styled';
+import { MovieCardTitle } from './Title.styled';
+import { MovieCardGenres } from './Genres.styled';
+import { MovieCardYear } from './Year.styled';
+import { YearBorder } from './YearBorder.styled';
 
 type CardProps = {
     title: string;
@@ -30,11 +30,11 @@ export const MovieCard: React.FC<CardProps> = ({
             <StyledCard>
                 <MovieCardPoster>
                     <img src={coverUrl} alt={title} />
-                    <EditMenu movieId={id} onMovieDelete={onMovieDelete} />
+                    <EditMenu movieId={id} onMovieDelete={onMovieDelete} className="" />
                 </MovieCardPoster>
 
                 <MovieCardTitle>{title}</MovieCardTitle>
-                <MovieCardGenres>{genres.join(" / ")}</MovieCardGenres>
+                <MovieCardGenres>{genres.join(' / ')}</MovieCardGenres>
 
                 <MovieCardYear>
                     <YearBorder>{new Date(releaseDate).getFullYear()}</YearBorder>

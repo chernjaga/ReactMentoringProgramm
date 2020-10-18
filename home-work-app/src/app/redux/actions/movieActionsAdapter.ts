@@ -1,13 +1,21 @@
+import { Dispatch } from 'redux';
 import { IApiResponse } from '../../interfaces/IApiResponse';
+import { IQueryParams } from '../../interfaces/IQueryParams';
 import { MovieService } from '../../services/MovieService';
+import { DispatchProps, MovieAction } from '../../types';
+import { MovieActionParams } from '../../types/MovieActionParams';
 import { store } from '../store';
 
-export const actionAdapter: any = ({ movieId, command, formData }: any): any => (dispatch: any) => {
-    const { queryParams } = store.getState().movieEditor;
+type ActionAdapter = (params: MovieActionParams) => MovieAction;
+
+export const actionAdapter: ActionAdapter = ({ movieId, command, formData }: MovieActionParams): MovieAction => (
+    dispatch: Dispatch<DispatchProps>
+): void => {
+    const queryParams: IQueryParams = store.getState().movieEditor.queryParams;
 
     MovieService.movieActionRequest({ id: movieId, command, formData }).then(() => {
         dispatch({
-            type: 'UPDATE_FINISHED',
+            type: "UPDATE_FINISHED",
             isUpdated: false,
         });
         MovieService.getMovies(queryParams)

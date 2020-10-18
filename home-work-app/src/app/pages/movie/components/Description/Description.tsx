@@ -1,6 +1,5 @@
 import { MovieDetails } from './MovieDetails';
-import { useHistory, useParams } from 'react-router-dom';
-import { IApiResponse } from '../../../../interfaces/IApiResponse';
+import { useParams } from 'react-router-dom';
 import { MovieDetailsPoster } from './MovieDetailsPoster.styled';
 import { MovieDetailsContent } from './MovieDetailsContent.styled';
 import { MovieDetailsHeader } from './MovieDetailsHeader';
@@ -11,30 +10,22 @@ import { MovieDetailsTimeData } from './MovieDetailsTimeData.styled';
 import { MovieDetailsOverview } from './MovieDetailsOverview.styled';
 import { MovieService } from '../../../../services/MovieService';
 import { useState, useEffect } from 'react';
+import { IApiResponse } from '../../../../interfaces/IApiResponse';
 
 // const movieCollection: IApiResponse.IMovie[] = movieResponse.data;
 
-export const Description: React.FC = () =>
-{
-    const { id }: {id: string} = useParams();
-    const history: any = useHistory();
+export const Description: React.FC = () => {
+    const { id }: { id: string } = useParams();
     const [movie, setMovie] = useState({
-        title: null,
-        poster_path: null,
-        vote_average: null,
-        tagline: null,
-        release_date: null,
-        runtime: null,
-        overview: null
+        title: ''
     });
+    const getMovieSet: () => void = async () => {
+        const movieSet: IApiResponse.IMovie = await MovieService.movieActionRequest({ id: Number.parseInt(id, 10) });
+        setMovie(movieSet);
+    };
+
     useEffect(() => {
-        MovieService.movieActionRequest({ id: Number.parseInt(id, 10)})
-        .then((response: any): void => {
-            if (response.status === 404) {
-                history.push('/home');
-            }
-            setMovie(response);
-        });
+        getMovieSet();
     }, [id]);
 
     const {
@@ -45,7 +36,7 @@ export const Description: React.FC = () =>
         runtime,
         release_date,
         vote_average
-    } = movie;
+    }: IApiResponse.IMovie = movie;
 
     return (
         <MovieDetails>
@@ -64,7 +55,7 @@ export const Description: React.FC = () =>
                 </MovieDetailsTagline>
                 <MovieDetailsTimeData>
                     <span>
-                        {new Date( release_date ).getFullYear()}
+                        {new Date(release_date).getFullYear()}
                     </span>
                     <span>
                         {runtime}min
